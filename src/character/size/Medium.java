@@ -1,18 +1,16 @@
 package character.size;
 
 public class Medium extends Size {
-	private String heightDescription;
-
+	
 	public Medium() {
-		this.heightDescription = "Between 5 and 7 feet tall";
-	}
-
-	public Medium(String height) {
-		this.heightDescription = height;
+		super.setSizeCatagory("Medium");
+		super.setSizeRating(0);
+		super.setHeightDescription("Between 5 and 7 feet tall");
 	}
 	
-	@Override
-	public String getHeightDescription() {
-		return this.heightDescription;
+	public Medium(String heightDescription) {
+		super.setSizeCatagory("Medium");
+		super.setSizeRating(0);
+		super.setHeightDescription(heightDescription);
 	}
 }

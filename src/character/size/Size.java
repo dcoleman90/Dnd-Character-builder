@@ -1,20 +1,31 @@
 package character.size;
 
 public abstract class Size {
-	private String size;
-	private int sizeCatagory;
+	private String heightDescription;
+	private String sizeCatagory;
+	private int sizeRating;
 	
-	public Size() {
-		this.size = "Medium";
-		this.sizeCatagory = 0;
-	}
+	public Size() {}
 	
 	public int getSizeCatagory() {
-		return this.sizeCatagory;
+		return this.sizeRating;
+	}
+	
+	public void setSizeRating(int sizeRating) {
+		this.sizeRating = sizeRating;
+	}
+
+	public void setSizeCatagory(String sizeCatagory) {
+		this.sizeCatagory = sizeCatagory;
+	}
+	
+	public void
+	setHeightDescription(String heightDescription) {
+		this.heightDescription = heightDescription;
 	}
 
 	public String getHeightDescription() {
-		return this.size;
+		return this.heightDescription;
 	}
 }
 
