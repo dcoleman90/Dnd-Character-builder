@@ -13,8 +13,8 @@ public abstract class ClassType {
 	
 	public void setHitPoints(int level, int hitDice, int conBonus) {
 		this.hitPoints = hitDice + conBonus;
-		for (int count = 1; count > level; count++) {
-			this.hitPoints += (random.nextInt(hitDice - 1) + 1) + conBonus;
+		for (int count = 1; count < level; count++) {
+			this.hitPoints += (random.nextInt(hitDice) + 1) + conBonus;
 		}
 	}
 
