@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import character.abilities.Ability;
 import character.abilities.Strength;
 
-class TestAbility {
+class TestStrengthAbility {
 
 	Ability strength = new Strength();
 	
