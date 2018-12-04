@@ -1,5 +1,7 @@
 package character.classType;
 
+import character.skills.Skills;
+
 public class Fighter extends ClassType {
 	
 	/**
@@ -13,5 +15,11 @@ public class Fighter extends ClassType {
 	public String specialAbilities(int level) {
 		return super.specialAbilities(level) + " Fighter";
 	}
-
+	
+	
+	
+	@Override
+	public Skills proficentSkills() {
+		return null;
+	}
 }

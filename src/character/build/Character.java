@@ -9,6 +9,7 @@ import character.abilities.Strength;
 import character.abilities.Wisdom;
 import character.race.Human;
 import character.race.Race;
+import character.skills.Skills;
 
 public class Character {
 	private Strength str;
@@ -18,6 +19,7 @@ public class Character {
 	private Wisdom wis;
 	private Charisma charisma;
 	private Race race;
+	private Skills skills;
 
 	/**
 	 * Builds a default character with default value of 10 to all scores
@@ -64,13 +66,13 @@ public class Character {
 	 */
 	public int getAbilityBonus(Ability acceptedAbility) {
 		int abilityBonus = (acceptedAbility.getScore() - 10) / 2;
-		return abilityBonus;
+		return abilityBonus; //Needs tested
 	}
 
 	public String toString() {
 		String characterSummary = "";
-		characterSummary += this.race.toString() + "\n" + this.str.toString() + this.dex.toString() + this.con.toString()
-				+ this.intell.toString() + this.wis.toString() + this.charisma.toString();
+		characterSummary += this.race.toString() + "\n" + this.str.toString() + this.dex.toString()
+				+ this.con.toString() + this.intell.toString() + this.wis.toString() + this.charisma.toString();
 		return characterSummary;
 	}
 
@@ -135,6 +137,10 @@ public class Character {
 		this.race = race;
 	}
 
+	/**
+	 * Private methods to assist with AbilityScores - the bonus applied after race and Skill Scores - bonus applied after Class
+	 */
+	
 	private void setAbilityScores() {
 		this.str.addScore(this.race.abilityScoreAlterations(str));
 		this.dex.addScore(this.race.abilityScoreAlterations(dex));
@@ -142,6 +148,10 @@ public class Character {
 		this.intell.addScore(this.race.abilityScoreAlterations(intell));
 		this.wis.addScore(this.race.abilityScoreAlterations(wis));
 		this.charisma.addScore(this.race.abilityScoreAlterations(charisma));
+	}
+
+	private void setSkillScores() {
+		skills = new Skills(this.str, this.dex, this.con, this.intell, this.wis, this.charisma);
 	}
 
 }

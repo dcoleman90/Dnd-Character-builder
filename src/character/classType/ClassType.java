@@ -2,6 +2,8 @@ package character.classType;
 
 import java.util.Random;
 
+import character.skills.Skills;
+
 public abstract class ClassType {
 	private int hitPoints;
 	private Random random;
@@ -29,5 +31,9 @@ public abstract class ClassType {
 
 	public String specialAbilities(int level) {
 		return "Not working";
+	}
+	
+	public Skills proficentSkills() {
+		return null;
 	}
 }
