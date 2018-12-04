@@ -9,4 +9,9 @@ public class Dexterity extends Ability {
 	public Dexterity(int acceptedDexterityScore) {
 		super(acceptedDexterityScore);
 	}
+	
+	@Override
+	public String toString() {
+		return  super.toString() + " Dexterity ";
+	}
 }

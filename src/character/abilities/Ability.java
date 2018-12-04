@@ -12,7 +12,7 @@ public abstract class Ability {
 	private int abilityScore;
 		
 	public Ability() {
-		this.abilityScore = 10;
+		this.abilityScore = 10; 
 	}
 	
 	public Ability(int acceptedAbilityScore) {
@@ -24,6 +24,10 @@ public abstract class Ability {
 	}
 	
 	public void addScore(int amountAbilityScoreIsModifiedBy) {
-		this.abilityScore += amountAbilityScoreIsModifiedBy;  
+		this.abilityScore += amountAbilityScoreIsModifiedBy;   
+	}
+	
+	public String toString() {
+		return "" + this.abilityScore;
 	}
 }
