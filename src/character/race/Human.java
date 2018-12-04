@@ -24,13 +24,14 @@ public class Human implements Race {
 	public Size getSize() {
 		return humanSize;
 	}
-
-	@Override
-	public void setSize(Size acceptedSize) {
-		this.humanSize = acceptedSize;
-	}
 	
+
 	public String toString() {
 		return " Human ";
+	}
+
+	@Override
+	public void setSizeText(String sizeText) {
+		this.humanSize = new Medium(sizeText);
 	}
 }
