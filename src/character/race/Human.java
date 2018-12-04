@@ -12,14 +12,12 @@ public class Human implements Race {
 
 	@Override
 	public int getSpeed() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 30;
 	}
 
 	@Override
 	public String specialAbility() {
-		// TODO Auto-generated method stub
-		return null;
+		return " Humans are special";
 	}
 
 	@Override
