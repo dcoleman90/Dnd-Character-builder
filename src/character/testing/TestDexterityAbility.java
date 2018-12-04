@@ -1,22 +1,22 @@
-package character.ability.testing;
+package character.testing;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
 import character.abilities.Ability;
-import character.abilities.Wisdom;
+import character.abilities.Dexterity;
 
-class TestWisdomAbility {
+class TestDexterityAbility {
 
-Ability wisdom = new Wisdom();
+Ability dexterity = new Dexterity();
 
 /**
  * This test will insure that the default ability scores returns 10
  */
 @Test
 void testAbilityGetScoreWithDefaultScores() {
-	assertEquals(this.wisdom.getScore(), 10);
+	assertEquals(this.dexterity.getScore(), 10);
 }
 
 /**
@@ -25,12 +25,12 @@ void testAbilityGetScoreWithDefaultScores() {
  */
 @Test
 void testAbilitySecondConstructorWithPositiveValues() {
-	Ability wisdom1 = new Wisdom(1);
-	assertEquals(wisdom1.getScore(), 1);
-	Ability wisdom10 = new Wisdom(10);
-	assertEquals(wisdom10.getScore(), 10);
-	Ability wisdom100 = new Wisdom(100);
-	assertEquals(wisdom100.getScore(), 100);
+	Ability dexterity3 = new Dexterity(3);
+	assertEquals(dexterity3.getScore(), 3);
+	Ability dexterity30 = new Dexterity(30);
+	assertEquals(dexterity30.getScore(), 30);
+	Ability dexterity300 = new Dexterity(300);
+	assertEquals(dexterity300.getScore(), 300);
 }
 
 
@@ -40,12 +40,12 @@ void testAbilitySecondConstructorWithPositiveValues() {
  */
 @Test
 void testAbilitySecondConstructorWithNegativeValues() {
-	Ability wisdom6 = new Wisdom(-6);
-	assertEquals(wisdom6.getScore(), -6);
-	Ability wisdom60 = new Wisdom(-60);
-	assertEquals(wisdom60.getScore(), -60);
-	Ability wisdom600 = new Wisdom(-600);
-	assertEquals(wisdom600.getScore(), -600);
+	Ability dexterity5 = new Dexterity(-5);
+	assertEquals(dexterity5.getScore(), -5);
+	Ability dexterity50 = new Dexterity(-50);
+	assertEquals(dexterity50.getScore(), -50);
+	Ability dexterity500 = new Dexterity(-500);
+	assertEquals(dexterity500.getScore(), -500);
 }
 
 /**
@@ -53,9 +53,9 @@ void testAbilitySecondConstructorWithNegativeValues() {
  */
 @Test
 void testAbilityAddScore() {
-	assertEquals(this.wisdom.getScore(), 10);
-	this.wisdom.addScore(6);
-	assertEquals(this.wisdom.getScore(), 16);
+	assertEquals(this.dexterity.getScore(), 10);
+	this.dexterity.addScore(5);
+	assertEquals(this.dexterity.getScore(), 15);
 }
 
 /**
@@ -64,9 +64,9 @@ void testAbilityAddScore() {
  */
 @Test
 void testAbilityAddScoreWithNegativeValues() {
-	assertEquals(this.wisdom.getScore(), 10);
-	this.wisdom.addScore(-15);
-	assertEquals(this.wisdom.getScore(), -5);
+	assertEquals(this.dexterity.getScore(), 10);
+	this.dexterity.addScore(-6);
+	assertEquals(this.dexterity.getScore(), 4);
 	
 }
 }
