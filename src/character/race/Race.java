@@ -1,12 +1,13 @@
 package character.race;
 
 import character.abilities.Ability;
+import character.size.Size;
 
 public interface Race {
 	int abilityScoreAlterations(Ability acceptedAbility);
-	float getSize();
+	Size getSize();
 	int getSpeed();
 	String specialAbility();
-	void setSize(float acceptedSize);
+	void setSize(Size acceptedSize);
 	String toString();
 }

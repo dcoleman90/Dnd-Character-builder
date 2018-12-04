@@ -1,9 +1,11 @@
 package character.race;
 
 import character.abilities.Ability;
+import character.size.Medium;
+import character.size.Size;
 
 public class Human implements Race {
-	float size = 0;
+	Size humanSize = new Medium();
 	
 	public int getSpeed() {
 		return 30;
@@ -19,16 +21,13 @@ public class Human implements Race {
 		return 1;
 	}
 
-	@Override
-	public float getSize() {
-		return size;
+	public Size getSize() {
+		return humanSize;
 	}
 
 	@Override
-	public void setSize(float acceptedSize) {
-		if (acceptedSize > 0) {
-			this.size = acceptedSize;
-		}
+	public void setSize(Size acceptedSize) {
+		this.humanSize = acceptedSize;
 	}
 	
 	public String toString() {

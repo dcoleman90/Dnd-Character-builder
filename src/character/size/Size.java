@@ -8,4 +8,9 @@ public abstract class Size {
 		this.size = "Medium";
 		this.sizeCatagory = 0;
 	}
+	
+	public int getSizeCatagory() {
+		return this.sizeCatagory;
+	}
 }
+
