@@ -7,7 +7,7 @@ public abstract class Size {
 	
 	public Size() {}
 	
-	public int getSizeCatagory() {
+	public int getSizeRating() {
 		return this.sizeRating;
 	}
 	
@@ -17,6 +17,10 @@ public abstract class Size {
 
 	public void setSizeCatagory(String sizeCatagory) {
 		this.sizeCatagory = sizeCatagory;
+	}
+	
+	public String getSizeCatagory() {
+		return this.sizeCatagory;
 	}
 	
 	public void

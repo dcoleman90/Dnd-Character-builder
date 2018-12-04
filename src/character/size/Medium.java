@@ -9,8 +9,7 @@ public class Medium extends Size {
 	}
 	
 	public Medium(String heightDescription) {
-		super.setSizeCatagory("Medium");
-		super.setSizeRating(0);
+		this();
 		super.setHeightDescription(heightDescription);
 	}
 }
