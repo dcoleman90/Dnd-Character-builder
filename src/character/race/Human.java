@@ -27,7 +27,7 @@ public class Human implements Race {
 	
 
 	public String toString() {
-		return " Human ";
+		return " Human, Speed " + this.getSpeed() + ", " + this.humanSize.getHeightDescription();
 	}
 
 	@Override

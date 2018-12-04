@@ -34,7 +34,9 @@ public class Character {
 	}
 
 	/**
-	 * constructs a character with the accepted values representing all the new values for the character
+	 * constructs a character with the accepted values representing all the new
+	 * values for the character
+	 * 
 	 * @param acceptedStr
 	 * @param acceptedDex
 	 * @param acceptedCon
@@ -53,33 +55,30 @@ public class Character {
 		this.race = acceptedRace;
 		this.setAbilityScores();
 	}
-	
+
 	/**
-	 * This method returns the bonus for the accepted ability 
+	 * This method returns the bonus for the accepted ability
+	 * 
 	 * @param acceptedAbility
 	 * @return the bonus added to the d20 roll
 	 */
 	public int getAbilityBonus(Ability acceptedAbility) {
-		int abilityBonus = (acceptedAbility.getScore() - 10)/2;
-		return abilityBonus;  
+		int abilityBonus = (acceptedAbility.getScore() - 10) / 2;
+		return abilityBonus;
 	}
-	
+
 	public String toString() {
 		String characterSummary = "";
-		characterSummary += this.str.toString();
-		characterSummary += this.dex.toString();
-		characterSummary += this.con.toString();
-		characterSummary += this.intell.toString();
-		characterSummary += this.wis.toString();
-		characterSummary += this.charisma.toString();
+		characterSummary += this.race.toString() + "\n" + this.str.toString() + this.dex.toString() + this.con.toString()
+				+ this.intell.toString() + this.wis.toString() + this.charisma.toString();
 		return characterSummary;
 	}
-	
+
 	/**
 	 * Getters and Setters for all the Ability Scores and Race
 	 * 
 	 */
-	
+
 	public int getStrScore() {
 		return this.str.getScore();
 	}
@@ -144,6 +143,5 @@ public class Character {
 		this.wis.addScore(this.race.abilityScoreAlterations(wis));
 		this.charisma.addScore(this.race.abilityScoreAlterations(charisma));
 	}
-	
-	
+
 }
