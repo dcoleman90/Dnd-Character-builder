@@ -22,6 +22,7 @@ public class Fighter extends ClassType {
 	 */
 	public Fighter() {
 		super();
+
 		Acrobatics acro = new Acrobatics(0);
 		AnimalHandling ah = new AnimalHandling(0);
 		Athletics ath = new Athletics(0);
@@ -52,14 +53,7 @@ public class Fighter extends ClassType {
 	}
 
 	@Override
-	public Skills proficentSkills(Skills classSkills, Skill pro1, Skill pro2) {
-
-		for (int count = 0; count < this.proficentSkills.size(); count++) {
-			if (pro1 == this.proficentSkills.get(count) && (pro2 == this.proficentSkills.get(count))) {
-				return super.proficentSkills(classSkills, pro1, pro2);
-			}
-
-		}
-		return super.proficentSkills(classSkills, this.proficentSkills.get(2), this.proficentSkills.get(6));
+	public boolean isClassSkill(Skill fighterSkill) {
+		return super.checkProficentSkill(proficentSkills, fighterSkill);
 	}
 }
