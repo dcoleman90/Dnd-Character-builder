@@ -1,5 +1,7 @@
 package character.build;
 
+import java.util.ArrayList;
+
 import character.abilities.Ability;
 import character.abilities.Charisma;
 import character.abilities.Constitution;
@@ -9,6 +11,7 @@ import character.abilities.Strength;
 import character.abilities.Wisdom;
 import character.race.Human;
 import character.race.Race;
+import character.skills.Skill;
 import character.skills.Skills;
 
 public class Character {
@@ -33,6 +36,7 @@ public class Character {
 		this.charisma = new Charisma();
 		this.race = new Human();
 		this.setAbilityScores();
+		this.setUpSkillScores();
 	}
 
 	/**
@@ -48,6 +52,7 @@ public class Character {
 	 */
 	public Character(int acceptedStr, int acceptedDex, int acceptedCon, int acceptedIntell, int acceptedWis,
 			int acceptedCharisma, Race acceptedRace) {
+		this();
 		this.str = new Strength(acceptedStr);
 		this.dex = new Dexterity(acceptedDex);
 		this.con = new Constitution(acceptedCon);
@@ -55,19 +60,19 @@ public class Character {
 		this.wis = new Wisdom(acceptedWis);
 		this.charisma = new Charisma(acceptedCharisma);
 		this.race = acceptedRace;
-		this.setAbilityScores();
+		
 	}
 
-	/**
-	 * This method returns the bonus for the accepted ability
-	 * 
-	 * @param acceptedAbility
-	 * @return the bonus added to the d20 roll
-	 */
-	public int getAbilityBonus(Ability acceptedAbility) {
-		int abilityBonus = (acceptedAbility.getScore() - 10) / 2;
-		return abilityBonus; //Needs tested
-	}
+//	/**
+//	 * This method returns the bonus for the accepted ability
+//	 *  Currently trying it as a seperate class
+//	 * @param acceptedAbility
+//	 * @return the bonus added to the d20 roll
+//	 */
+//	public int getAbilityBonus(Ability acceptedAbility) {
+//		int abilityBonus = (acceptedAbility.getScore() - 10) / 2;
+//		return abilityBonus; // Needs tested
+//	}
 
 	public String toString() {
 		String characterSummary = "";
@@ -138,9 +143,10 @@ public class Character {
 	}
 
 	/**
-	 * Private methods to assist with AbilityScores - the bonus applied after race and Skill Scores - bonus applied after Class
+	 * Private methods to assist with AbilityScores - the bonus applied after race
+	 * and Skill Scores - bonus applied after Class
 	 */
-	
+
 	private void setAbilityScores() {
 		this.str.addScore(this.race.abilityScoreAlterations(str));
 		this.dex.addScore(this.race.abilityScoreAlterations(dex));
@@ -150,8 +156,7 @@ public class Character {
 		this.charisma.addScore(this.race.abilityScoreAlterations(charisma));
 	}
 
-	private void setSkillScores() {
-		skills = new Skills(this.str, this.dex, this.con, this.intell, this.wis, this.charisma);
+	private void setUpSkillScores() {
+		this.skills = new Skills(this.str, this.dex, this.con, this.intell, this.wis, this.charisma);
 	}
-
 }

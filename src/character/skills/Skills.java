@@ -1,185 +1,81 @@
 package character.skills;
 
+import java.util.ArrayList;
+
 import character.abilities.Charisma;
 import character.abilities.Constitution;
 import character.abilities.Dexterity;
 import character.abilities.Intelligence;
 import character.abilities.Strength;
 import character.abilities.Wisdom;
+import character.build.AbilityBonus;
 
-/**
- * This class will contain an arrayList of all the characters skills
- * @author DrewC
- *
- */
 public class Skills {
-	private int acrobatics;
-	private int animalHandling;
-	private int arcana;
-	private int deception;
-	private int history;
-	private int insight;
-	private int intimidation;
-	private int medicine;
-	private int nature;
-	private int perception;
-	private int performance;
-	private int persuasion;
-	private int religion;
-	private int sleightOfHand;
-	private int stealth;
-	private int survival;
-	
+	private ArrayList<Skill> characterSkills;
+	private Acrobatics acrobatic;
+	private AnmialHandling animalHandle;
+	private Arcana arcana;
+	private Athletics athletic;
+	private Deception deception;
+	private History history;
+	private Insight insight;
+	private Investigation investigation;
+	private Intimidation intimidation;
+	private Medicine medicine;
+	private Nature nature;
+	private Perception perception;
+	private Performance performance;
+	private Persuasion persuasion;
+	private Religion religion;
+	private SleightOfHand sleightOfHand;
+	private Stealth stealth;
+	private Survival survival;
+	private AbilityBonus bonus;
+
 	public Skills(Strength str, Dexterity dex, Constitution con, Intelligence intell, Wisdom wis, Charisma charisma) {
-		this.acrobatics = dex.getScore();
-		this.animalHandling = wis.getScore();
-		this.arcana = intell.getScore();
-		this.deception = charisma.getScore();
-		this.history = intell.getScore();
-		this.insight = wis.getScore();
-		this.intimidation = charisma.getScore();
-		this.medicine = wis.getScore();
-		this.nature = intell.getScore();
-		this.perception = wis.getScore();
-		this.performance = charisma.getScore();
-		this.persuasion = charisma.getScore();
-		this.religion = intell.getScore();
-		this.sleightOfHand = dex.getScore();
-		this.stealth = dex.getScore();
-		this.survival = wis.getScore();
+		this.acrobatic.addSkill(bonus.returnBonus(dex));
+		this.sleightOfHand.addSkill(bonus.returnBonus(dex));
+		this.stealth.addSkill(bonus.returnBonus(dex));
+		this.animalHandle.addSkill(bonus.returnBonus(wis));
+		this.insight.addSkill(bonus.returnBonus(wis));
+		this.medicine.addSkill(bonus.returnBonus(wis));
+		this.perception.addSkill(bonus.returnBonus(wis));
+		this.survival.addSkill(bonus.returnBonus(wis));
+		this.arcana.addSkill(bonus.returnBonus(intell));
+		this.history.addSkill(bonus.returnBonus(intell));
+		this.investigation.addSkill(bonus.returnBonus(intell));
+		this.nature.addSkill(bonus.returnBonus(intell));
+		this.religion.addSkill(bonus.returnBonus(intell));
+		this.athletic.addSkill(bonus.returnBonus(str));
+		this.deception.addSkill(bonus.returnBonus(charisma));
+		this.intimidation.addSkill(bonus.returnBonus(charisma));
+		this.performance.addSkill(bonus.returnBonus(charisma));
+		this.persuasion.addSkill(bonus.returnBonus(charisma));
+		this.addAllToArrayList();
 	}
 
-	
-	/**
-	 * Getter and setters for all the Skills
-	 * @return
-	 */
-	public int getAcrobatics() {
-		return acrobatics;
+	private void addAllToArrayList() {
+		this.characterSkills.add(this.animalHandle);
+		this.characterSkills.add(this.acrobatic);
+		this.characterSkills.add(this.arcana);
+		this.characterSkills.add(this.athletic);
+		this.characterSkills.add(this.deception);
+		this.characterSkills.add(this.history);
+		this.characterSkills.add(this.insight);
+		this.characterSkills.add(this.investigation);
+		this.characterSkills.add(this.intimidation);
+		this.characterSkills.add(this.medicine);
+		this.characterSkills.add(this.nature);
+		this.characterSkills.add(this.perception);
+		this.characterSkills.add(this.performance);
+		this.characterSkills.add(this.persuasion);
+		this.characterSkills.add(this.religion);
+		this.characterSkills.add(this.sleightOfHand);
+		this.characterSkills.add(this.stealth);
+		this.characterSkills.add(this.survival);
 	}
 
-	public void setAcrobatics(int acrobatics) {
-		this.acrobatics = acrobatics;
+	public ArrayList<Skills> getCharactersSkills() {
+		return this.getCharactersSkills();
 	}
-
-	public int getAnimalHandling() {
-		return animalHandling;
-	}
-
-	public void setAnimalHandling(int animalHandling) {
-		this.animalHandling = animalHandling;
-	}
-
-	public int getArcana() {
-		return arcana;
-	}
-
-	public void setArcana(int arcana) {
-		this.arcana = arcana;
-	}
-
-	public int getDeception() {
-		return deception;
-	}
-
-	public void setDeception(int deception) {
-		this.deception = deception;
-	}
-
-	public int getHistory() {
-		return history;
-	}
-
-	public void setHistory(int history) {
-		this.history = history;
-	}
-
-	public int getInsight() {
-		return insight;
-	}
-
-	public void setInsight(int insight) {
-		this.insight = insight;
-	}
-
-	public int getIntimidation() {
-		return intimidation;
-	}
-
-	public void setIntimidation(int intimidation) {
-		this.intimidation = intimidation;
-	}
-
-	public int getMedicine() {
-		return medicine;
-	}
-
-	public void setMedicine(int medicine) {
-		this.medicine = medicine;
-	}
-
-	public int getNature() {
-		return nature;
-	}
-
-	public void setNature(int nature) {
-		this.nature = nature;
-	}
-
-	public int getPerception() {
-		return perception;
-	}
-
-	public void setPerception(int perception) {
-		this.perception = perception;
-	}
-
-	public int getPerformance() {
-		return performance;
-	}
-
-	public void setPerformance(int performance) {
-		this.performance = performance;
-	}
-
-	public int getPersuasion() {
-		return persuasion;
-	}
-
-	public void setPersuasion(int persuasion) {
-		this.persuasion = persuasion;
-	}
-
-	public int getReligion() {
-		return religion;
-	}
-
-	public void setReligion(int religion) {
-		this.religion = religion;
-	}
-
-	public int getSleightOfHand() {
-		return sleightOfHand;
-	}
-
-	public void setSleightOfHand(int sleightOfHand) {
-		this.sleightOfHand = sleightOfHand;
-	}
-
-	public int getStealth() {
-		return stealth;
-	}
-
-	public void setStealth(int stealth) {
-		this.stealth = stealth;
-	}
-
-	public int getSurvival() {
-		return survival;
-	}
-
-	public void setSurvival(int survival) {
-		this.survival = survival;
-	}
-	
 }
