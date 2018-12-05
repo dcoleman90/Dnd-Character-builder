@@ -13,7 +13,8 @@ import character.build.AbilityBonus;
 public class Skills {
 	private ArrayList<Skill> characterSkills;
 	private Acrobatics acrobatic;
-	private AnmialHandling animalHandle;
+	private AnimalHandling animalHandle;
+	
 	private Arcana arcana;
 	private Athletics athletic;
 	private Deception deception;
@@ -61,7 +62,7 @@ public class Skills {
 	
 	private void initializeSkills() {
 		this.acrobatic = new Acrobatics(0);
-		this.animalHandle = new AnmialHandling(0);
+		this.animalHandle = new AnimalHandling(0);
 		this.arcana = new Arcana(0);
 		this.athletic = new Athletics(0);
 		this.deception = new Deception(0);

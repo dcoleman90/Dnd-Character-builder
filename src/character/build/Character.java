@@ -41,6 +41,8 @@ public class Character {
 		this.classType = new Fighter();
 		this.setAbilityScores();
 		this.setUpSkillScores();
+		//This method is designed to set up a complete character - so it will call the class with its and hard code prof
+		this.setProficiencyBonusSkills(this.skills, this.skills.getCharactersSkills().get(0), this.skills.getCharactersSkills().get(1));
 	}
 
 	/**
@@ -164,7 +166,7 @@ public class Character {
 	
 	}
 	
-	private void setProficiencyBonusSkills() {
-		
+	private void setProficiencyBonusSkills(Skills skillsAccepted, Skill skillAdded, Skill secondSkillAdded) {
+		this.skills = this.classType.proficentSkills(skillsAccepted, skillAdded, secondSkillAdded);
 	}
 }
