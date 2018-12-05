@@ -32,7 +32,7 @@ public class Character {
 	 */
 	public Character() {
 		this.str = new Strength();
-		this.dex = new Dexterity(20);
+		this.dex = new Dexterity();
 		this.con = new Constitution();
 		this.intell = new Intelligence();
 		this.wis = new Wisdom();
@@ -54,18 +54,20 @@ public class Character {
 	 * @param acceptedWis
 	 * @param acceptedCharisma
 	 */
-//	public Character(int acceptedStr, int acceptedDex, int acceptedCon, int acceptedIntell, int acceptedWis,
-//			int acceptedCharisma, Race acceptedRace, ClassType acceptedClass) {
-//		this();
-//		this.str = new Strength(acceptedStr);
-//		this.dex = new Dexterity(acceptedDex);
-//		this.con = new Constitution(acceptedCon);
-//		this.intell = new Intelligence(acceptedIntell);
-//		this.wis = new Wisdom(acceptedWis);
-//		this.charisma = new Charisma(acceptedCharisma);
-//		this.race = acceptedRace;
-//		this.classType = acceptedClass;	
-//	}
+	public Character(int acceptedStr, int acceptedDex, int acceptedCon, int acceptedIntell, int acceptedWis,
+			int acceptedCharisma, Race acceptedRace, ClassType acceptedClass) {
+		this();
+		this.str = new Strength(acceptedStr);
+		this.dex = new Dexterity(acceptedDex);
+		this.con = new Constitution(acceptedCon);
+		this.intell = new Intelligence(acceptedIntell);
+		this.wis = new Wisdom(acceptedWis);
+		this.charisma = new Charisma(acceptedCharisma);
+		this.race = acceptedRace;
+		this.classType = acceptedClass;	
+		this.setAbilityScores();
+		this.setUpSkillScores();
+	}
 
 	public String toString() {
 		String characterSummary = "";
@@ -155,11 +157,9 @@ public class Character {
 		this.intell.addScore(this.race.abilityScoreAlterations(intell));
 		this.wis.addScore(this.race.abilityScoreAlterations(wis));
 		this.charisma.addScore(this.race.abilityScoreAlterations(charisma));
-		System.out.println("Made it here to setAbilityScores");
 	}
 
 	private void setUpSkillScores() {
-		System.out.println("Made it here Yakkkk " + this.dex.getScore());
 		this.skills = new Skills(this.str, this.dex, this.con, this.intell, this.wis, this.charisma);
 	
 	}

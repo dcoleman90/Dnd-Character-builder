@@ -38,28 +38,24 @@ public class Skills {
 		this.initializeSkills();
 		
 		
-		System.out.println("Made it into Skills part 1");
-		System.out.println("Made This is the dex straight value " + dex.getScore());
-		System.out.println("Made it here bonus value " + bonus.returnBonus(dex));
-		this.acrobatic.addSkill(bonus.returnBonus(dex));
-		this.sleightOfHand.addSkill(bonus.returnBonus(dex));
-		this.stealth.addSkill(bonus.returnBonus(dex));
-		this.animalHandle.addSkill(bonus.returnBonus(wis));
-		this.insight.addSkill(bonus.returnBonus(wis));
-		this.medicine.addSkill(bonus.returnBonus(wis));
-		this.perception.addSkill(bonus.returnBonus(wis));
-		this.survival.addSkill(bonus.returnBonus(wis));
-		this.arcana.addSkill(bonus.returnBonus(intell));
-		this.history.addSkill(bonus.returnBonus(intell));
-		this.investigation.addSkill(bonus.returnBonus(intell));
-		this.nature.addSkill(bonus.returnBonus(intell));
-		this.religion.addSkill(bonus.returnBonus(intell));
-		this.athletic.addSkill(bonus.returnBonus(str));
-		this.deception.addSkill(bonus.returnBonus(charisma));
-		this.intimidation.addSkill(bonus.returnBonus(charisma));
-		this.performance.addSkill(bonus.returnBonus(charisma));
-		this.persuasion.addSkill(bonus.returnBonus(charisma));
-		System.out.println("Made it into Skills part 2");
+		this.acrobatic.addSkill(this.bonus.returnBonus(dex));
+		this.sleightOfHand.addSkill(this.bonus.returnBonus(dex));
+		this.stealth.addSkill(this.bonus.returnBonus(dex));
+		this.animalHandle.addSkill(this.bonus.returnBonus(wis));
+		this.insight.addSkill(this.bonus.returnBonus(wis));
+		this.medicine.addSkill(this.bonus.returnBonus(wis));
+		this.perception.addSkill(this.bonus.returnBonus(wis));
+		this.survival.addSkill(this.bonus.returnBonus(wis));
+		this.arcana.addSkill(this.bonus.returnBonus(intell));
+		this.history.addSkill(this.bonus.returnBonus(intell));
+		this.investigation.addSkill(this.bonus.returnBonus(intell));
+		this.nature.addSkill(this.bonus.returnBonus(intell));
+		this.religion.addSkill(this.bonus.returnBonus(intell));
+		this.athletic.addSkill(this.bonus.returnBonus(str));
+		this.deception.addSkill(this.bonus.returnBonus(charisma));
+		this.intimidation.addSkill(this.bonus.returnBonus(charisma));
+		this.performance.addSkill(this.bonus.returnBonus(charisma));
+		this.persuasion.addSkill(this.bonus.returnBonus(charisma));
 		this.addAllToArrayList();
 	}
 	
@@ -85,8 +81,8 @@ public class Skills {
 	}
 
 	private void addAllToArrayList() {
-		this.characterSkills.add(this.animalHandle);
 		this.characterSkills.add(this.acrobatic);
+		this.characterSkills.add(this.animalHandle);
 		this.characterSkills.add(this.arcana);
 		this.characterSkills.add(this.athletic);
 		this.characterSkills.add(this.deception);

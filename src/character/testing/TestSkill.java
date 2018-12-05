@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import character.abilities.Strength;
+import character.build.AbilityBonus;
 import character.skills.Arcana;
 
 class TestSkill {
@@ -35,6 +37,15 @@ class TestSkill {
 	void testCheckSkillArcanaZero() {
 		Arcana arc = new Arcana(0);
 		assertEquals(arc.getSkill(), 0);
+	}
+	
+	/**
+	 * Test individual constructor
+	 */
+	@Test
+	void testCheckSkillArcana8() {
+		Arcana arc = new Arcana(8);
+		assertEquals(arc.getSkill(), 8);
 	}
 	
 }
