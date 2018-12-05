@@ -33,6 +33,14 @@ public class Skills {
 	private AbilityBonus bonus;
 
 	public Skills(Strength str, Dexterity dex, Constitution con, Intelligence intell, Wisdom wis, Charisma charisma) {
+		this.bonus = new AbilityBonus();
+		this.characterSkills = new ArrayList<Skill>();
+		this.initializeSkills();
+		
+		
+		System.out.println("Made it into Skills part 1");
+		System.out.println("Made This is the dex straight value " + dex.getScore());
+		System.out.println("Made it here bonus value " + bonus.returnBonus(dex));
 		this.acrobatic.addSkill(bonus.returnBonus(dex));
 		this.sleightOfHand.addSkill(bonus.returnBonus(dex));
 		this.stealth.addSkill(bonus.returnBonus(dex));
@@ -51,7 +59,29 @@ public class Skills {
 		this.intimidation.addSkill(bonus.returnBonus(charisma));
 		this.performance.addSkill(bonus.returnBonus(charisma));
 		this.persuasion.addSkill(bonus.returnBonus(charisma));
+		System.out.println("Made it into Skills part 2");
 		this.addAllToArrayList();
+	}
+	
+	private void initializeSkills() {
+		this.acrobatic = new Acrobatics(0);
+		this.animalHandle = new AnmialHandling(0);
+		this.arcana = new Arcana(0);
+		this.athletic = new Athletics(0);
+		this.deception = new Deception(0);
+		this.history = new History(0);
+		this.insight = new Insight(0);
+		this.intimidation = new Intimidation(0);
+		this.investigation = new Investigation(0);
+		this.medicine = new Medicine(0);
+		this.nature = new Nature(0);
+		this.perception = new Perception(0);
+		this.performance = new Performance(0);
+		this.persuasion = new Persuasion(0);
+		this.religion = new Religion(0);
+		this.sleightOfHand = new SleightOfHand(0);
+		this.stealth = new Stealth(0);
+		this.survival = new Survival(0);
 	}
 
 	private void addAllToArrayList() {
@@ -75,7 +105,7 @@ public class Skills {
 		this.characterSkills.add(this.survival);
 	}
 
-	public ArrayList<Skills> getCharactersSkills() {
-		return this.getCharactersSkills();
+	public ArrayList<Skill> getCharactersSkills() {
+		return this.characterSkills;
 	}
 }

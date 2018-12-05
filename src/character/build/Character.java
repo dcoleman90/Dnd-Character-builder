@@ -9,6 +9,8 @@ import character.abilities.Dexterity;
 import character.abilities.Intelligence;
 import character.abilities.Strength;
 import character.abilities.Wisdom;
+import character.classType.ClassType;
+import character.classType.Fighter;
 import character.race.Human;
 import character.race.Race;
 import character.skills.Skill;
@@ -23,18 +25,20 @@ public class Character {
 	private Charisma charisma;
 	private Race race;
 	private Skills skills;
+	private ClassType classType;
 
 	/**
 	 * Builds a default character with default value of 10 to all scores
 	 */
 	public Character() {
 		this.str = new Strength();
-		this.dex = new Dexterity();
+		this.dex = new Dexterity(20);
 		this.con = new Constitution();
 		this.intell = new Intelligence();
 		this.wis = new Wisdom();
 		this.charisma = new Charisma();
 		this.race = new Human();
+		this.classType = new Fighter();
 		this.setAbilityScores();
 		this.setUpSkillScores();
 	}
@@ -50,28 +54,17 @@ public class Character {
 	 * @param acceptedWis
 	 * @param acceptedCharisma
 	 */
-	public Character(int acceptedStr, int acceptedDex, int acceptedCon, int acceptedIntell, int acceptedWis,
-			int acceptedCharisma, Race acceptedRace) {
-		this();
-		this.str = new Strength(acceptedStr);
-		this.dex = new Dexterity(acceptedDex);
-		this.con = new Constitution(acceptedCon);
-		this.intell = new Intelligence(acceptedIntell);
-		this.wis = new Wisdom(acceptedWis);
-		this.charisma = new Charisma(acceptedCharisma);
-		this.race = acceptedRace;
-		
-	}
-
-//	/**
-//	 * This method returns the bonus for the accepted ability
-//	 *  Currently trying it as a seperate class
-//	 * @param acceptedAbility
-//	 * @return the bonus added to the d20 roll
-//	 */
-//	public int getAbilityBonus(Ability acceptedAbility) {
-//		int abilityBonus = (acceptedAbility.getScore() - 10) / 2;
-//		return abilityBonus; // Needs tested
+//	public Character(int acceptedStr, int acceptedDex, int acceptedCon, int acceptedIntell, int acceptedWis,
+//			int acceptedCharisma, Race acceptedRace, ClassType acceptedClass) {
+//		this();
+//		this.str = new Strength(acceptedStr);
+//		this.dex = new Dexterity(acceptedDex);
+//		this.con = new Constitution(acceptedCon);
+//		this.intell = new Intelligence(acceptedIntell);
+//		this.wis = new Wisdom(acceptedWis);
+//		this.charisma = new Charisma(acceptedCharisma);
+//		this.race = acceptedRace;
+//		this.classType = acceptedClass;	
 //	}
 
 	public String toString() {
@@ -142,6 +135,14 @@ public class Character {
 		this.race = race;
 	}
 
+	public Skills getSkills() {
+		return this.skills;
+	}
+	
+	public ArrayList<Skill> getArrayListSkill() {
+		return this.skills.getCharactersSkills();
+	}
+
 	/**
 	 * Private methods to assist with AbilityScores - the bonus applied after race
 	 * and Skill Scores - bonus applied after Class
@@ -154,9 +155,16 @@ public class Character {
 		this.intell.addScore(this.race.abilityScoreAlterations(intell));
 		this.wis.addScore(this.race.abilityScoreAlterations(wis));
 		this.charisma.addScore(this.race.abilityScoreAlterations(charisma));
+		System.out.println("Made it here to setAbilityScores");
 	}
 
 	private void setUpSkillScores() {
+		System.out.println("Made it here Yakkkk " + this.dex.getScore());
 		this.skills = new Skills(this.str, this.dex, this.con, this.intell, this.wis, this.charisma);
+	
+	}
+	
+	private void setProficiencyBonusSkills() {
+		
 	}
 }

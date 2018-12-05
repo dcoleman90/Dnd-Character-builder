@@ -28,4 +28,13 @@ class TestSkill {
 		assertEquals(arc.getSkill(), 8);
 	}
 	
+	/**
+	 * Test individual constructor with 0
+	 */
+	@Test
+	void testCheckSkillArcanaZero() {
+		Arcana arc = new Arcana(0);
+		assertEquals(arc.getSkill(), 0);
+	}
+	
 }

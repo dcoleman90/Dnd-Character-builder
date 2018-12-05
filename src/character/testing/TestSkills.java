@@ -4,11 +4,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class TestSkills {
+import character.build.Character;
 
+class TestSkills {
+	Character hero = new Character();
+	
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void testSkillsTestSetUpSkillScores() {
+		System.out.println(hero.toString());
 	}
 
 }
