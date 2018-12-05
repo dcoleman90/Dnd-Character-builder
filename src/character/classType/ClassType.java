@@ -39,7 +39,7 @@ public abstract class ClassType {
 	}
 
 	public void decreaseNumberOfClassSkillsByOne() {
-		this.setNumberClassSkills(this.getNumberClassSkills() + 1);
+		this.setNumberClassSkills(this.getNumberClassSkills() - 1);
 	}
 
 	public abstract boolean isClassSkill(Skill classSkill);
@@ -55,7 +55,7 @@ public abstract class ClassType {
 	protected boolean checkProficentSkill(ArrayList<Skill> proficentSkills, Skill classSkill) {
 		boolean isPSkill = false;
 		for (int count = 0; count < proficentSkills.size(); count++) {
-			if (classSkill.getClass().equals(proficentSkills.get(count).getClass())) {
+			if (classSkill.getClass().equals(proficentSkills.get(count).getClass()) && this.numberClassSkills > 0) {
 				isPSkill = true;
 				break;
 			}

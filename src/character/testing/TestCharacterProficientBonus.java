@@ -79,10 +79,61 @@ class TestCharacterProficientBonus {
 	 * altered after this is fixed
 	 */
 	@Test
-	void testSetProficeentSkillWithTwoAcceptableValues() {
-		int athScore = this.hero.getSkills().getAthletic().getSkill();
+	void testSetProficeentSkillWithAthletics() {
 		this.hero.setProficentSkill(ath);
-		assertEquals(this.hero.getSkills().getAthletic().getSkill(), athScore+2);
+		assertEquals(this.hero.getSkills().getAthletic().getSkill(), 2);
+		assertEquals(this.hero.getClassType().getNumberClassSkills(), 1);
 	}
 
+	/**
+	 * Test SetProFicentSkills This method adds the proficiency bonus to the skill
+	 * Then it decreases the amount of classType provided skills by one
+	 * 
+	 * As of version 12/5/2018 the bonus is hard coded at 2 test will need to be
+	 * altered after this is fixed
+	 */
+	@Test
+	void testSetProficeentSkillWithPerceptionAndInsight() {
+		this.hero.setProficentSkill(perc);
+		this.hero.setProficentSkill(insight);
+		assertEquals(this.hero.getSkills().getInsight().getSkill(), 2);
+		assertEquals(this.hero.getSkills().getPerception().getSkill(), 2);
+		assertEquals(this.hero.getClassType().getNumberClassSkills(), 0);
+	}
+
+	/**
+	 * Test SetProFicentSkills This method adds the proficiency bonus to the skill
+	 * Then it decreases the amount of classType provided skills by one There are
+	 * only 2 ClassType proficiency Ranks and thus the third value should not be
+	 * increased
+	 * 
+	 * As of version 12/5/2018 the bonus is hard coded at 2 test will need to be
+	 * altered after this is fixed
+	 */
+	@Test
+	void testSetProficeentSkillWithPerceptionAndInsightAndAthleticsAthShouldNotIncrease() {
+		this.hero.setProficentSkill(perc);
+		this.hero.setProficentSkill(insight);
+		this.hero.setProficentSkill(ath);
+		assertEquals(this.hero.getSkills().getInsight().getSkill(), 2);
+		assertEquals(this.hero.getSkills().getPerception().getSkill(), 2);
+		assertEquals(this.hero.getSkills().getAthletic().getSkill(), 0);
+		assertEquals(this.hero.getClassType().getNumberClassSkills(), 0);
+	}
+
+	/**
+	 * Test SetProFicentSkills This method adds the proficiency bonus to the skill
+	 * Then it decreases the amount of classType provided skills by one
+	 * 
+	 * As of version 12/5/2018 the bonus is hard coded at 2 test will need to be
+	 * altered after this is fixed
+	 */
+	@Test
+	void testSetProficeentSkillWithAcroAndNatureNatureIsNotAllowedAndShouldNotBeIncreased() {
+		this.hero.setProficentSkill(acro);
+		this.hero.setProficentSkill(nat);
+		assertEquals(this.hero.getSkills().getAcrobatic().getSkill(), 2);
+		assertEquals(this.hero.getSkills().getNature().getSkill(), 0);
+		assertEquals(this.hero.getClassType().getNumberClassSkills(), 1);
+	}
 }
