@@ -91,6 +91,30 @@ class TestClassTypeProficentSkills {
 		assertTrue(fight.isClassSkill(this.surv));
 	}
 	
+	/**
+	 * These test should return false as they are not allowed by fighters
+	 */
+	@Test
+	void testNotProficientSkillsArcaDecpInvMedNat() {
+		assertFalse(fight.isClassSkill(this.arca));
+		assertFalse(fight.isClassSkill(this.decp));
+		assertFalse(fight.isClassSkill(this.inv));
+		assertFalse(fight.isClassSkill(this.med));
+		assertFalse(fight.isClassSkill(this.nat));
+	}
+	
+	/**
+	 * These test should return false as they are not allowed by fighters
+	 */
+	@Test
+	void testNotProficientSkillsPerfRelgSohStealth() {
+		assertFalse(fight.isClassSkill(this.perf));
+		assertFalse(fight.isClassSkill(this.relg));
+		assertFalse(fight.isClassSkill(this.sOH));
+		assertFalse(fight.isClassSkill(this.stealth));
+	}
+	
+	
 	
 
 }
