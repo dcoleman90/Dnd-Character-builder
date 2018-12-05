@@ -1,13 +1,57 @@
 package character.testing;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import character.abilities.Charisma;
+import character.abilities.Constitution;
+import character.abilities.Dexterity;
+import character.abilities.Intelligence;
+import character.abilities.Strength;
+import character.abilities.Wisdom;
 import character.build.Character;
+import character.classType.Fighter;
+import character.skills.Acrobatics;
+import character.skills.AnimalHandling;
+import character.skills.Arcana;
+import character.skills.Athletics;
+import character.skills.Deception;
+import character.skills.History;
+import character.skills.Insight;
+import character.skills.Intimidation;
+import character.skills.Investigation;
+import character.skills.Medicine;
+import character.skills.Nature;
+import character.skills.Perception;
+import character.skills.Performance;
+import character.skills.Religion;
+import character.skills.SleightOfHand;
+import character.skills.Stealth;
+import character.skills.Survival;
 
 import org.junit.jupiter.api.Test;
 
 class TestCharacterConstructor {
 	Character hero = new Character();
+	// Allowed Skills for fighters
+	Athletics ath = new Athletics(0);
+	History hist = new History(0);
+	Acrobatics acro = new Acrobatics(0);
+	AnimalHandling ah = new AnimalHandling(0);
+	Insight insight = new Insight(0);
+	Intimidation intim = new Intimidation(0);
+	Perception perc = new Perception(0);
+	Survival surv = new Survival(0);
 	
+	// not allowed skills
+	Arcana arca = new Arcana(0);
+	Deception decp = new Deception(0);
+	Investigation inv = new Investigation(0);
+	Medicine med = new Medicine(0);
+	Nature nat = new Nature(0);
+	Performance perf = new Performance(0);
+	Religion relg = new Religion(0);
+	SleightOfHand sOH = new SleightOfHand(0);
+	Stealth stealth = new Stealth(0);
 	/**
 	 * This test will check the default constructor by comparing the toString method to the hard coded value
 	 */

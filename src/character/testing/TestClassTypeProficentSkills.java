@@ -2,18 +2,7 @@ package character.testing;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-
 import org.junit.jupiter.api.Test;
-
-import character.abilities.Ability;
-import character.abilities.Charisma;
-import character.abilities.Constitution;
-import character.abilities.Dexterity;
-import character.abilities.Intelligence;
-import character.abilities.Strength;
-import character.abilities.Wisdom;
-import character.build.AbilityBonus;
 import character.classType.Fighter;
 import character.skills.Acrobatics;
 import character.skills.AnimalHandling;
@@ -29,20 +18,13 @@ import character.skills.Nature;
 import character.skills.Perception;
 import character.skills.Performance;
 import character.skills.Religion;
-import character.skills.Skill;
-import character.skills.Skills;
 import character.skills.SleightOfHand;
 import character.skills.Stealth;
 import character.skills.Survival;
 
 class TestClassTypeProficentSkills {
 	Fighter fight = new Fighter();
-	Strength strenght = new Strength(10);
-	Dexterity dex = new Dexterity(10);
-	Constitution con = new Constitution(10);
-	Intelligence intel = new Intelligence(10);
-	Wisdom wis = new Wisdom(10);
-	Charisma charisma = new Charisma(10);
+
 	// Allowed Skills for fighters
 	Athletics ath = new Athletics(0);
 	History hist = new History(0);
@@ -64,9 +46,6 @@ class TestClassTypeProficentSkills {
 	SleightOfHand sOH = new SleightOfHand(0);
 	Stealth stealth = new Stealth(0);
 	
-
-	Skills proficentSkills = new Skills(strenght, dex, con, intel, wis, charisma);
-
 	/**
 	 * This test will insure that Athletics History Acrobatics and AnimalHandling
 	 * all return as class skills

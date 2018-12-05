@@ -41,7 +41,7 @@ public class Character {
 		this.classType = new Fighter();
 		this.setAbilityScores();
 		this.setUpSkillScores();
-		
+
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class Character {
 		this.wis = new Wisdom(acceptedWis);
 		this.charisma = new Charisma(acceptedCharisma);
 		this.race = acceptedRace;
-		this.classType = acceptedClass;	
+		this.classType = acceptedClass;
 		this.setAbilityScores();
 		this.setUpSkillScores();
 	}
@@ -141,7 +141,7 @@ public class Character {
 	public Skills getSkills() {
 		return this.skills;
 	}
-	
+
 	public ArrayList<Skill> getArrayListSkill() {
 		return this.skills.getCharactersSkills();
 	}
@@ -162,27 +162,39 @@ public class Character {
 
 	private void setUpSkillScores() {
 		this.skills = new Skills(this.str, this.dex, this.con, this.intell, this.wis, this.charisma);
-	
+
 	}
-	
+
+	/**
+	 * This method checks the classType and returns true if the accepted classSkill
+	 * is able to be Proficient
+	 * 
+	 * @param classSkill
+	 * @return
+	 */
 	public boolean checkProficentSkill(Skill classSkill) {
 		return this.classType.isClassSkill(classSkill);
 	}
-	
+
 	public void setProficentSkill(Skill classSkill) {
-		if(this.checkProficentSkill(classSkill)) {
+		if (this.checkProficentSkill(classSkill)) {
 			int profBonus = this.classType.getProficiencyBonus(1);
+			System.out.println(profBonus);
 			this.addProficentBonus(classSkill, profBonus);
 			this.classType.decreaseNumberOfClassSkillsByOne();
 		}
 	}
-	
+
 	private void addProficentBonus(Skill classSkill, int bonusAdded) {
 		for (int count = 0; count < this.skills.getCharactersSkills().size(); count++) {
-			if (classSkill == this.skills.getCharactersSkills().get(count)) {
+			if (classSkill.getClass().equals(this.skills.getCharactersSkills().get(count).getClass())) {
+				System.out.println("made it here");
+				System.out.println(this.skills.getCharactersSkills().get(count).getSkill());
 				this.skills.getCharactersSkills().get(count).addSkill(bonusAdded);
+				System.out.println(this.skills.getCharactersSkills().get(count).getSkill());
+				
 			}
-			
+
 		}
 	}
 }

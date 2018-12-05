@@ -32,7 +32,6 @@ public class Fighter extends ClassType {
 		Perception perc = new Perception(0);
 		Survival surv = new Survival(0);
 		this.proficentSkills = new ArrayList<Skill>();
-
 		this.proficentSkills.add(acro);
 		this.proficentSkills.add(ah);
 		this.proficentSkills.add(ath);

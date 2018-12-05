@@ -14,7 +14,6 @@ public class Skills {
 	private ArrayList<Skill> characterSkills;
 	private Acrobatics acrobatic;
 	private AnimalHandling animalHandle;
-	
 	private Arcana arcana;
 	private Athletics athletic;
 	private Deception deception;
@@ -104,5 +103,165 @@ public class Skills {
 
 	public ArrayList<Skill> getCharactersSkills() {
 		return this.characterSkills;
+	}
+	
+	
+	/**
+	 * 
+	 * 
+	 * GETTERS AND SETTERS FOR ALL THE SKILL
+	 * 
+	 * 
+	 */
+	public Acrobatics getAcrobatic() {
+		return acrobatic;
+	}
+
+	public void setAcrobatic(Acrobatics acrobatic) {
+		this.acrobatic = acrobatic;
+	}
+
+	public AnimalHandling getAnimalHandle() {
+		return animalHandle;
+	}
+
+	public void setAnimalHandle(AnimalHandling animalHandle) {
+		this.animalHandle = animalHandle;
+	}
+
+	public Arcana getArcana() {
+		return arcana;
+	}
+
+	public void setArcana(Arcana arcana) {
+		this.arcana = arcana;
+	}
+
+	public Athletics getAthletic() {
+		return athletic;
+	}
+
+	public void setAthletic(Athletics athletic) {
+		this.athletic = athletic;
+	}
+
+	public Deception getDeception() {
+		return deception;
+	}
+
+	public void setDeception(Deception deception) {
+		this.deception = deception;
+	}
+
+	public History getHistory() {
+		return history;
+	}
+
+	public void setHistory(History history) {
+		this.history = history;
+	}
+
+	public Insight getInsight() {
+		return insight;
+	}
+
+	public void setInsight(Insight insight) {
+		this.insight = insight;
+	}
+
+	public Investigation getInvestigation() {
+		return investigation;
+	}
+
+	public void setInvestigation(Investigation investigation) {
+		this.investigation = investigation;
+	}
+
+	public Intimidation getIntimidation() {
+		return intimidation;
+	}
+
+	public void setIntimidation(Intimidation intimidation) {
+		this.intimidation = intimidation;
+	}
+
+	public Medicine getMedicine() {
+		return medicine;
+	}
+
+	public void setMedicine(Medicine medicine) {
+		this.medicine = medicine;
+	}
+
+	public Nature getNature() {
+		return nature;
+	}
+
+	public void setNature(Nature nature) {
+		this.nature = nature;
+	}
+
+	public Perception getPerception() {
+		return perception;
+	}
+
+	public void setPerception(Perception perception) {
+		this.perception = perception;
+	}
+
+	public Performance getPerformance() {
+		return performance;
+	}
+
+	public void setPerformance(Performance performance) {
+		this.performance = performance;
+	}
+
+	public Persuasion getPersuasion() {
+		return persuasion;
+	}
+
+	public void setPersuasion(Persuasion persuasion) {
+		this.persuasion = persuasion;
+	}
+
+	public Religion getReligion() {
+		return religion;
+	}
+
+	public void setReligion(Religion religion) {
+		this.religion = religion;
+	}
+
+	public SleightOfHand getSleightOfHand() {
+		return sleightOfHand;
+	}
+
+	public void setSleightOfHand(SleightOfHand sleightOfHand) {
+		this.sleightOfHand = sleightOfHand;
+	}
+
+	public Stealth getStealth() {
+		return stealth;
+	}
+
+	public void setStealth(Stealth stealth) {
+		this.stealth = stealth;
+	}
+
+	public Survival getSurvival() {
+		return survival;
+	}
+
+	public void setSurvival(Survival survival) {
+		this.survival = survival;
+	}
+
+	public AbilityBonus getBonus() {
+		return bonus;
+	}
+
+	public void setBonus(AbilityBonus bonus) {
+		this.bonus = bonus;
 	}
 }

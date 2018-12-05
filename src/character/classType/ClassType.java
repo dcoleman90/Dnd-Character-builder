@@ -14,7 +14,7 @@ public abstract class ClassType {
 	public ClassType() {
 		this.hitPoints = 0;
 		this.random = new Random();
-		this.numberClassSkills = 2;
+		this.setNumberClassSkills(2);
 	}
 
 	public void setHitPoints(int level, int hitDice, int conBonus) {
@@ -28,6 +28,7 @@ public abstract class ClassType {
 		return this.hitPoints;
 	}
 
+	
 	public int getProficiencyBonus(int level) {
 		profBonus = 2;
 		return profBonus;
@@ -36,13 +37,21 @@ public abstract class ClassType {
 	public String specialAbilities(int level) {
 		return "Not working";
 	}
-	
+
 	public void decreaseNumberOfClassSkillsByOne() {
-		this.numberClassSkills++;
+		this.setNumberClassSkills(this.getNumberClassSkills() + 1);
 	}
 
 	public abstract boolean isClassSkill(Skill classSkill);
-	
+
+	/**
+	 * This method is protected to insure that it can only be accessed by its
+	 * subclasses and not directly influenced by the character class
+	 * 
+	 * @param proficentSkills - a list of acceptable proficient skills
+	 * @param classSkill - the skill being checked if it is allowed
+	 * @return
+	 */
 	protected boolean checkProficentSkill(ArrayList<Skill> proficentSkills, Skill classSkill) {
 		boolean isPSkill = false;
 		for (int count = 0; count < proficentSkills.size(); count++) {
@@ -52,5 +61,13 @@ public abstract class ClassType {
 			}
 		}
 		return isPSkill;
+	}
+
+	public int getNumberClassSkills() {
+		return numberClassSkills;
+	}
+
+	public void setNumberClassSkills(int numberClassSkills) {
+		this.numberClassSkills = numberClassSkills;
 	}
 }
