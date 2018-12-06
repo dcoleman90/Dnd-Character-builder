@@ -4,16 +4,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import character.abilities.Dexterity;
 import character.abilities.Strength;
 import character.equipment.WeaponGreatAxe;
-import dnd.damage.Slashing;
-import dnd.dice.Dice;
 
 class TestWeaponGreatAxe {
 	WeaponGreatAxe ax = new WeaponGreatAxe();
-	private Dice OneD12 = new Dice(1);
-	private Slashing slash = new Slashing();
 	Strength str = new Strength(20);
+	Dexterity dex = new Dexterity(100);
 
 	
 	/**
@@ -48,5 +46,13 @@ class TestWeaponGreatAxe {
 		this.ax.setDamageBonus(str);
 		assertEquals(this.ax.getDamageBonus(), 5);
 	}
+	
+	@Test
+	void testGreatAxeWithDexBonusShouldReturn0() {
+		this.ax.setDamageBonus(dex);
+		assertEquals(this.ax.getDamageBonus(), 0);
+	}
+	
+	
 
 }
