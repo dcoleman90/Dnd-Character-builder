@@ -28,7 +28,7 @@ import org.junit.jupiter.api.Test;
 class TestCustomCharacterGroundUp {
 	Fighter fighter = new Fighter();
 	Race human = new Human();
-	Character frank = new Character("Frank", 12,12,12,12,12,12,human, fighter, 1);
+	Character frank = new Character("Frank", 12, 12, 12, 12, 12, 12, human, fighter, 1);
 
 	// Allowed Skills for fighters
 	Athletics ath = new Athletics(0);
@@ -49,9 +49,10 @@ class TestCustomCharacterGroundUp {
 	Religion relg = new Religion(0);
 	SleightOfHand sOH = new SleightOfHand(0);
 	Stealth stealth = new Stealth(0);
-	
+
 	/**
-	 * Test ability scores are what is expected after being modified by the human template
+	 * Test ability scores are what is expected after being modified by the human
+	 * template
 	 */
 	@Test
 	void testBuildACharacterFromGroundUpTestingGetAbilityScores() {
@@ -62,8 +63,7 @@ class TestCustomCharacterGroundUp {
 		assertEquals(13, frank.getStrScore());
 		assertEquals(13, frank.getWisScore());
 	}
-	
-	
+
 	/**
 	 * Test that skill scores are what is expected BEFORE getting class skills
 	 */
@@ -88,7 +88,7 @@ class TestCustomCharacterGroundUp {
 		assertEquals(1, frank.getSkills().getStealth().getSkill());
 		assertEquals(1, frank.getSkills().getSurvival().getSkill());
 	}
-	
+
 	/**
 	 * Test if skills are allowed to be proficient - due to being a fighter
 	 */
@@ -103,7 +103,7 @@ class TestCustomCharacterGroundUp {
 		assertTrue(frank.checkProficentSkill(this.perc));
 		assertTrue(frank.checkProficentSkill(this.surv));
 	}
-	
+
 	/**
 	 * Test skills that are NOT allowed to be proficient - due to being a fighter
 	 */
@@ -119,12 +119,15 @@ class TestCustomCharacterGroundUp {
 		assertFalse(frank.checkProficentSkill(this.sOH));
 		assertFalse(frank.checkProficentSkill(this.stealth));
 	}
-	
+
 	/**
 	 * Test add perc and surv skills to be prof - and gain proficiency
 	 * 
 	 * Performance is NOT allowed and should not gain a bonus
 	 * History IS allowed - but is the third added and fighters only gain 2 proficiencies
+	 * 
+	 * 
+	 * THIS TEST IS THE FIRST ONE WITH CHARACTER HAVING DIRECT METHODS TO ACCESS THE SKILL BONUS
 	 */
 	@Test
 	void testPercAndSurvSkillsAsProf() {
@@ -132,7 +135,10 @@ class TestCustomCharacterGroundUp {
 		frank.setProficentSkill(this.perf);
 		frank.setProficentSkill(this.surv);
 		frank.setProficentSkill(this.hist);
-		//assertEquals(3, frank.getSkills().get)
+		assertEquals(3, frank.getPerceptionBonus());
+		assertEquals(1, frank.getPerformanceBonus());
+		assertEquals(3, frank.getSurvivalBonus());
+		assertEquals(1, frank.getHistoryBonus());
 	}
 
 }
