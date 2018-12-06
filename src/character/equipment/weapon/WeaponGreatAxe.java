@@ -1,4 +1,4 @@
-package character.equipment;
+package character.equipment.weapon;
 
 import dnd.damage.Damage;
 import dnd.damage.Slashing;
