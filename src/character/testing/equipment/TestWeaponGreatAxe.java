@@ -51,6 +51,7 @@ class TestWeaponGreatAxe {
 	void testGreatAxeWithDexBonusShouldReturn0() {
 		this.ax.setDamageBonus(dex);
 		assertEquals(this.ax.getDamageBonus(), 0);
+		assertEquals(this.ax.getWeight(), 7.0, 0.000001);
 	}
 	
 	

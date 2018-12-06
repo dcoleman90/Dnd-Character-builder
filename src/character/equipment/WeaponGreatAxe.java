@@ -13,7 +13,6 @@ public class WeaponGreatAxe extends HeavyMeleeWeapon {
 		return this.OneD12.rollDice(1);
 	}
 
-
 	@Override
 	public Damage getDamageType() {
 		return this.slash;
@@ -24,9 +23,13 @@ public class WeaponGreatAxe extends HeavyMeleeWeapon {
 		return false;
 	}
 
-
 	@Override
 	public int getDiceSize() {
 		return this.OneD12.diceSize();
+	}
+
+	@Override
+	public double getWeight() {
+		return 7.0;
 	}
 }
