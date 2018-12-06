@@ -145,11 +145,11 @@ public class Character {
 	public ArrayList<Skill> getArrayListSkill() {
 		return this.skills.getCharactersSkills();
 	}
-	
+
 	public ClassType getClassType() {
 		return this.classType;
 	}
-	
+
 	public void setClassType(ClassType acceptedClassType) {
 		this.classType = acceptedClassType;
 	}
@@ -184,12 +184,31 @@ public class Character {
 		return this.classType.isClassSkill(classSkill);
 	}
 
+	/**
+	 * This method takes a skill - checks to see if it is a class skill - 
+	 * checks that it is not already used
+	 * then assigns it proficiency bonus
+	 * @param classSkill
+	 */
 	public void setProficentSkill(Skill classSkill) {
+
 		if (this.checkProficentSkill(classSkill)) {
 			int profBonus = this.classType.getProficiencyBonus(1);
-			this.addProficentBonus(classSkill, profBonus);
-			this.classType.decreaseNumberOfClassSkillsByOne();
+			if (!this.getSkill(classSkill).isProfSkill()) {
+				this.addProficentBonus(classSkill, profBonus);
+				this.classType.decreaseNumberOfClassSkillsByOne();
+				this.getSkill(classSkill).setProfSkill(true);
+			}
 		}
+	}
+
+	private Skill getSkill(Skill searchedSkill) {
+		for (int count = 0; count < this.skills.getCharactersSkills().size(); count++) {
+			if (searchedSkill.getClass().equals(this.skills.getCharactersSkills().get(count).getClass())) {
+				return this.skills.getCharactersSkills().get(count);
+			}
+		}
+		return null;
 	}
 
 	private void addProficentBonus(Skill classSkill, int bonusAdded) {
@@ -197,7 +216,6 @@ public class Character {
 			if (classSkill.getClass().equals(this.skills.getCharactersSkills().get(count).getClass())) {
 				this.skills.getCharactersSkills().get(count).addSkill(bonusAdded);
 			}
-
 		}
 	}
 }

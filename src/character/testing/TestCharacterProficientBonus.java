@@ -135,12 +135,49 @@ class TestCharacterProficientBonus {
 		assertEquals(this.hero.getSkills().getNature().getSkill(), 0);
 		assertEquals(this.hero.getClassType().getNumberClassSkills(), 1);
 	}
-	
-	/**\
-	 * This test will insure that the same skill can not be given the proficent bonus twice
+
+	/**
+	 * \ This test will insure that the same skill can not be given the proficient
+	 * bonus twice
 	 */
 	@Test
 	void testShouldInsureTheSameSkillCannotBeAddedTwice() {
-		
+		this.hero.setProficentSkill(acro);
+		this.hero.setProficentSkill(acro);
+		assertEquals(this.hero.getSkills().getAcrobatic().getSkill(), 2);
+		assertEquals(this.hero.getSkills().getAcrobatic().isProfSkill(), true);
+
+	}
+	
+	/**
+	 * \ This test will insure that the same skill can not be given the proficient
+	 * bonus twice
+	 */
+	@Test
+	void testShouldInsureTheSameSkillCannotBeAddedTwiceExtraVariables() {
+		this.hero.setProficentSkill(acro);
+		this.hero.setProficentSkill(ath);
+		this.hero.setProficentSkill(acro);
+		assertEquals(this.hero.getSkills().getAcrobatic().getSkill(), 2);
+		assertEquals(this.hero.getSkills().getAthletic().getSkill(), 2);
+		assertEquals(this.hero.getSkills().getAcrobatic().isProfSkill(), true);
+		assertEquals(this.hero.getSkills().getAthletic().isProfSkill(), true);
+	}
+
+	/**
+	 * \ This test will insure that the same skill can not be given the proficient
+	 * bonus twice nat returns false because it is not a Fighters ClassType Skill
+	 * and thus CANNOT gain proficiency
+	 */
+	@Test
+	void testShouldInsureTheSameSkillCannotBeAddedTwiceExtraVariablesNotClassSkills() {
+		this.hero.setProficentSkill(acro);
+		this.hero.setProficentSkill(nat);
+		this.hero.setProficentSkill(acro);
+		this.hero.setProficentSkill(nat);
+		assertEquals(this.hero.getSkills().getAcrobatic().getSkill(), 2);
+		assertEquals(this.hero.getSkills().getAcrobatic().isProfSkill(), true);
+		assertEquals(this.hero.getSkills().getNature().isProfSkill(), false);
+
 	}
 }
