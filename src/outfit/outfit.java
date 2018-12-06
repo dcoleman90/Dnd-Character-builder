@@ -7,5 +7,11 @@ package outfit;
  *
  */
 public class outfit {
-
+	private Character player;
+	
+	public outfit(Character playerCharacter) {
+		if (playerCharacter != null) {
+			this.player = playerCharacter;
+		}
+	}
 }

@@ -26,7 +26,10 @@ public class Character {
 	private Race race;
 	private Skills skills;
 	private ClassType classType;
+	private boolean isRightHandFull;
+	private boolean isLeftHandFull;
 	private int level;
+
 
 	/**
 	 * Builds a default character with default value of 10 to all scores
@@ -42,6 +45,8 @@ public class Character {
 		this.race = new Human();
 		this.classType = new Fighter();
 		this.level = 1;
+		this.isRightHandFull  = false;
+		this.isLeftHandFull = false;
 		this.setAbilityScores();
 		this.setUpSkillScores();
 
@@ -96,6 +101,21 @@ public class Character {
 	 * Getters and Setters for all the Ability Scores and Race
 	 * 
 	 */
+	public boolean isRightHandFull() {
+		return isRightHandFull;
+	}
+
+	public void setRightHandFull(boolean isRightHandFull) {
+		this.isRightHandFull = isRightHandFull;
+	}
+
+	public boolean isLeftHandFull() {
+		return isLeftHandFull;
+	}
+
+	public void setLeftHandFull(boolean isLeftHandFull) {
+		this.isLeftHandFull = isLeftHandFull;
+	}
 	
 	public int getLevel() {
 		return this.level;
