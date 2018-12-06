@@ -7,7 +7,7 @@ public class Dice {
 	private Random random;
 
 	public Dice(int diceSize) {
-		if (diceSize < 0) {
+		if (diceSize > 0) {
 			this.maxSize = diceSize;
 		}
 		this.random = new Random();
@@ -17,5 +17,9 @@ public class Dice {
 		int amountRolled;
 		amountRolled = (this.random.nextInt(this.maxSize) +1) * numberOfDiceRolled;
 		return amountRolled;
+	}
+	
+	public int diceSize() {
+		return this.maxSize;
 	}
 }
