@@ -28,12 +28,6 @@ public abstract class ClassType {
 		return this.hitPoints;
 	}
 
-	
-	public int getProficiencyBonus(int level) {
-		profBonus = 2;
-		return profBonus;
-	}
-
 	public String specialAbilities(int level) {
 		return "Not working";
 	}
@@ -42,6 +36,25 @@ public abstract class ClassType {
 		this.setNumberClassSkills(this.getNumberClassSkills() - 1);
 	}
 
+	/**
+	 * This method insures the children receive a level value then return the
+	 * proficiency bonus for that level
+	 * 
+	 * @param level
+	 * @return prof bonus
+	 */
+	public abstract int getProficiencyBonus(int level);
+
+	protected int returnProficiencyBonus(int level, ArrayList<Integer> profBonusTrack) {
+		return profBonusTrack.get(level-1);
+	}
+
+	/**
+	 * This method returns true if the skill is one of the acceptable class skills
+	 * 
+	 * @param classSkill
+	 * @return
+	 */
 	public abstract boolean isClassSkill(Skill classSkill);
 
 	/**
@@ -49,7 +62,7 @@ public abstract class ClassType {
 	 * subclasses and not directly influenced by the character class
 	 * 
 	 * @param proficentSkills - a list of acceptable proficient skills
-	 * @param classSkill - the skill being checked if it is allowed
+	 * @param classSkill      - the skill being checked if it is allowed
 	 * @return
 	 */
 	protected boolean checkProficentSkill(ArrayList<Skill> proficentSkills, Skill classSkill) {

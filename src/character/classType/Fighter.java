@@ -15,6 +15,7 @@ import character.skills.Survival;
 
 public class Fighter extends ClassType {
 	private ArrayList<Skill> proficentSkills;
+	private ArrayList<Integer> profBonuses;
 
 	/**
 	 * Fighters start with 10 hitpoints plus a number 1-10 randomly for each level
@@ -40,6 +41,31 @@ public class Fighter extends ClassType {
 		this.proficentSkills.add(intim);
 		this.proficentSkills.add(perc);
 		this.proficentSkills.add(surv);
+		this.setProfBonusBasedOnLevel();
+	}
+	
+	private void setProfBonusBasedOnLevel() {
+		this.profBonuses = new ArrayList<Integer>();
+		this.profBonuses.add(2);
+		this.profBonuses.add(2);
+		this.profBonuses.add(2);
+		this.profBonuses.add(2);
+		this.profBonuses.add(3);
+		this.profBonuses.add(3);
+		this.profBonuses.add(3);
+		this.profBonuses.add(3);
+		this.profBonuses.add(4);
+		this.profBonuses.add(4);
+		this.profBonuses.add(4);
+		this.profBonuses.add(4);
+		this.profBonuses.add(5);
+		this.profBonuses.add(5);
+		this.profBonuses.add(5);
+		this.profBonuses.add(5);
+		this.profBonuses.add(6);
+		this.profBonuses.add(6);
+		this.profBonuses.add(6);
+		this.profBonuses.add(6);
 	}
 
 	public void setHitPoints(int level, int conBonus) {
@@ -55,4 +81,11 @@ public class Fighter extends ClassType {
 	public boolean isClassSkill(Skill fighterSkill) {
 		return super.checkProficentSkill(proficentSkills, fighterSkill);
 	}
+
+	@Override
+	public int getProficiencyBonus(int level) {
+		return super.returnProficiencyBonus(level, this.profBonuses);
+	}
+	
+	
 }

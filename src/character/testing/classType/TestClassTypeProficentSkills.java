@@ -1,4 +1,4 @@
-package character.testing;
+package character.testing.classType;
 
 import static org.junit.jupiter.api.Assertions.*;
 
