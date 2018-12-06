@@ -16,7 +16,7 @@ public class Fighter extends ClassType {
 	private ArrayList<Skill> proficentSkills;
 
 	/**
-	 * Fighters start with 10 hitpoints plus a number 1-10 randomly for each level
+	 * Fighters start with 10 hitpoints plus a number 1-10 randomly and con bonus for each level
 	 * beyond the first
 	 */
 	public Fighter() {
