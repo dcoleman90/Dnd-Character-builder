@@ -4,7 +4,7 @@ public class Slashing extends Damage{
 
 	@Override
 	public String getDamageType() {
-		return super.damageType + " Slashing";
+		return super.damageType + "Slashing ";
 	}
 	
 }
