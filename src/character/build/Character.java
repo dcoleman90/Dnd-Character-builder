@@ -177,6 +177,80 @@ public class Character {
 		this.classType = acceptedClassType;
 	}
 
+	
+	/**
+	 * GETTERS FOR ABILITY SCORES
+	 */
+	
+	public int getAcrobaticsBonus() {
+		return this.skills.getAcrobatic().getSkill();
+	}
+	
+	public int getAnimalHandlingBonus() {
+		return this.skills.getAnimalHandle().getSkill();
+	}
+	
+	public int getAcranaBonus() {
+		return this.skills.getArcana().getSkill();
+	}
+	
+	public int getDeceptionBonus() {
+		return this.skills.getDeception().getSkill();
+	}
+	
+	public int getHistoryBonus() {
+		return this.skills.getHistory().getSkill();
+	}
+	
+	public int getInsightBonus() {
+		return this.skills.getInsight().getSkill();
+	}
+	
+	public int getIntimidationBonus() {
+		return this.skills.getIntimidation().getSkill();
+	}
+	
+	public int getInvestigationBonus() {
+		return this.skills.getInvestigation().getSkill();
+	}
+	
+	public int getMedicineBonus() {
+		return this.skills.getMedicine().getSkill();
+	}
+	
+	public int getNatureBonus() {
+		return this.skills.getNature().getSkill();
+	}
+	
+	public int getPerceptionBonus() {
+		return this.skills.getPerception().getSkill();
+	}
+	
+	public int getPerformanceBonus() {
+		return this.skills.getPerformance().getSkill();
+	}
+	
+	public int getPersuasionBonus() {
+		return this.skills.getPersuasion().getSkill();
+	}
+	
+	public int getReligionBonus() {
+		return this.skills.getReligion().getSkill();
+	}
+	
+	public int getSleightOfHandBonus() {
+		return this.skills.getSleightOfHand().getSkill();
+	}
+	
+	public int getStealthBonus() {
+		return this.skills.getStealth().getSkill();
+	}
+	
+	public int getSurvivalBonus() {
+		return this.skills.getSurvival().getSkill();
+	}
+	
+	
 	/**
 	 * Private methods to assist with AbilityScores - the bonus applied after race
 	 * and Skill Scores - bonus applied after Class
