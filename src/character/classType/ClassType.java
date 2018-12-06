@@ -10,11 +10,38 @@ public abstract class ClassType {
 	private Random random;
 	private int profBonus;
 	private int numberClassSkills;
+	private ArrayList<Integer> profBonuses;
+
 
 	public ClassType() {
 		this.hitPoints = 0;
 		this.random = new Random();
 		this.setNumberClassSkills(2);
+		this.setProfBonusBasedOnLevel();
+	}
+	
+	private void setProfBonusBasedOnLevel() {
+		this.profBonuses = new ArrayList<Integer>();
+		this.profBonuses.add(2);
+		this.profBonuses.add(2);
+		this.profBonuses.add(2);
+		this.profBonuses.add(2);
+		this.profBonuses.add(3);
+		this.profBonuses.add(3);
+		this.profBonuses.add(3);
+		this.profBonuses.add(3);
+		this.profBonuses.add(4);
+		this.profBonuses.add(4);
+		this.profBonuses.add(4);
+		this.profBonuses.add(4);
+		this.profBonuses.add(5);
+		this.profBonuses.add(5);
+		this.profBonuses.add(5);
+		this.profBonuses.add(5);
+		this.profBonuses.add(6);
+		this.profBonuses.add(6);
+		this.profBonuses.add(6);
+		this.profBonuses.add(6);
 	}
 
 	public void setHitPoints(int level, int hitDice, int conBonus) {
@@ -43,10 +70,8 @@ public abstract class ClassType {
 	 * @param level
 	 * @return prof bonus
 	 */
-	public abstract int getProficiencyBonus(int level);
-
-	protected int returnProficiencyBonus(int level, ArrayList<Integer> profBonusTrack) {
-		return profBonusTrack.get(level-1);
+	public int getProficiencyBonus(int level) {
+		return this.profBonuses.get(level-1);
 	}
 
 	/**
