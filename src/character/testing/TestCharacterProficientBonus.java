@@ -35,7 +35,6 @@ class TestCharacterProficientBonus {
 	Intimidation intim = new Intimidation(0);
 	Perception perc = new Perception(0);
 	Survival surv = new Survival(0);
-
 	// not allowed skills fighters/default character
 	Arcana arca = new Arcana(0);
 	Deception decp = new Deception(0);
@@ -135,5 +134,13 @@ class TestCharacterProficientBonus {
 		assertEquals(this.hero.getSkills().getAcrobatic().getSkill(), 2);
 		assertEquals(this.hero.getSkills().getNature().getSkill(), 0);
 		assertEquals(this.hero.getClassType().getNumberClassSkills(), 1);
+	}
+	
+	/**\
+	 * This test will insure that the same skill can not be given the proficent bonus twice
+	 */
+	@Test
+	void testShouldInsureTheSameSkillCannotBeAddedTwice() {
+		
 	}
 }
