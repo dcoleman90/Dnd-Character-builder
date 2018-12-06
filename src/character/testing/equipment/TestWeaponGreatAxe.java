@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import character.abilities.Dexterity;
 import character.abilities.Strength;
-import character.equipment.weapon.WeaponGreatAxe;
+import equipment.weapon.WeaponGreatAxe;
 
 class TestWeaponGreatAxe {
 	WeaponGreatAxe ax = new WeaponGreatAxe();

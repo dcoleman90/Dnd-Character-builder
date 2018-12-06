@@ -1,4 +1,4 @@
-package character.equipment.weapon;
+package equipment.weapon;
 
 import character.abilities.Ability;
 import character.abilities.Strength;
