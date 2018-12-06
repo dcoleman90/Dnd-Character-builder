@@ -69,6 +69,23 @@ class TestCharacterProficientBonus {
 		assertTrue(hero.checkProficentSkill(this.perc));
 		assertTrue(hero.checkProficentSkill(this.surv));
 	}
+	
+	/**
+	 * Test skills that are NOT allowed to be proficient - due to being a fighter
+	 */
+	@Test
+	void testNotProficientSkillsFigher() {
+		assertFalse(hero.checkProficentSkill(this.arca));
+		assertFalse(hero.checkProficentSkill(this.decp));
+		assertFalse(hero.checkProficentSkill(this.inv));
+		assertFalse(hero.checkProficentSkill(this.med));
+		assertFalse(hero.checkProficentSkill(this.nat));
+		assertFalse(hero.checkProficentSkill(this.perf));
+		assertFalse(hero.checkProficentSkill(this.relg));
+		assertFalse(hero.checkProficentSkill(this.sOH));
+		assertFalse(hero.checkProficentSkill(this.stealth));
+	}
+
 
 	/**
 	 * Test SetProFicentSkills This method adds the proficiency bonus to the skill
