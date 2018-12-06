@@ -5,12 +5,12 @@ import dnd.damage.Slashing;
 import dnd.dice.Dice;
 
 public class WeaponGreatAxe extends HeavyMeleeWeapon {
-	private Dice OneD12 = new Dice(1);
+	private Dice OneD12 = new Dice(12);
 	private Slashing slash = new Slashing();
 
 	@Override
-	public Dice getDamageDice() {
-		return this.OneD12;
+	public int getDamage() {
+		return this.OneD12.rollDice(1);
 	}
 
 
@@ -22,5 +22,11 @@ public class WeaponGreatAxe extends HeavyMeleeWeapon {
 	@Override
 	public boolean isReach() {
 		return false;
+	}
+
+
+	@Override
+	public int getDiceSize() {
+		return this.OneD12.diceSize();
 	}
 }

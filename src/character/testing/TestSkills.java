@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import character.abilities.Wisdom;
-import character.build.AbilityBonus;
 import character.build.Character;
 import character.classType.Fighter;
 import character.race.Human;
@@ -49,8 +48,7 @@ class TestSkills {
 	@Test
 	void testConfirmSkillsPath() {
 		Wisdom str = new Wisdom(8);
-		AbilityBonus ab = new AbilityBonus();
-		assertEquals(ab.returnBonus(str), -1);
+		assertEquals(str.getAbilityBonus(), -1);
 	}
 
 	@Test

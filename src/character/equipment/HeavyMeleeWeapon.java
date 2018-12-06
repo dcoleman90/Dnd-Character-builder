@@ -13,7 +13,7 @@ public abstract class HeavyMeleeWeapon extends MeleeWeapon {
 
 	@Override
 	public boolean isTwoHanded() {
-		return false;
+		return true;
 	}
 
 	@Override
@@ -58,7 +58,7 @@ public abstract class HeavyMeleeWeapon extends MeleeWeapon {
 	@Override
 	public void setDamageBonus(Ability strDamageBonus) {
 		if(strDamageBonus.getClass().equals(this.str.getClass())) {
-		this.bonusDamage = strDamageBonus.getScore();
+		this.bonusDamage = strDamageBonus.getAbilityBonus();
 		} 
 	}
 

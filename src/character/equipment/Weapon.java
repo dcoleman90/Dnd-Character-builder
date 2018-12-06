@@ -1,9 +1,7 @@
 package character.equipment;
 
 import character.abilities.Ability;
-import character.abilities.Strength;
 import dnd.damage.Damage;
-import dnd.dice.Dice;
 
 public abstract class Weapon {
 //	private int damageDice;
@@ -22,7 +20,7 @@ public abstract class Weapon {
 //	private boolean isVersatile;
 //	private short weight;
 	
-	public abstract Dice getDamageDice();
+	public abstract int getDamage();
 	//public abstract void setDamageBonus(Ability damageBonus);
 	public abstract int getDamageBonus();
 	public abstract Damage getDamageType();
@@ -41,5 +39,6 @@ public abstract class Weapon {
 	public abstract void setTwoHanded(boolean isTwoHanded);
 	public abstract boolean isVersatile();
 	public abstract void setDamageBonus(Ability damageBonus);
+	public abstract int getDiceSize();
 	
 }

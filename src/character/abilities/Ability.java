@@ -30,4 +30,9 @@ public abstract class Ability {
 	public String toString() {
 		return "" + this.abilityScore;
 	}
+	
+	public int getAbilityBonus() {
+		int returnedAbilityBonus = (this.abilityScore - 10) / 2;
+		return returnedAbilityBonus;
+	}
 }

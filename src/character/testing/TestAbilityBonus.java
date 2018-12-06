@@ -9,10 +9,8 @@ import character.abilities.Constitution;
 import character.abilities.Dexterity;
 import character.abilities.Strength;
 import character.abilities.Wisdom;
-import character.build.AbilityBonus;
 
 class TestAbilityBonus {
-	AbilityBonus ab = new AbilityBonus();
 	Ability strenght20 = new Strength(20);
 	Ability str5 = new Strength(5);
 	Ability dex8 = new Dexterity(8);
@@ -24,11 +22,11 @@ class TestAbilityBonus {
 	 */
 	@Test
 	void testAbilityBonusStrenght() {
-	assertEquals(5, ab.returnBonus(strenght20));	
-	assertEquals(-2, ab.returnBonus(str5));
-	assertEquals(-1, ab.returnBonus(dex8));
-	assertEquals(-7, ab.returnBonus(conMin5));
-	assertEquals(-1, ab.returnBonus(wis8));
+	assertEquals(5, strenght20.getAbilityBonus());	
+	assertEquals(-2, str5.getAbilityBonus());
+	assertEquals(-1, dex8.getAbilityBonus());
+	assertEquals(-7, conMin5.getAbilityBonus());
+	assertEquals(-1, wis8.getAbilityBonus());
 	}
 
 }
