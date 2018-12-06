@@ -19,7 +19,7 @@ public abstract class Ability {
 		this.abilityScore = acceptedAbilityScore;
 	} 
 	
-	public int getScore() {
+	public int getScore() { 
 		return this.abilityScore;
 	}
 	

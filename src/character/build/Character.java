@@ -2,7 +2,6 @@ package character.build;
 
 import java.util.ArrayList;
 
-import character.abilities.Ability;
 import character.abilities.Charisma;
 import character.abilities.Constitution;
 import character.abilities.Dexterity;
@@ -17,6 +16,7 @@ import character.skills.Skill;
 import character.skills.Skills;
 
 public class Character {
+	private String name;
 	private Strength str;
 	private Dexterity dex;
 	private Constitution con;
@@ -26,11 +26,13 @@ public class Character {
 	private Race race;
 	private Skills skills;
 	private ClassType classType;
+	private int level;
 
 	/**
 	 * Builds a default character with default value of 10 to all scores
 	 */
 	public Character() {
+		this.setName("New Player");
 		this.str = new Strength();
 		this.dex = new Dexterity();
 		this.con = new Constitution();
@@ -39,6 +41,7 @@ public class Character {
 		this.charisma = new Charisma();
 		this.race = new Human();
 		this.classType = new Fighter();
+		this.level = 1;
 		this.setAbilityScores();
 		this.setUpSkillScores();
 
@@ -55,9 +58,14 @@ public class Character {
 	 * @param acceptedWis
 	 * @param acceptedCharisma
 	 */
-	public Character(int acceptedStr, int acceptedDex, int acceptedCon, int acceptedIntell, int acceptedWis,
-			int acceptedCharisma, Race acceptedRace, ClassType acceptedClass) {
+	public Character(String name, int acceptedStr, int acceptedDex, int acceptedCon, int acceptedIntell, int acceptedWis,
+			int acceptedCharisma, Race acceptedRace, ClassType acceptedClass, int level) {
 		this();
+		if(name.isEmpty()) {
+			this.setName("New Player");
+		} else {
+			this.setName(name);
+		}
 		this.str = new Strength(acceptedStr);
 		this.dex = new Dexterity(acceptedDex);
 		this.con = new Constitution(acceptedCon);
@@ -66,6 +74,13 @@ public class Character {
 		this.charisma = new Charisma(acceptedCharisma);
 		this.race = acceptedRace;
 		this.classType = acceptedClass;
+		
+		if (level < 0 || level > 20) {
+			this.level = 1;
+		} else {
+			this.level = level;
+		}
+		
 		this.setAbilityScores();
 		this.setUpSkillScores();
 	}
@@ -81,6 +96,14 @@ public class Character {
 	 * Getters and Setters for all the Ability Scores and Race
 	 * 
 	 */
+	
+	public int getLevel() {
+		return this.level;
+	}
+	
+	public void setLevel(int acceptedLevel) {
+		this.level = acceptedLevel;
+	}
 
 	public int getStrScore() {
 		return this.str.getScore();
@@ -185,15 +208,15 @@ public class Character {
 	}
 
 	/**
-	 * This method takes a skill - checks to see if it is a class skill - 
-	 * checks that it is not already used
-	 * then assigns it proficiency bonus
+	 * This method takes a skill - checks to see if it is a class skill - checks
+	 * that it is not already used then assigns it proficiency bonus
+	 * 
 	 * @param classSkill
 	 */
 	public void setProficentSkill(Skill classSkill) {
 
 		if (this.checkProficentSkill(classSkill)) {
-			int profBonus = this.classType.getProficiencyBonus(1);
+			int profBonus = this.classType.getProficiencyBonus(this.level);
 			if (!this.getSkill(classSkill).isProfSkill()) {
 				this.addProficentBonus(classSkill, profBonus);
 				this.classType.decreaseNumberOfClassSkillsByOne();
@@ -217,5 +240,13 @@ public class Character {
 				this.skills.getCharactersSkills().get(count).addSkill(bonusAdded);
 			}
 		}
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

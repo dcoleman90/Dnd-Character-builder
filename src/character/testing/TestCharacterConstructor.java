@@ -2,14 +2,7 @@ package character.testing;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import character.abilities.Charisma;
-import character.abilities.Constitution;
-import character.abilities.Dexterity;
-import character.abilities.Intelligence;
-import character.abilities.Strength;
-import character.abilities.Wisdom;
 import character.build.Character;
-import character.classType.Fighter;
 import character.skills.Acrobatics;
 import character.skills.AnimalHandling;
 import character.skills.Arcana;

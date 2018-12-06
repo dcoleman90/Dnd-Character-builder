@@ -3,8 +3,6 @@ package character.testing.classType;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-
-import character.classType.ClassType;
 import character.classType.Fighter;
 
 class TestClassTypeSetHitPoints {

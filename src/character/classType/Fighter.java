@@ -10,7 +10,6 @@ import character.skills.Insight;
 import character.skills.Intimidation;
 import character.skills.Perception;
 import character.skills.Skill;
-import character.skills.Skills;
 import character.skills.Survival;
 
 public class Fighter extends ClassType {
@@ -55,5 +54,10 @@ public class Fighter extends ClassType {
 	@Override
 	public boolean isClassSkill(Skill fighterSkill) {
 		return super.checkProficentSkill(proficentSkills, fighterSkill);
+	}
+
+	@Override
+	public String toString() {
+		return "Fighter";
 	}
 }

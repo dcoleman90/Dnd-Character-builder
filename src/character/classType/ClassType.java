@@ -8,7 +8,6 @@ import character.skills.Skill;
 public abstract class ClassType {
 	private int hitPoints;
 	private Random random;
-	private int profBonus;
 	private int numberClassSkills;
 	private ArrayList<Integer> profBonuses;
 
@@ -108,4 +107,6 @@ public abstract class ClassType {
 	public void setNumberClassSkills(int numberClassSkills) {
 		this.numberClassSkills = numberClassSkills;
 	}
+	
+	public abstract String toString();
 }

@@ -3,9 +3,6 @@ package character.testing;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-
-import character.abilities.Strength;
-import character.build.AbilityBonus;
 import character.skills.Arcana;
 
 class TestSkill {
