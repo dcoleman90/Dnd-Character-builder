@@ -54,6 +54,11 @@ class TestWeaponGreatAxe {
 		assertEquals(this.ax.getWeight(), 7.0, 0.000001);
 	}
 	
+	@Test
+	void testGreatAxeIsMartial() {
+		assertTrue(this.ax.isMartial());
+	}
+	
 	
 
 }

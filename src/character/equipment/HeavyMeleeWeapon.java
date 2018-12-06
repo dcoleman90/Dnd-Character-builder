@@ -66,5 +66,10 @@ public abstract class HeavyMeleeWeapon extends MeleeWeapon {
 	public int getDamageBonus() {
 		return this.bonusDamage;
 	}
+	
+	@Override
+	public boolean isMartial() {
+		return true;
+	}
 
 }

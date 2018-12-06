@@ -24,5 +24,6 @@ public abstract class Weapon {
 	public abstract void setDamageBonus(Ability damageBonus);
 	public abstract double getWeight();
 	public abstract int getDiceSize();
+	public abstract boolean isMartial();
 	
 }
