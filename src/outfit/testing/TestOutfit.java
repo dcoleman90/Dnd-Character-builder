@@ -22,11 +22,19 @@ class TestOutfit {
 	 * Characters
 	 */
 	@Test
-	void testOutFitCharactorWithGreatAxe() {
+	void testOutFitCharactorWithGreatAxeHandsFilled() {
 		Outfit outfit = new Outfit(this.frank);
 		outfit.fillLeftHand(axe);
 		assertEquals(this.frank.getLeftHand().isHandFull(), true);
 		assertEquals(this.frank.getRightHand().isHandFull(), true);
+	}
+
+	@Test
+	void testOutFitCharactorWithGreatAxeBothHandsHoldAxe() {
+		Outfit outfit = new Outfit(this.frank);
+		outfit.fillLeftHand(axe);
+		assertEquals(this.frank.getLeftHand().getItem(), this.axe);
+		assertEquals(this.frank.getRightHand().getItem(), this.axe);
 	}
 
 }
