@@ -52,10 +52,6 @@ public abstract class HeavyMeleeWeapon extends MeleeWeapon {
 	}
 
 	@Override
-	public void setTwoHanded(boolean isTwoHanded) {
-	}
-
-	@Override
 	public void setDamageBonus(Ability strDamageBonus) {
 		if(strDamageBonus.getClass().equals(this.str.getClass())) {
 		this.bonusDamage = strDamageBonus.getAbilityBonus();
@@ -71,5 +67,4 @@ public abstract class HeavyMeleeWeapon extends MeleeWeapon {
 	public boolean isMartial() {
 		return true;
 	}
-
 }
