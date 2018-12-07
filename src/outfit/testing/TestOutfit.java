@@ -36,5 +36,8 @@ class TestOutfit {
 		assertEquals(this.frank.getLeftHand().getItem(), this.axe);
 		assertEquals(this.frank.getRightHand().getItem(), this.axe);
 	}
+	
+	@Test
+	void test
 
 }

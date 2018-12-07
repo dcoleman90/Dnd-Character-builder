@@ -26,7 +26,6 @@ public abstract class MeleeWeapon extends Weapon {
 		if (this.isFinesse()) {
 			this.str = used;
 		} 
-
 	}
 
 }

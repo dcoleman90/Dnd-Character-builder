@@ -1,13 +1,16 @@
 package character.build;
 
 import equipment.weapon.Equipment;
+import equipment.weapon.Unarmed;
 
 public class Hand {
 	private Equipment item;
+	private Unarmed emptyHand;
 	private boolean isHandFull;
 
 	public Hand() {
-		this.item = null;
+		this.emptyHand = new Unarmed();
+		this.item = this.emptyHand;
 		this.isHandFull = false;
 	}
 
@@ -26,7 +29,7 @@ public class Hand {
 	}
 	
 	public void removeItem() {
-		this.item = null;
+		this.item = this.emptyHand;
 		this.isHandFull = false;
 	}
 	

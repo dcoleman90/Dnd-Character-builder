@@ -1,6 +1,7 @@
 package outfit;
 
 import equipment.weapon.Equipment;
+import equipment.weapon.Unarmed;
 import character.build.Character;
 
 /**
@@ -12,18 +13,25 @@ import character.build.Character;
  */
 public class Outfit {
 	private Character player;
+	private Unarmed emptyHand;
 	private Equipment item1;
 	private Equipment item2;
 
 	public Outfit(Character playerCharacter) {
+		this.emptyHand = new Unarmed();
 		if (playerCharacter != null) {
 			this.player = playerCharacter;
 		}
+		this.fillLeftHand(emptyHand);
+		this.fillRightHand(emptyHand);
 	}
 
 	public void fillRightHand(Equipment item) {
 		if (item.isTwoHanded()) {
 			this.fillBothHands(item);
+		}
+		if (this.item1.isTwoHanded()) {
+			this.dropLeftHandItem();;
 		}
 		this.dropRightHandItem();
 		this.item1 = item;
@@ -33,6 +41,9 @@ public class Outfit {
 	public void fillLeftHand(Equipment item) {
 		if (item.isTwoHanded()) {
 			this.fillBothHands(item);
+		}
+		if (this.item2.isTwoHanded()) {
+			this.dropRightHandItem();
 		}
 		this.dropLeftHandItem();
 		this.item2 = item;
