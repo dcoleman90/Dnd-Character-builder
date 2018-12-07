@@ -1,4 +1,4 @@
-package character.testing.equipment;
+package equipment.weapon.testing;
 
 import static org.junit.jupiter.api.Assertions.*;
 
