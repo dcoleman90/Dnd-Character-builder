@@ -10,12 +10,12 @@ import character.build.Character;
  * @version 12/06/2018
  *
  */
-public class outfit {
+public class Outfit {
 	private Character player;
 	private Equipment item1;
 	private Equipment item2;
 
-	public outfit(Character playerCharacter) {
+	public Outfit(Character playerCharacter) {
 		if (playerCharacter != null) {
 			this.player = playerCharacter;
 		}
@@ -42,8 +42,9 @@ public class outfit {
 	private void fillBothHands(Equipment item) {
 		this.dropLeftHandItem();
 		this.dropRightHandItem();
-		this.fillLeftHand(item);
-		this.fillRightHand(item);
+		this.item1 = item;
+		this.player.getRightHand().addItem(this.item1);
+		this.player.getLeftHand().addItem(this.item1);
 	}
 
 	private void dropLeftHandItem() {
