@@ -1,4 +1,4 @@
-package character.skills.testing;
+package character.testing.skills;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -106,10 +106,10 @@ class TestSkillsWithBackGroundAndClassType {
 	 * altered after this is fixed
 	 */
 	@Test
-	void testSetProficeentSkillWithAthletics() {
+	void testSetProficeentSkillWithAthleticsClassTypeSkillNOTusedDueToBackground() {
 		this.hero.setProficentClassTypeSkill(ath);
 		assertEquals(this.hero.getSkills().getAthletic().getSkill(), 2);
-		assertEquals(this.hero.getClassType().getNumberClassSkills(), 1);
+		assertEquals(this.hero.getClassType().getNumberClassSkills(), 2);
 	}
 
 	/**
@@ -136,6 +136,8 @@ class TestSkillsWithBackGroundAndClassType {
 	 * 
 	 * As of version 12/5/2018 the bonus is hard coded at 2 test will need to be
 	 * altered after this is fixed
+	 * 
+	 * Athletic is at 2 due to the character's background
 	 */
 	@Test
 	void testSetProficeentSkillWithPerceptionAndInsightAndAthleticsAthShouldNotIncrease() {
@@ -144,7 +146,7 @@ class TestSkillsWithBackGroundAndClassType {
 		this.hero.setProficentClassTypeSkill(ath);
 		assertEquals(this.hero.getSkills().getInsight().getSkill(), 2);
 		assertEquals(this.hero.getSkills().getPerception().getSkill(), 2);
-		assertEquals(this.hero.getSkills().getAthletic().getSkill(), 0);
+		assertEquals(this.hero.getSkills().getAthletic().getSkill(), 2);
 		assertEquals(this.hero.getClassType().getNumberClassSkills(), 0);
 	}
 

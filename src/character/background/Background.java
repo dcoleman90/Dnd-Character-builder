@@ -1,4 +1,4 @@
-package character.race;
+package character.background;
 
 import character.skills.Skill;
 

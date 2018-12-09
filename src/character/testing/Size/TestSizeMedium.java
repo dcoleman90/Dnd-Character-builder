@@ -1,4 +1,4 @@
-package character.testing;
+package character.testing.Size;
 
 import static org.junit.jupiter.api.Assertions.*;
 

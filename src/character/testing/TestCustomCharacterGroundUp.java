@@ -1,10 +1,11 @@
 package character.testing;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import character.background.Background;
+import character.background.BackgroundOutlander;
 import character.build.Character;
 import character.classType.Fighter;
-import character.race.Background;
-import character.race.BackgroundOutlander;
 import character.race.Human;
 import character.race.Race;
 import character.skills.Acrobatics;

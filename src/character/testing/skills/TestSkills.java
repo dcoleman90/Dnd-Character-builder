@@ -1,14 +1,14 @@
-package character.skills.testing;
+package character.testing.skills;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
 import character.abilities.Wisdom;
+import character.background.Background;
+import character.background.BackgroundOutlander;
 import character.build.Character;
 import character.classType.Fighter;
-import character.race.Background;
-import character.race.BackgroundOutlander;
 import character.race.Human;
 
 class TestSkills {
@@ -24,6 +24,8 @@ class TestSkills {
 	 * can be accessed by the Skills
 	 * 
 	 * So it could be hero.getSkills().getAcrobatic();
+	 * 
+	 * This has been updated to reflect the Background class
 	 */
 	@Test
 	void testSkillsTestSetUpSkillScoresDefault() {
@@ -31,7 +33,7 @@ class TestSkills {
 		assertEquals(0, hero.getArrayListSkill().get(0).getSkill());
 		assertEquals(0, hero.getArrayListSkill().get(1).getSkill());
 		assertEquals(0, hero.getArrayListSkill().get(2).getSkill());
-		assertEquals(0, hero.getArrayListSkill().get(3).getSkill());
+		assertEquals(2, hero.getArrayListSkill().get(3).getSkill());
 		assertEquals(0, hero.getArrayListSkill().get(4).getSkill());
 		assertEquals(0, hero.getArrayListSkill().get(5).getSkill());
 		assertEquals(0, hero.getArrayListSkill().get(6).getSkill());
@@ -45,7 +47,7 @@ class TestSkills {
 		assertEquals(0, hero.getArrayListSkill().get(14).getSkill());
 		assertEquals(0, hero.getArrayListSkill().get(15).getSkill());
 		assertEquals(0, hero.getArrayListSkill().get(16).getSkill());
-		assertEquals(0, hero.getArrayListSkill().get(17).getSkill());
+		assertEquals(2, hero.getArrayListSkill().get(17).getSkill());
 	}
 
 	@Test
@@ -59,7 +61,7 @@ class TestSkills {
 		assertEquals(4, drew.getArrayListSkill().get(0).getSkill());
 		assertEquals(0, drew.getArrayListSkill().get(1).getSkill());
 		assertEquals(-7, drew.getArrayListSkill().get(2).getSkill());
-		assertEquals(-1, drew.getArrayListSkill().get(3).getSkill());
+		assertEquals(1, drew.getArrayListSkill().get(3).getSkill());
 		assertEquals(2, drew.getArrayListSkill().get(4).getSkill());
 
 	}
@@ -78,7 +80,7 @@ class TestSkills {
 		assertEquals(-7, drew.getArrayListSkill().get(14).getSkill());
 		assertEquals(4, drew.getArrayListSkill().get(15).getSkill());
 		assertEquals(4, drew.getArrayListSkill().get(16).getSkill());
-		assertEquals(0, drew.getArrayListSkill().get(17).getSkill());
+		assertEquals(2, drew.getArrayListSkill().get(17).getSkill());
 	}
 
 }
