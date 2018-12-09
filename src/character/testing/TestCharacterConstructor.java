@@ -50,7 +50,7 @@ class TestCharacterConstructor {
 	 */
 	@Test
 	void testDefaultConstructerToString() {
-		assertEquals(hero.toString(), " Human, Speed 30, Between 4 and 7 feet tall\n11 Strength 11 Dexterity 11 Constitution 11 Intelligence 11 Wisdom 11 Charisma ");
+		assertEquals(hero.toString(), "Human, Speed 30, Between 4 and 7 feet tall \n11 Strength 11 Dexterity 11 Constitution 11 Intelligence 11 Wisdom 11 Charisma ");
 	}
 	
 	/**

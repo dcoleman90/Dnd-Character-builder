@@ -24,7 +24,7 @@ class TestSizeMedium {
 	 */
 	@Test
 	void testMediumCatagory() {
-		assertEquals(this.med.getSizeCatagory(), "Medium");
+		assertEquals(this.med.getSizeCatagory(), "Medium ");
 	}
 
 	/**
@@ -32,7 +32,7 @@ class TestSizeMedium {
 	 */
 	@Test
 	void testMediumHeightDescription() {
-		assertEquals(this.med.getHeightDescription(), "Between 4 and 7 feet tall");
+		assertEquals(this.med.getHeightDescription(), "Between 4 and 7 feet tall ");
 	}
 
 	/**
@@ -48,7 +48,7 @@ class TestSizeMedium {
 	 */
 	@Test
 	void testMediumCatagoryWithTheSecondConstructor() {
-		assertEquals(this.med2.getSizeCatagory(), "Medium");
+		assertEquals(this.med2.getSizeCatagory(), "Medium ");
 	}
 
 	/**
