@@ -94,6 +94,7 @@ public class Character {
 		
 		this.setAbilityScores();
 		this.setUpSkillScores();
+		this.setBackGroundProficentSkill();
 	}
 
 	public String toString() {
@@ -330,8 +331,10 @@ public class Character {
 	 * It needs to be implemented BEFORE class skills
 	 * @param classSkill
 	 */
-	public void setBackGroundProficentSkill(Skill classSkill) {
-		this.getSkill(classSkill).setProfSkill(true);
+	public void setBackGroundProficentSkill() {
+		this.getSkill(this.background.getSkillProf1()).setProfSkill(true);
+		this.getSkill(this.background.getSkillProf2()).setProfSkill(true);
+
 	}
 
 	private Skill getSkill(Skill searchedSkill) {

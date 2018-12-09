@@ -1,4 +1,4 @@
-package character.testing;
+package character.skills.testing;
 
 import static org.junit.jupiter.api.Assertions.*;
 
