@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "Dnd",
+                "projectName": "Dnd",
+                "workingDirectory": "c:\\Users\\DrewC\\Documents\\Projects\\Dnd",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "Dnd",
+                "projectName": "Dnd",
+                "workingDirectory": "c:\\Users\\DrewC\\Documents\\Projects\\Dnd",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}

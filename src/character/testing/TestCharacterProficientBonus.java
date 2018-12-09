@@ -93,12 +93,14 @@ class TestCharacterProficientBonus {
 	 * 
 	 * As of version 12/5/2018 the bonus is hard coded at 2 test will need to be
 	 * altered after this is fixed
+	 * 
+	 * The number of classSkills is NOT decreased because of the hero background
 	 */
 	@Test
 	void testSetProficeentSkillWithAthletics() {
 		this.hero.setProficentClassTypeSkill(ath);
 		assertEquals(this.hero.getSkills().getAthletic().getSkill(), 2);
-		assertEquals(this.hero.getClassType().getNumberClassSkills(), 1);
+		assertEquals(this.hero.getClassType().getNumberClassSkills(), 2);
 	}
 
 	/**
@@ -125,6 +127,8 @@ class TestCharacterProficientBonus {
 	 * 
 	 * As of version 12/5/2018 the bonus is hard coded at 2 test will need to be
 	 * altered after this is fixed
+	 * 
+	 * Athletic is proficent due to the Hero's background
 	 */
 	@Test
 	void testSetProficeentSkillWithPerceptionAndInsightAndAthleticsAthShouldNotIncrease() {
@@ -133,7 +137,7 @@ class TestCharacterProficientBonus {
 		this.hero.setProficentClassTypeSkill(ath);
 		assertEquals(this.hero.getSkills().getInsight().getSkill(), 2);
 		assertEquals(this.hero.getSkills().getPerception().getSkill(), 2);
-		assertEquals(this.hero.getSkills().getAthletic().getSkill(), 0);
+		assertEquals(this.hero.getSkills().getAthletic().getSkill(), 2);
 		assertEquals(this.hero.getClassType().getNumberClassSkills(), 0);
 	}
 
