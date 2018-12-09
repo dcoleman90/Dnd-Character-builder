@@ -33,6 +33,10 @@ public class Hand {
 		this.isHandFull = false;
 	}
 	
+	public void setIsHandEmpty(boolean emptyHand) {
+		this.isHandFull = emptyHand;
+	}
+	
 	public Equipment getItem() {
 		return this.item;
 	}

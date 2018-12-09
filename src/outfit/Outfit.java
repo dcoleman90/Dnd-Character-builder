@@ -29,41 +29,56 @@ public class Outfit {
 	public void fillRightHand(Equipment item) {
 		if (item.isTwoHanded()) {
 			this.fillBothHands(item);
+		} else {
+			this.dropRightHandItem();
+			this.item1 = item;
+			this.player.getRightHand().addItem(item);
+			if (item.getClass().equals(emptyHand.getClass())) {
+				this.player.getRightHand().setIsHandEmpty(false);
+			}
 		}
-		if (this.item1.isTwoHanded()) {
-			this.dropLeftHandItem();;
-		}
-		this.dropRightHandItem();
-		this.item1 = item;
-		this.player.getRightHand().addItem(this.item1);
 	}
 
 	public void fillLeftHand(Equipment item) {
 		if (item.isTwoHanded()) {
 			this.fillBothHands(item);
+		} else {
+			this.dropLeftHandItem();
+			this.item2 = item;
+			this.player.getLeftHand().addItem(this.item2);
+			if (item.getClass().equals(emptyHand.getClass())) {
+				this.player.getLeftHand().setIsHandEmpty(false);
+			}
 		}
-		if (this.item2.isTwoHanded()) {
-			this.dropRightHandItem();
-		}
-		this.dropLeftHandItem();
-		this.item2 = item;
-		this.player.getLeftHand().addItem(this.item2);
 	}
 
 	private void fillBothHands(Equipment item) {
-		this.dropLeftHandItem();
-		this.dropRightHandItem();
+		this.player.getRightHand().removeItem();
+		this.player.getLeftHand().removeItem();
 		this.item1 = item;
 		this.player.getRightHand().addItem(this.item1);
 		this.player.getLeftHand().addItem(this.item1);
 	}
 
-	private void dropLeftHandItem() {
+	private void dropBothHands() {
+		this.player.getRightHand().removeItem();
 		this.player.getLeftHand().removeItem();
 	}
 
-	private void dropRightHandItem() {
-		this.player.getRightHand().removeItem();
+	public void dropLeftHandItem() {
+		if (this.player.getRightHand().getItem().isTwoHanded()) {
+			this.dropBothHands();
+		} else {
+			this.player.getLeftHand().removeItem();
+		}
+	}
+
+	public void dropRightHandItem() {
+		if (this.player.getLeftHand().getItem().isTwoHanded()) {
+			this.dropBothHands();
+		} else {
+			this.player.getRightHand().removeItem();
+		}
 	}
 
 }
