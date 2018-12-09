@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import character.build.Character;
 import character.classType.Fighter;
+import character.race.Background;
+import character.race.BackgroundOutlander;
 import character.race.Human;
 import character.race.Race;
 import equipment.weapon.Unarmed;
@@ -16,7 +18,8 @@ class TestOutfit {
 	Fighter fighter = new Fighter();
 	Race human = new Human();
 	Unarmed hand = new Unarmed();
-	Character frank = new Character("Frank", 12, 12, 12, 12, 12, 12, human, fighter, 1);
+	Background outlander = new BackgroundOutlander();
+	Character frank = new Character("Frank", 12, 12, 12, 12, 12, 12, human, fighter, 1, outlander);
 	WeaponGreatAxe axe = new WeaponGreatAxe();
 
 	/**

@@ -80,5 +80,9 @@ public class Outfit {
 			this.player.getRightHand().removeItem();
 		}
 	}
+	
+	public Character  getCharacter() {
+		return this.player;
+	}
 
 }

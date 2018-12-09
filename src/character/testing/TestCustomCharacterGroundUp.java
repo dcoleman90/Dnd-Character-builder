@@ -3,6 +3,8 @@ package character.testing;
 import static org.junit.jupiter.api.Assertions.*;
 import character.build.Character;
 import character.classType.Fighter;
+import character.race.Background;
+import character.race.BackgroundOutlander;
 import character.race.Human;
 import character.race.Race;
 import character.skills.Acrobatics;
@@ -28,7 +30,8 @@ import org.junit.jupiter.api.Test;
 class TestCustomCharacterGroundUp {
 	Fighter fighter = new Fighter();
 	Race human = new Human();
-	Character frank = new Character("Frank", 12, 12, 12, 12, 12, 12, human, fighter, 1);
+	Background outlander = new BackgroundOutlander();
+	Character frank = new Character("Frank", 12, 12, 12, 12, 12, 12, human, fighter, 1, outlander);
 
 	// Allowed Skills for fighters
 	Athletics ath = new Athletics(0);

@@ -10,6 +10,8 @@ import character.abilities.Strength;
 import character.abilities.Wisdom;
 import character.classType.ClassType;
 import character.classType.Fighter;
+import character.race.Background;
+import character.race.BackgroundOutlander;
 import character.race.Human;
 import character.race.Race;
 import character.skills.Skill;
@@ -29,6 +31,7 @@ public class Character {
 	private Hand rightHand;
 	private Hand leftHand;
 	private int level;
+	private Background background;
 
 
 	/**
@@ -47,6 +50,7 @@ public class Character {
 		this.level = 1;
 		this.rightHand = new Hand();
 		this.leftHand = new Hand();
+		this.background = new BackgroundOutlander();
 		this.setAbilityScores();
 		this.setUpSkillScores();
 
@@ -64,7 +68,7 @@ public class Character {
 	 * @param acceptedCharisma
 	 */
 	public Character(String name, int acceptedStr, int acceptedDex, int acceptedCon, int acceptedIntell, int acceptedWis,
-			int acceptedCharisma, Race acceptedRace, ClassType acceptedClass, int level) {
+			int acceptedCharisma, Race acceptedRace, ClassType acceptedClass, int level, Background background) {
 		this();
 		if(name.isEmpty()) {
 			this.setName("New Player");
@@ -85,6 +89,8 @@ public class Character {
 		} else {
 			this.level = level;
 		}
+		
+		this.background = background;
 		
 		this.setAbilityScores();
 		this.setUpSkillScores();
@@ -309,7 +315,6 @@ public class Character {
 	 * @param classSkill
 	 */
 	public void setProficentSkill(Skill classSkill) {
-
 		if (this.checkProficentSkill(classSkill)) {
 			int profBonus = this.classType.getProficiencyBonus(this.level);
 			if (!this.getSkill(classSkill).isProfSkill()) {
@@ -318,6 +323,15 @@ public class Character {
 				this.getSkill(classSkill).setProfSkill(true);
 			}
 		}
+	}
+	
+	/**
+	 * This method adds the proficentBonus to 2 background skills
+	 * It needs to be implemented BEFORE class skills
+	 * @param classSkill
+	 */
+	public void setBackGroundProficentSkill(Skill classSkill) {
+		this.getSkill(classSkill).setProfSkill(true);
 	}
 
 	private Skill getSkill(Skill searchedSkill) {

@@ -6,10 +6,12 @@ import org.junit.jupiter.api.Test;
 
 import character.build.Hand;
 import equipment.weapon.Equipment;
+import equipment.weapon.Unarmed;
 import equipment.weapon.WeaponGreatAxe;
 
 class TestHand {
 	Equipment ax = new WeaponGreatAxe();
+	Equipment unarmed = new Unarmed();
 	
 	/**
 	 * The following test will insure that hand performs as expected
@@ -17,7 +19,7 @@ class TestHand {
 	@Test
 	void testHandIsNullAndNotFullWhenBuiltWithDefaultConstructor() {
 		Hand left = new Hand();
-		assertEquals(left.getItem(), null);
+		assertEquals(left.getItem().getClass(), unarmed.getClass());
 		assertEquals(left.isHandFull(), false);
 	}
 	
@@ -32,7 +34,7 @@ class TestHand {
 	void testHandItemAndFullRemoveItem() {
 		Hand right = new Hand(this.ax);
 		right.removeItem();
-		assertEquals(right.getItem(), null);
+		assertEquals(right.getItem().getClass(), this.unarmed.getClass());
 		assertEquals(right.isHandFull(), false);
 	}
 	
@@ -40,7 +42,7 @@ class TestHand {
 	void testHandIsNullAndNotFullWhenBuiltWithDefaultConstructorRemovedCalled() {
 		Hand left = new Hand();
 		left.removeItem();
-		assertEquals(left.getItem(), null);
+		assertEquals(left.getItem().getClass(),  unarmed.getClass());
 		assertEquals(left.isHandFull(), false);
 	}
 	
@@ -59,7 +61,7 @@ class TestHand {
 		assertEquals(left.getItem(), this.ax);
 		assertEquals(left.isHandFull(), true);
 		left.removeItem();
-		assertEquals(left.getItem(), null);
+		assertEquals(left.getItem().getClass(),  unarmed.getClass());
 		assertEquals(left.isHandFull(), false);
 	}
 

@@ -15,6 +15,7 @@ public class Hand {
 	}
 
 	public Hand(Equipment item) {
+		this.emptyHand = new Unarmed();
 		if (item != null) {
 			this.item = item;
 		}

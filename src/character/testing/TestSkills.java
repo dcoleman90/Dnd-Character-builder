@@ -7,13 +7,16 @@ import org.junit.jupiter.api.Test;
 import character.abilities.Wisdom;
 import character.build.Character;
 import character.classType.Fighter;
+import character.race.Background;
+import character.race.BackgroundOutlander;
 import character.race.Human;
 
 class TestSkills {
 	Character hero = new Character();
 	Human human = new Human();
 	Fighter fight = new Fighter();
-	Character drew = new Character("name", 7, 18, 16, -6, 10, 14, human, fight, 1);
+	Background outlander = new BackgroundOutlander();
+	Character drew = new Character("name", 7, 18, 16, -6, 10, 14, human, fight, 1, outlander);
 
 	/**
 	 * This test shows the initial way to get the Skill from the characters
