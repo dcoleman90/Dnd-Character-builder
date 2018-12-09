@@ -51,8 +51,7 @@ public class Character {
 		this.rightHand = new Hand();
 		this.leftHand = new Hand();
 		this.background = new BackgroundOutlander();
-		this.setAbilityScores();
-		this.setUpSkillScores();
+		this.setup();
 
 	}
 
@@ -91,18 +90,122 @@ public class Character {
 		}
 		
 		this.background = background;
-		
+		this.setup();
+
+	}
+
+	public void setup() {
 		this.setAbilityScores();
 		this.setUpSkillScores();
 		this.setBackGroundProficentSkill();
 	}
-
+	
 	public String toString() {
 		String characterSummary = "";
 		characterSummary += this.race.toString() + "\n" + this.str.toString() + this.dex.toString()
 				+ this.con.toString() + this.intell.toString() + this.wis.toString() + this.charisma.toString();
 		return characterSummary;
 	}
+
+	
+	/**
+	 * Private methods to assist with AbilityScores - the bonus applied after race
+	 * and Skill Scores - bonus applied after Class
+	 */
+
+	private void setAbilityScores() {
+		this.str.addScore(this.race.abilityScoreAlterations(str));
+		this.dex.addScore(this.race.abilityScoreAlterations(dex));
+		this.con.addScore(this.race.abilityScoreAlterations(con));
+		this.intell.addScore(this.race.abilityScoreAlterations(intell));
+		this.wis.addScore(this.race.abilityScoreAlterations(wis));
+		this.charisma.addScore(this.race.abilityScoreAlterations(charisma));
+	}
+
+	private void setUpSkillScores() {
+		this.skills = new Skills(this.str, this.dex, this.con, this.intell, this.wis, this.charisma);
+
+	}
+
+	/**
+	 * This method checks the classType and returns true if the accepted classSkill
+	 * is able to be Proficient
+	 * 
+	 * @param classSkill
+	 * @return
+	 */
+	public boolean checkProficentSkill(Skill classSkill) {
+		return this.classType.isClassSkill(classSkill);
+	}
+
+	/**
+	 * This method takes a skill - checks to see if it is a class skill - checks
+	 * that it is not already used then assigns it proficiency bonus
+	 * 
+	 * @param classSkill
+	 */
+	public void setProficentClassTypeSkill(Skill classSkill) {
+		if (this.checkProficentSkill(classSkill)) {
+			int profBonus = this.classType.getProficiencyBonus(this.level);
+			if (!this.getSkill(classSkill).isProfSkill()) {
+				this.addProficentBonus(classSkill, profBonus);
+				this.classType.decreaseNumberOfClassSkillsByOne();
+				this.getSkill(classSkill).setProfSkill(true);
+			}
+		}
+	}
+	
+	public void setBackgroundSkill(Skill backgroundSkill) {
+		int profBonus = this.classType.getProficiencyBonus(this.level);
+		if (!this.getSkill(backgroundSkill).isProfSkill()) {
+			this.addProficentBonus(backgroundSkill, profBonus);
+			this.getSkill(backgroundSkill).setProfSkill(true);
+		}
+	}
+	
+	/**
+	 * This method adds the proficentBonus to 2 background skills
+	 * It needs to be implemented BEFORE class skills
+	 * @param classSkill
+	 */
+	public void setBackGroundProficentSkill() {
+		this.setBackgroundSkill(this.background.getSkillProf1());
+		this.setBackgroundSkill(this.background.getSkillProf2());
+	}
+
+	private Skill getSkill(Skill searchedSkill) {
+		for (int count = 0; count < this.skills.getCharactersSkills().size(); count++) {
+			if (searchedSkill.getClass().equals(this.skills.getCharactersSkills().get(count).getClass())) {
+				return this.skills.getCharactersSkills().get(count);
+			}
+		}
+		return null;
+	}
+
+	private void addProficentBonus(Skill classSkill, int bonusAdded) {
+		for (int count = 0; count < this.skills.getCharactersSkills().size(); count++) {
+			if (classSkill.getClass().equals(this.skills.getCharactersSkills().get(count).getClass())) {
+				this.skills.getCharactersSkills().get(count).addSkill(bonusAdded);
+			}
+		}
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public int getRemainingClassTypeProf() {
+		return this.classType.getNumberClassSkills();
+	}
+
+
+
+
 
 	/**
 	 * Getters and Setters for all the Ability Scores and Race
@@ -222,6 +325,10 @@ public class Character {
 		return this.skills.getArcana().getSkill();
 	}
 	
+	public int getAthleticBonus() {
+		return this.skills.getAthletic().getSkill();
+	}
+	
 	public int getDeceptionBonus() {
 		return this.skills.getDeception().getSkill();
 	}
@@ -278,87 +385,4 @@ public class Character {
 		return this.skills.getSurvival().getSkill();
 	}
 	
-	
-	/**
-	 * Private methods to assist with AbilityScores - the bonus applied after race
-	 * and Skill Scores - bonus applied after Class
-	 */
-
-	private void setAbilityScores() {
-		this.str.addScore(this.race.abilityScoreAlterations(str));
-		this.dex.addScore(this.race.abilityScoreAlterations(dex));
-		this.con.addScore(this.race.abilityScoreAlterations(con));
-		this.intell.addScore(this.race.abilityScoreAlterations(intell));
-		this.wis.addScore(this.race.abilityScoreAlterations(wis));
-		this.charisma.addScore(this.race.abilityScoreAlterations(charisma));
-	}
-
-	private void setUpSkillScores() {
-		this.skills = new Skills(this.str, this.dex, this.con, this.intell, this.wis, this.charisma);
-
-	}
-
-	/**
-	 * This method checks the classType and returns true if the accepted classSkill
-	 * is able to be Proficient
-	 * 
-	 * @param classSkill
-	 * @return
-	 */
-	public boolean checkProficentSkill(Skill classSkill) {
-		return this.classType.isClassSkill(classSkill);
-	}
-
-	/**
-	 * This method takes a skill - checks to see if it is a class skill - checks
-	 * that it is not already used then assigns it proficiency bonus
-	 * 
-	 * @param classSkill
-	 */
-	public void setProficentSkill(Skill classSkill) {
-		if (this.checkProficentSkill(classSkill)) {
-			int profBonus = this.classType.getProficiencyBonus(this.level);
-			if (!this.getSkill(classSkill).isProfSkill()) {
-				this.addProficentBonus(classSkill, profBonus);
-				this.classType.decreaseNumberOfClassSkillsByOne();
-				this.getSkill(classSkill).setProfSkill(true);
-			}
-		}
-	}
-	
-	/**
-	 * This method adds the proficentBonus to 2 background skills
-	 * It needs to be implemented BEFORE class skills
-	 * @param classSkill
-	 */
-	public void setBackGroundProficentSkill() {
-		this.getSkill(this.background.getSkillProf1()).setProfSkill(true);
-		this.getSkill(this.background.getSkillProf2()).setProfSkill(true);
-
-	}
-
-	private Skill getSkill(Skill searchedSkill) {
-		for (int count = 0; count < this.skills.getCharactersSkills().size(); count++) {
-			if (searchedSkill.getClass().equals(this.skills.getCharactersSkills().get(count).getClass())) {
-				return this.skills.getCharactersSkills().get(count);
-			}
-		}
-		return null;
-	}
-
-	private void addProficentBonus(Skill classSkill, int bonusAdded) {
-		for (int count = 0; count < this.skills.getCharactersSkills().size(); count++) {
-			if (classSkill.getClass().equals(this.skills.getCharactersSkills().get(count).getClass())) {
-				this.skills.getCharactersSkills().get(count).addSkill(bonusAdded);
-			}
-		}
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 }

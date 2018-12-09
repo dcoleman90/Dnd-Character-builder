@@ -69,13 +69,15 @@ class TestCustomCharacterGroundUp {
 
 	/**
 	 * Test that skill scores are what is expected BEFORE getting class skills
+	 * 
+	 * Athletics and Survial are at 3 due to the BACKGROUND
 	 */
 	@Test
 	void testBuildACharacterFromGroundUpTestingGetSkillScores() {
 		assertEquals(1, frank.getSkills().getAcrobatic().getSkill());
 		assertEquals(1, frank.getSkills().getAnimalHandle().getSkill());
 		assertEquals(1, frank.getSkills().getArcana().getSkill());
-		assertEquals(1, frank.getSkills().getAthletic().getSkill());
+		assertEquals(3, frank.getSkills().getAthletic().getSkill());
 		assertEquals(1, frank.getSkills().getDeception().getSkill());
 		assertEquals(1, frank.getSkills().getHistory().getSkill());
 		assertEquals(1, frank.getSkills().getInsight().getSkill());
@@ -89,7 +91,7 @@ class TestCustomCharacterGroundUp {
 		assertEquals(1, frank.getSkills().getReligion().getSkill());
 		assertEquals(1, frank.getSkills().getSleightOfHand().getSkill());
 		assertEquals(1, frank.getSkills().getStealth().getSkill());
-		assertEquals(1, frank.getSkills().getSurvival().getSkill());
+		assertEquals(3, frank.getSkills().getSurvival().getSkill());
 	}
 
 	/**
@@ -127,21 +129,33 @@ class TestCustomCharacterGroundUp {
 	 * Test add perc and surv skills to be prof - and gain proficiency
 	 * 
 	 * Performance is NOT allowed and should not gain a bonus
-	 * History IS allowed - but is the third added and fighters only gain 2 proficiencies
+	 * History IS allowed - and added because BACKGROUND added survial bonus
 	 * 
+	 * Insight is allowed - but is NOT added because fighter class gets ONLY 2 proficiency 
 	 * 
 	 * THIS TEST IS THE FIRST ONE WITH CHARACTER HAVING DIRECT METHODS TO ACCESS THE SKILL BONUS
 	 */
 	@Test
 	void testPercAndSurvSkillsAsProf() {
-		frank.setProficentSkill(this.perc);
-		frank.setProficentSkill(this.perf);
-		frank.setProficentSkill(this.surv);
-		frank.setProficentSkill(this.hist);
+		frank.setProficentClassTypeSkill(this.perc);
+		frank.setProficentClassTypeSkill(this.perf);
+		frank.setProficentClassTypeSkill(this.surv);
+		frank.setProficentClassTypeSkill(this.hist);
+		frank.setProficentClassTypeSkill(this.insight);
 		assertEquals(3, frank.getPerceptionBonus());
 		assertEquals(1, frank.getPerformanceBonus());
 		assertEquals(3, frank.getSurvivalBonus());
-		assertEquals(1, frank.getHistoryBonus());
+		assertEquals(3, frank.getHistoryBonus());
+		assertEquals(0, frank.getRemainingClassTypeProf());
+		assertEquals(1, frank.getInsightBonus());
+	}
+	
+	/**
+	 * Test to insure the background has set the survival and Athletic bonuses
+	 */
+	void TestBackgroundSetUp() {
+		assertEquals(3, frank.getSurvivalBonus());
+		assertEquals(3, frank.getAthleticBonus());
 	}
 
 }

@@ -1,4 +1,4 @@
-package character.testing;
+package character.skills.testing;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,7 +23,7 @@ import character.skills.SleightOfHand;
 import character.skills.Stealth;
 import character.skills.Survival;
 
-class TestCharacterProficientBonus {
+class TestSkillsWithBackGroundAndClassType {
 	Character hero = new Character();
 
 	// Allowed Skills for fighters/default character
@@ -49,6 +49,8 @@ class TestCharacterProficientBonus {
 	/**
 	 * Test default character allowable choices combined for efficiency - split up
 	 * to more quickly narrow down mistakes
+	 * 
+	 * DEFAULT CHARACTER SKILLS OVER LAP WITH THE BACKGROUND
 	 */
 	@Test
 	void testDefaultCharacterFigherAllowedChoicesPart1() {
@@ -86,6 +88,15 @@ class TestCharacterProficientBonus {
 		assertFalse(hero.checkProficentSkill(this.stealth));
 	}
 
+	/**
+	 * Insure that the background skills have been set as profiecencies BEFORE the classes
+	 */
+	@Test
+	void testBackgroundProfiecentSkillsSurvialAndAth() {
+		assertEquals(this.hero.getAthleticBonus(), 2);
+		assertTrue(this.hero.checkProficentSkill(surv));
+		assertTrue(this.hero.checkProficentSkill(insight));
+	}
 
 	/**
 	 * Test SetProFicentSkills This method adds the proficiency bonus to the skill
