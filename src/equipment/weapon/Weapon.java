@@ -29,6 +29,8 @@ public abstract class Weapon extends Equipment {
 	public abstract boolean isThrown();
 
 	public abstract boolean isVersatile();
+	
+	public abstract boolean isSimple();
 
 	public abstract void setDamageBonus(Ability damageBonus);
 

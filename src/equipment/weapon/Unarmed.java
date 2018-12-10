@@ -96,4 +96,9 @@ public class Unarmed extends MeleeWeapon{
 		return false;
 	}
 
+	@Override
+	public boolean isSimple() {
+		return true;
+	}
+
 }

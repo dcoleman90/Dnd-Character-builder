@@ -67,4 +67,9 @@ public abstract class HeavyMeleeWeapon extends MeleeWeapon {
 	public boolean isMartial() {
 		return true;
 	}
+	
+	@Override
+	public boolean isSimple() {
+		return false;
+	}
 }
