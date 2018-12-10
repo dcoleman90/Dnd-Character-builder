@@ -16,12 +16,15 @@ public class Fighter extends ClassType {
 	private ArrayList<Skill> proficentSkills;
 
 	/**
-	 * Fighters start with 10 hitpoints plus a number 1-10 randomly and con bonus for each level
-	 * beyond the first
+	 * Fighters start with 10 hitpoints plus a number 1-10 randomly and con bonus
+	 * for each level beyond the first
+	 * 
+	 * 
+	 * NEED TO ADD SAVING THROWS
 	 */
 	public Fighter() {
 		super();
-
+		this.setNumberClassSkills(2);
 		Acrobatics acro = new Acrobatics(0);
 		AnimalHandling ah = new AnimalHandling(0);
 		Athletics ath = new Athletics(0);
@@ -39,9 +42,9 @@ public class Fighter extends ClassType {
 		this.proficentSkills.add(intim);
 		this.proficentSkills.add(perc);
 		this.proficentSkills.add(surv);
-		
+
 	}
-	
+
 	public void setHitPoints(int level, int conBonus) {
 		super.setHitPoints(level, 10, conBonus);
 	}
@@ -60,4 +63,20 @@ public class Fighter extends ClassType {
 	public String toString() {
 		return "Fighter";
 	}
+
+	/**
+	 * These methods are currently required to appease the Rogue class
+	 * 
+	 * NEED TO FIND A BETTER WAY WHICH DOES NOT INVOLVE ALL THE CLASSES HAVING ROGUE
+	 * ABILITIES
+	 */
+	@Override
+	public int rogueExpertiseSkills(int level) {
+		return 0;
+	}
+
+	@Override
+	public void removeOneRogueExpertiseSkills() {
+	}
+
 }

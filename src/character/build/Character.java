@@ -12,6 +12,7 @@ import character.background.Background;
 import character.background.BackgroundOutlander;
 import character.classType.ClassType;
 import character.classType.Fighter;
+import character.classType.Rogue;
 import character.race.Human;
 import character.race.Race;
 import character.skills.Skill;
@@ -32,7 +33,6 @@ public class Character {
 	private Hand leftHand;
 	private int level;
 	private Background background;
-
 
 	/**
 	 * Builds a default character with default value of 10 to all scores
@@ -66,10 +66,11 @@ public class Character {
 	 * @param acceptedWis
 	 * @param acceptedCharisma
 	 */
-	public Character(String name, int acceptedStr, int acceptedDex, int acceptedCon, int acceptedIntell, int acceptedWis,
-			int acceptedCharisma, Race acceptedRace, ClassType acceptedClass, int level, Background background) {
+	public Character(String name, int acceptedStr, int acceptedDex, int acceptedCon, int acceptedIntell,
+			int acceptedWis, int acceptedCharisma, Race acceptedRace, ClassType acceptedClass, int level,
+			Background background) {
 		this();
-		if(name.isEmpty()) {
+		if (name.isEmpty()) {
 			this.setName("New Player");
 		} else {
 			this.setName(name);
@@ -82,13 +83,13 @@ public class Character {
 		this.charisma = new Charisma(acceptedCharisma);
 		this.race = acceptedRace;
 		this.classType = acceptedClass;
-		
+
 		if (level < 0 || level > 20) {
 			this.level = 1;
 		} else {
 			this.level = level;
 		}
-		
+
 		this.background = background;
 		this.setup();
 
@@ -99,7 +100,7 @@ public class Character {
 		this.setUpSkillScores();
 		this.setBackGroundProficentSkill();
 	}
-	
+
 	public String toString() {
 		String characterSummary = "";
 		characterSummary += this.race.toString() + "\n" + this.str.toString() + this.dex.toString()
@@ -107,7 +108,6 @@ public class Character {
 		return characterSummary;
 	}
 
-	
 	/**
 	 * Private methods to assist with AbilityScores - the bonus applied after race
 	 * and Skill Scores - bonus applied after Class
@@ -154,7 +154,7 @@ public class Character {
 			}
 		}
 	}
-	
+
 	public void setBackgroundSkill(Skill backgroundSkill) {
 		int profBonus = this.classType.getProficiencyBonus(this.level);
 		if (!this.getSkill(backgroundSkill).isProfSkill()) {
@@ -162,10 +162,11 @@ public class Character {
 			this.getSkill(backgroundSkill).setProfSkill(true);
 		}
 	}
-	
+
 	/**
-	 * This method adds the proficentBonus to 2 background skills
-	 * It needs to be implemented BEFORE class skills
+	 * This method adds the proficentBonus to 2 background skills It needs to be
+	 * implemented BEFORE class skills
+	 * 
 	 * @param classSkill
 	 */
 	public void setBackGroundProficentSkill() {
@@ -198,14 +199,30 @@ public class Character {
 		this.name = name;
 	}
 
-
 	public int getRemainingClassTypeProf() {
 		return this.classType.getNumberClassSkills();
 	}
 
-
-
-
+	/**
+	 * This method is specific to the ROGUE CLASSTYPE
+	 *
+	 * I DO NOT LIKE that it is apart of ALL CHARACTERS - but as built all
+	 * ClassTypes are reference charts for Character - it asks them and they tell it yes or no
+	 * 
+	 * This is frustrating
+	 *
+	 * This is a rogue class feature - two of the selected rogue skills can have
+	 * proficiency DOUBLED
+	 */
+	public void setRogueExpertise(Skill rogueSkill) {
+		if (this.classType.rogueExpertiseSkills(this.level) > 0) {
+			if (this.getSkill(rogueSkill).isProfSkill()) {
+				this.getSkill(rogueSkill).setSkill(
+						this.getSkill(rogueSkill).getSkill() + this.classType.getProficiencyBonus(this.level));
+				this.classType.removeOneRogueExpertiseSkills();
+			}
+		}
+	}
 
 	/**
 	 * Getters and Setters for all the Ability Scores and Race
@@ -215,7 +232,7 @@ public class Character {
 	public int getLevel() {
 		return this.level;
 	}
-	
+
 	public Hand getRightHand() {
 		return rightHand;
 	}
@@ -308,81 +325,80 @@ public class Character {
 		this.classType = acceptedClassType;
 	}
 
-	
 	/**
 	 * GETTERS FOR ABILITY SCORES
 	 */
-	
+
 	public int getAcrobaticsBonus() {
 		return this.skills.getAcrobatic().getSkill();
 	}
-	
+
 	public int getAnimalHandlingBonus() {
 		return this.skills.getAnimalHandle().getSkill();
 	}
-	
+
 	public int getAcranaBonus() {
 		return this.skills.getArcana().getSkill();
 	}
-	
+
 	public int getAthleticBonus() {
 		return this.skills.getAthletic().getSkill();
 	}
-	
+
 	public int getDeceptionBonus() {
 		return this.skills.getDeception().getSkill();
 	}
-	
+
 	public int getHistoryBonus() {
 		return this.skills.getHistory().getSkill();
 	}
-	
+
 	public int getInsightBonus() {
 		return this.skills.getInsight().getSkill();
 	}
-	
+
 	public int getIntimidationBonus() {
 		return this.skills.getIntimidation().getSkill();
 	}
-	
+
 	public int getInvestigationBonus() {
 		return this.skills.getInvestigation().getSkill();
 	}
-	
+
 	public int getMedicineBonus() {
 		return this.skills.getMedicine().getSkill();
 	}
-	
+
 	public int getNatureBonus() {
 		return this.skills.getNature().getSkill();
 	}
-	
+
 	public int getPerceptionBonus() {
 		return this.skills.getPerception().getSkill();
 	}
-	
+
 	public int getPerformanceBonus() {
 		return this.skills.getPerformance().getSkill();
 	}
-	
+
 	public int getPersuasionBonus() {
 		return this.skills.getPersuasion().getSkill();
 	}
-	
+
 	public int getReligionBonus() {
 		return this.skills.getReligion().getSkill();
 	}
-	
+
 	public int getSleightOfHandBonus() {
 		return this.skills.getSleightOfHand().getSkill();
 	}
-	
+
 	public int getStealthBonus() {
 		return this.skills.getStealth().getSkill();
 	}
-	
+
 	public int getSurvivalBonus() {
 		return this.skills.getSurvival().getSkill();
 	}
-	
+
 }

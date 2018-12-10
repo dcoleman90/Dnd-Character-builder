@@ -10,12 +10,11 @@ public abstract class ClassType {
 	private Random random;
 	private int numberClassSkills;
 	private ArrayList<Integer> profBonuses;
-
+	private int level;
 
 	public ClassType() {
 		this.hitPoints = 0;
 		this.random = new Random();
-		this.setNumberClassSkills(2);
 		this.setProfBonusBasedOnLevel();
 	}
 	
@@ -61,6 +60,10 @@ public abstract class ClassType {
 	public void decreaseNumberOfClassSkillsByOne() {
 		this.setNumberClassSkills(this.getNumberClassSkills() - 1);
 	}
+	
+	public int getLevel() {
+		return this.level;
+	}
 
 	/**
 	 * This method insures the children receive a level value then return the
@@ -70,7 +73,8 @@ public abstract class ClassType {
 	 * @return prof bonus
 	 */
 	public int getProficiencyBonus(int level) {
-		return this.profBonuses.get(level-1);
+		this.level = level;
+		return this.profBonuses.get(this.level-1);
 	}
 
 	/**
@@ -109,4 +113,8 @@ public abstract class ClassType {
 	}
 	
 	public abstract String toString();
+
+	public abstract int rogueExpertiseSkills(int level);
+	
+	public abstract void removeOneRogueExpertiseSkills();
 }
