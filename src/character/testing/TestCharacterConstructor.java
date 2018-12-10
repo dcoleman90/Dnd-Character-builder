@@ -3,23 +3,6 @@ package character.testing;
 import static org.junit.jupiter.api.Assertions.*;
 
 import character.build.Character;
-import character.skills.Acrobatics;
-import character.skills.AnimalHandling;
-import character.skills.Arcana;
-import character.skills.Athletics;
-import character.skills.Deception;
-import character.skills.History;
-import character.skills.Insight;
-import character.skills.Intimidation;
-import character.skills.Investigation;
-import character.skills.Medicine;
-import character.skills.Nature;
-import character.skills.Perception;
-import character.skills.Performance;
-import character.skills.Religion;
-import character.skills.SleightOfHand;
-import character.skills.Stealth;
-import character.skills.Survival;
 
 import org.junit.jupiter.api.Test;
 

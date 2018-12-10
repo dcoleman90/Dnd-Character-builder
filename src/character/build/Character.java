@@ -12,7 +12,6 @@ import character.background.Background;
 import character.background.BackgroundOutlander;
 import character.classType.ClassType;
 import character.classType.Fighter;
-import character.classType.Rogue;
 import character.race.Human;
 import character.race.Race;
 import character.skills.Skill;
