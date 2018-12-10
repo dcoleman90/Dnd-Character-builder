@@ -176,7 +176,46 @@ public class TestRogueExpertise {
 		assertEquals(3, this.frank6.getInvestigationBonus());
 		assertEquals(6, this.frank6.getDeceptionBonus());
 		assertEquals(0, this.frank6.getStealthBonus());
-		assertEquals(1, this.frank6.getClassType().rogueExpertiseSkills(6));
+		assertEquals(1, this.frank6.getClassType().rogueExpertiseSkills(this.frank6.getLevel()));
+	}
+	
+	
+	/**
+	 * Testing carbon copy of above test
+	 * 
+	 * THIS test is testing the setLevel - insuring that when the Level is changed the rest of the character's atrubiutes follows suit
+	 * 
+	 * All 4 of the rogues profiecences are used before stealth is reached
+	 * 
+	 * 1st Acrobatics
+	 * Athletics is granted because of the outlander background
+	 * 2nd Deception
+	 * 3rd insight
+	 * 4th investigation
+	 * 
+	 * Stealth is left out thus cannot gain the setRogueExpertise benifit
+	 */
+	@Test
+	void testExpertiseShouldDoubleProfBonusStealthAthButNotDecpOutOfExpertiseAtSETLEVEL1() {
+		this.frank6.setLevel(1);
+		this.frank6.setProficentClassTypeSkill(this.acro);
+		this.frank6.setProficentClassTypeSkill(this.ath);
+		this.frank6.setProficentClassTypeSkill(this.decp);
+		this.frank6.setProficentClassTypeSkill(this.insight);
+		this.frank6.setProficentClassTypeSkill(this.inv);
+		this.frank6.setProficentClassTypeSkill(this.stealth);
+		
+		this.frank6.setRogueExpertise(this.stealth);
+		this.frank6.setRogueExpertise(this.ath);
+		this.frank6.setRogueExpertise(this.decp);
+		this.frank6.setRogueExpertise(this.insight);
+		
+		assertEquals(4, this.frank6.getAthleticBonus());
+		assertEquals(2, this.frank6.getInsightBonus());
+		assertEquals(2, this.frank6.getInvestigationBonus());
+		assertEquals(4, this.frank6.getDeceptionBonus());
+		assertEquals(0, this.frank6.getStealthBonus());
+		assertEquals(0, this.frank6.getClassType().rogueExpertiseSkills(this.frank6.getLevel()));
 	}
 	
 	

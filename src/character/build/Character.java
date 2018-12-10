@@ -266,12 +266,9 @@ public class Character {
 
 	public void setLevel(int acceptedLevel) {
 		this.level = acceptedLevel;
-//		if (acceptedLevel > 0 && acceptedLevel <= 20) {
-//			this.level = acceptedLevel;
-//			new Character(this.name, this.getStrScore(), this.getDexScore(), this.getConScore(), this.getIntellScore(),
-//					this.getWisScore(), this.getCharismaScore(), this.race, this.classType, this.level,
-//					this.background);
-//		}
+		this.setUpSkillScores();
+		this.setBackGroundProficentSkill();
+		
 	}
 
 	public int getStrScore() {
