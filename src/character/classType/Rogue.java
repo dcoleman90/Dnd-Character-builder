@@ -75,7 +75,6 @@ public class Rogue extends ClassType {
 	@Override
 	public void removeOneRogueExpertiseSkills() {
 		this.expertiseRanks++;
-		
 	}
 	
 }

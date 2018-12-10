@@ -98,7 +98,6 @@ public abstract class ClassType {
 		for (int count = 0; count < proficentSkills.size(); count++) {
 			if (classSkill.getClass().equals(proficentSkills.get(count).getClass()) && this.numberClassSkills > 0) {
 				isPSkill = true;
-				break;
 			}
 		}
 		return isPSkill;

@@ -34,7 +34,7 @@ public class Skills {
 		this.characterSkills = new ArrayList<Skill>();
 		this.initializeSkills();
 		
-		
+		this.athletic.addSkill(str.getAbilityBonus());
 		this.acrobatic.addSkill(dex.getAbilityBonus());
 		this.sleightOfHand.addSkill(dex.getAbilityBonus());
 		this.stealth.addSkill(dex.getAbilityBonus());

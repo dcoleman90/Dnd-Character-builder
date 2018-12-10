@@ -9,10 +9,7 @@ import character.abilities.Intelligence;
 import character.abilities.Strength;
 import character.abilities.Wisdom;
 import character.background.Background;
-import character.background.BackgroundOutlander;
 import character.classType.ClassType;
-import character.classType.Fighter;
-import character.race.Human;
 import character.race.Race;
 import character.skills.Skill;
 import character.skills.Skills;
@@ -34,24 +31,23 @@ public class Character {
 	private Background background;
 
 	/**
-	 * Builds a default character with default value of 10 to all scores
+	 * Set Character with level
+	 * 
+	 * Builds a default character with default value of 10 to all scores With the
+	 * accepted Level, ClassType, Background and Race
+	 * 
+	 * @param level
 	 */
-	public Character() {
-		this.setName("New Player");
-		this.str = new Strength();
-		this.dex = new Dexterity();
-		this.con = new Constitution();
-		this.intell = new Intelligence();
-		this.wis = new Wisdom();
-		this.charisma = new Charisma();
-		this.race = new Human();
-		this.classType = new Fighter();
-		this.level = 1;
-		this.rightHand = new Hand();
-		this.leftHand = new Hand();
-		this.background = new BackgroundOutlander();
-		this.setup();
+	public Character(int level, ClassType classtype, Background background, Race race) {
+		if (level > 0 && level < 21) {
+			this.level = level;
+		}
 
+		this.classType = classtype;
+		this.background = background;
+		this.race = race;
+		this.initializeDefault();
+		this.setup();
 	}
 
 	/**
@@ -68,7 +64,6 @@ public class Character {
 	public Character(String name, int acceptedStr, int acceptedDex, int acceptedCon, int acceptedIntell,
 			int acceptedWis, int acceptedCharisma, Race acceptedRace, ClassType acceptedClass, int level,
 			Background background) {
-		this();
 		if (name.isEmpty()) {
 			this.setName("New Player");
 		} else {
@@ -90,11 +85,29 @@ public class Character {
 		}
 
 		this.background = background;
-		this.setup();
+		this.initializeHands();
 
 	}
 
-	public void setup() {
+	private void initializeDefault() {
+		this.setName("New Player");
+		this.str = new Strength();
+		this.dex = new Dexterity();
+		this.con = new Constitution();
+		this.intell = new Intelligence();
+		this.wis = new Wisdom();
+		this.charisma = new Charisma();
+		this.initializeHands();
+
+	}
+
+	private void initializeHands() {
+		this.rightHand = new Hand();
+		this.leftHand = new Hand();
+		this.setup();
+	}
+
+	private void setup() {
 		this.setAbilityScores();
 		this.setUpSkillScores();
 		this.setBackGroundProficentSkill();
@@ -154,14 +167,6 @@ public class Character {
 		}
 	}
 
-	public void setBackgroundSkill(Skill backgroundSkill) {
-		int profBonus = this.classType.getProficiencyBonus(this.level);
-		if (!this.getSkill(backgroundSkill).isProfSkill()) {
-			this.addProficentBonus(backgroundSkill, profBonus);
-			this.getSkill(backgroundSkill).setProfSkill(true);
-		}
-	}
-
 	/**
 	 * This method adds the proficentBonus to 2 background skills It needs to be
 	 * implemented BEFORE class skills
@@ -173,7 +178,16 @@ public class Character {
 		this.setBackgroundSkill(this.background.getSkillProf2());
 	}
 
+	public void setBackgroundSkill(Skill backgroundSkill) {
+		int profBonus = this.classType.getProficiencyBonus(this.level);
+		if (!this.getSkill(backgroundSkill).isProfSkill()) {
+			this.addProficentBonus(backgroundSkill, profBonus);
+			this.getSkill(backgroundSkill).setProfSkill(true);
+		}
+	}
+
 	private Skill getSkill(Skill searchedSkill) {
+
 		for (int count = 0; count < this.skills.getCharactersSkills().size(); count++) {
 			if (searchedSkill.getClass().equals(this.skills.getCharactersSkills().get(count).getClass())) {
 				return this.skills.getCharactersSkills().get(count);
@@ -184,6 +198,7 @@ public class Character {
 
 	private void addProficentBonus(Skill classSkill, int bonusAdded) {
 		for (int count = 0; count < this.skills.getCharactersSkills().size(); count++) {
+
 			if (classSkill.getClass().equals(this.skills.getCharactersSkills().get(count).getClass())) {
 				this.skills.getCharactersSkills().get(count).addSkill(bonusAdded);
 			}
@@ -206,7 +221,8 @@ public class Character {
 	 * This method is specific to the ROGUE CLASSTYPE
 	 *
 	 * I DO NOT LIKE that it is apart of ALL CHARACTERS - but as built all
-	 * ClassTypes are reference charts for Character - it asks them and they tell it yes or no
+	 * ClassTypes are reference charts for Character - it asks them and they tell it
+	 * yes or no
 	 * 
 	 * This is frustrating
 	 *
@@ -250,6 +266,12 @@ public class Character {
 
 	public void setLevel(int acceptedLevel) {
 		this.level = acceptedLevel;
+//		if (acceptedLevel > 0 && acceptedLevel <= 20) {
+//			this.level = acceptedLevel;
+//			new Character(this.name, this.getStrScore(), this.getDexScore(), this.getConScore(), this.getIntellScore(),
+//					this.getWisScore(), this.getCharismaScore(), this.race, this.classType, this.level,
+//					this.background);
+//		}
 	}
 
 	public int getStrScore() {
