@@ -47,7 +47,6 @@ public class Character {
 		this.background = background;
 		this.race = race;
 		this.initializeDefault();
-		this.setup();
 	}
 
 	/**
@@ -268,7 +267,7 @@ public class Character {
 		this.level = acceptedLevel;
 		this.setUpSkillScores();
 		this.setBackGroundProficentSkill();
-		
+
 	}
 
 	public int getStrScore() {

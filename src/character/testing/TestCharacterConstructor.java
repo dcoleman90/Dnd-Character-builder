@@ -2,12 +2,20 @@ package character.testing;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import character.background.Background;
+import character.background.BackgroundOutlander;
 import character.build.Character;
+import character.classType.Fighter;
+import character.race.Human;
+import character.race.Race;
 
 import org.junit.jupiter.api.Test;
 
 class TestCharacterConstructor {
-	Character hero = new Character();
+	Race human = new Human();
+	Background outlander = new BackgroundOutlander();
+	Fighter fighter = new Fighter();
+	Character hero = new Character(1, fighter, outlander, human);
 
 	/**
 	 * This test will check the default constructor by comparing the toString method

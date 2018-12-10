@@ -10,12 +10,14 @@ import character.background.BackgroundOutlander;
 import character.build.Character;
 import character.classType.Fighter;
 import character.race.Human;
+import character.race.Race;
 
 class TestSkills {
-	Character hero = new Character();
-	Human human = new Human();
-	Fighter fight = new Fighter();
+	Race human = new Human();
 	Background outlander = new BackgroundOutlander();
+	Fighter fighter = new Fighter();
+	Character hero = new Character(1, fighter, outlander, human);
+	Fighter fight = new Fighter();
 	Character drew = new Character("name", 7, 18, 16, -6, 10, 14, human, fight, 1, outlander);
 
 	/**
@@ -61,7 +63,7 @@ class TestSkills {
 		assertEquals(4, drew.getArrayListSkill().get(0).getSkill());
 		assertEquals(0, drew.getArrayListSkill().get(1).getSkill());
 		assertEquals(-7, drew.getArrayListSkill().get(2).getSkill());
-		assertEquals(1, drew.getArrayListSkill().get(3).getSkill());
+		assertEquals(0, drew.getArrayListSkill().get(3).getSkill());
 		assertEquals(2, drew.getArrayListSkill().get(4).getSkill());
 
 	}

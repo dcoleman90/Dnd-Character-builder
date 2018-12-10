@@ -4,7 +4,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import character.background.Background;
+import character.background.BackgroundOutlander;
 import character.build.Character;
+import character.classType.Fighter;
+import character.race.Human;
+import character.race.Race;
 import character.skills.Acrobatics;
 import character.skills.AnimalHandling;
 import character.skills.Arcana;
@@ -24,8 +29,11 @@ import character.skills.Stealth;
 import character.skills.Survival;
 
 class TestCharacterProficientBonus {
-	Character hero = new Character();
-
+	Race human = new Human();
+	Background outlander = new BackgroundOutlander();
+	Fighter fighter = new Fighter();
+	Character hero = new Character(1, fighter, outlander, human);
+	
 	// Allowed Skills for fighters/default character
 	Athletics ath = new Athletics(0);
 	History hist = new History(0);
