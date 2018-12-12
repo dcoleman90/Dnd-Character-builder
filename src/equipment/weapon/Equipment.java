@@ -9,5 +9,11 @@ public abstract class Equipment {
 	public abstract double getWeight();
 
 	public abstract boolean isSpecial();
+	
+	public abstract boolean isLight();
+	
+	public abstract String cost();
+	
+	public abstract String name();
 
 }

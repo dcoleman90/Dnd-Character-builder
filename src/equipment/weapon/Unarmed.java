@@ -101,4 +101,16 @@ public class Unarmed extends MeleeWeapon{
 		return true;
 	}
 
+	@Override
+	public String cost() {
+		return "No cost";
+	}
+
+	@Override
+	public String name() {
+		return "Unarmed ";
+	}
+	
+	
+
 }

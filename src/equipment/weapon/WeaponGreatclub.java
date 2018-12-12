@@ -7,7 +7,7 @@ import dnd.dice.Dice;
 public class WeaponGreatclub extends HeavyMeleeWeapon {
 	private Dice OneD8 = new Dice(8);
 	Bludgeoning bludge = new Bludgeoning();
-	
+
 	@Override
 	public int getDamage() {
 		return this.OneD8.rollDice(1);
@@ -42,6 +42,16 @@ public class WeaponGreatclub extends HeavyMeleeWeapon {
 	@Override
 	public boolean isMartial() {
 		return false;
+	}
+
+	@Override
+	public String cost() {
+		return "2 Silver pieces ";
+	}
+
+	@Override
+	public String name() {
+		return "Great Club ";
 	}
 
 }

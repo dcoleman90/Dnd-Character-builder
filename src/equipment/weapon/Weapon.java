@@ -18,8 +18,6 @@ public abstract class Weapon extends Equipment {
 
 	public abstract boolean isFinesse();
 
-	public abstract boolean isLight();
-
 	public abstract boolean isLoading();
 
 	public abstract boolean isRange();
