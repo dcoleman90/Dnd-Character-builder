@@ -2,6 +2,9 @@ package character.classType;
 
 import java.util.ArrayList;
 
+import character.abilities.Ability;
+import character.abilities.Constitution;
+import character.abilities.Strength;
 import character.skills.Acrobatics;
 import character.skills.AnimalHandling;
 import character.skills.Athletics;
@@ -14,6 +17,7 @@ import character.skills.Survival;
 
 public class Fighter extends ClassType {
 	private ArrayList<Skill> proficentSkills;
+	private ArrayList<Ability> proficentAbility;
 
 	/**
 	 * Fighters start with 10 hitpoints plus a number 1-10 randomly and con bonus
@@ -33,6 +37,11 @@ public class Fighter extends ClassType {
 		Intimidation intim = new Intimidation(0);
 		Perception perc = new Perception(0);
 		Survival surv = new Survival(0);
+		Strength str = new Strength();
+		Constitution con = new Constitution();
+		this.proficentAbility = new ArrayList<Ability>();
+		this.proficentAbility.add(con);
+		this.proficentAbility.add(str);
 		this.proficentSkills = new ArrayList<Skill>();
 		this.proficentSkills.add(acro);
 		this.proficentSkills.add(ah);
@@ -97,6 +106,11 @@ public class Fighter extends ClassType {
 	@Override
 	public boolean isProfShields() {
 		return true;
+	}
+
+	@Override
+	public boolean isClassSavingThrow(Ability savingThrow) {
+		return super.checkProfSavingThrows(this.proficentAbility, savingThrow);
 	}
 
 }

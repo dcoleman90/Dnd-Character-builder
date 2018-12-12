@@ -2,10 +2,12 @@ package character.build;
 
 import java.util.ArrayList;
 
+import character.abilities.Ability;
 import character.abilities.Charisma;
 import character.abilities.Constitution;
 import character.abilities.Dexterity;
 import character.abilities.Intelligence;
+import character.abilities.SavingThrows;
 import character.abilities.Strength;
 import character.abilities.Wisdom;
 import character.background.Background;
@@ -22,6 +24,7 @@ public class Character {
 	private Intelligence intell;
 	private Wisdom wis;
 	private Charisma charisma;
+	private SavingThrows savingThrow;
 	private Race race;
 	private Skills skills;
 	private ClassType classType;
@@ -74,6 +77,7 @@ public class Character {
 		this.intell = new Intelligence(acceptedIntell);
 		this.wis = new Wisdom(acceptedWis);
 		this.charisma = new Charisma(acceptedCharisma);
+		this.savingThrow = new SavingThrows(this.str, this.dex, this.con, this.intell, this.wis, this.charisma);
 		this.race = acceptedRace;
 		this.classType = acceptedClass;
 
@@ -96,6 +100,7 @@ public class Character {
 		this.intell = new Intelligence();
 		this.wis = new Wisdom();
 		this.charisma = new Charisma();
+		this.savingThrow = new SavingThrows(this.str, this.dex, this.con, this.intell, this.wis, this.charisma);
 		this.initializeHands();
 
 	}
@@ -110,6 +115,7 @@ public class Character {
 		this.setAbilityScores();
 		this.setUpSkillScores();
 		this.setBackGroundProficentSkill();
+		this.setUpSavingThrowsProf();
 	}
 
 	public String toString() {
@@ -125,7 +131,6 @@ public class Character {
 	 */
 
 	private void setAbilityScores() {
-	
 		this.str.addScore(this.race.abilityScoreAlterations(this.str));
 		this.dex.addScore(this.race.abilityScoreAlterations(this.dex));
 		this.con.addScore(this.race.abilityScoreAlterations(this.con));
@@ -173,15 +178,24 @@ public class Character {
 	 * 
 	 * @param classSkill
 	 */
-	public void setBackGroundProficentSkill() {
-				this.setBackgroundSkill(this.background.getSkillProf2());
-				this.setBackgroundSkill(this.background.getSkillProf1());
+	private void setBackGroundProficentSkill() {
+		this.setBackgroundSkill(this.background.getSkillProf2());
+		this.setBackgroundSkill(this.background.getSkillProf1());
+
+	}
+
+	private void setUpSavingThrowsProf() {
+		for (int count = 0; count < this.savingThrow.getSavingThrows().size(); count++) {
+			if (this.classType.isClassSavingThrow(this.savingThrow.getSavingThrows().get(count))) {
+				this.savingThrow.getSavingThrows().get(count).setProfSavingThrow(true);
+			}
+		}
 
 	}
 
 	public void setBackgroundSkill(Skill backgroundSkill) {
 		int profBonus = this.classType.getProficiencyBonus(this.level);
-	
+
 		if (!this.getSkill(backgroundSkill).isProfSkill()) {
 			this.addProficentBonus(backgroundSkill, profBonus);
 			this.getSkill(backgroundSkill).setProfSkill(true);
@@ -329,14 +343,14 @@ public class Character {
 		this.race = race;
 		this.setup();
 	}
-	
+
 	private void removeRaceAbilityScores() {
 		this.str = new Strength();
 		this.dex = new Dexterity();
 		this.con = new Constitution();
 		this.intell = new Intelligence();
 		this.wis = new Wisdom();
-		this.charisma = new Charisma();		
+		this.charisma = new Charisma();
 	}
 
 	public Skills getSkills() {
@@ -358,7 +372,8 @@ public class Character {
 	}
 
 	/**
-	 * GETTERS FOR ABILITYs, SKILLS, BACKGROUNDS, RACES, and CLASSTYPEs
+	 * GETTERS FOR ABILITYs, SKILLS, BACKGROUNDS, RACES, SAVING THROWS, and
+	 * CLASSTYPEs
 	 */
 
 	public int getAcrobaticsBonus() {
@@ -465,4 +480,34 @@ public class Character {
 		return charisma;
 	}
 
+	public int getStrSavingThrow() {
+		return this.savingThrowHelper(this.str);
+	}
+	
+	public int getDexSavingThrow() {
+		return this.savingThrowHelper(this.dex);
+	}
+	
+	public int getConSavingThrow() {
+		return this.savingThrowHelper(this.con);
+	}
+	
+	public int getIntellSavingThrow() {
+		return this.savingThrowHelper(this.intell);
+	}
+	
+	public int getWisSavingThrow() {
+		return this.savingThrowHelper(this.wis);
+	}
+	
+	public int getCharismaSavingThrow() {
+		return this.savingThrowHelper(this.charisma);
+	}
+
+	private int savingThrowHelper(Ability searchedAbility) {
+		if (searchedAbility.isProfSavingThrow()) {
+			return searchedAbility.getAbilityBonus() + this.classType.getProficiencyBonus(this.level);
+		}
+		return searchedAbility.getAbilityBonus();
+	}
 }

@@ -3,6 +3,7 @@ package character.classType;
 import java.util.ArrayList;
 import java.util.Random;
 
+import character.abilities.Ability;
 import character.skills.Skill;
 
 public abstract class ClassType {
@@ -78,14 +79,6 @@ public abstract class ClassType {
 	}
 
 	/**
-	 * This method returns true if the skill is one of the acceptable class skills
-	 * 
-	 * @param classSkill
-	 * @return
-	 */
-	public abstract boolean isClassSkill(Skill classSkill);
-
-	/**
 	 * This method is protected to insure that it can only be accessed by its
 	 * subclasses and not directly influenced by the character class
 	 * 
@@ -111,6 +104,26 @@ public abstract class ClassType {
 		this.numberClassSkills = numberClassSkills;
 	}
 	
+	protected boolean checkProfSavingThrows(ArrayList<Ability> profSavingThrows, Ability searchedAbility) {
+		boolean isPAbility = false;
+		for (int count = 0; count < profSavingThrows.size(); count++) {
+			if(searchedAbility.getClass().equals(profSavingThrows.get(count).getClass())) {
+				isPAbility = true;
+			}
+		}
+		return isPAbility;
+	}
+	
+
+	/**
+	 * This method returns true if the skill is one of the acceptable class skills
+	 * 
+	 * @param classSkill
+	 * @return
+	 */
+	public abstract boolean isClassSkill(Skill classSkill);
+
+	public abstract boolean isClassSavingThrow(Ability savingThrow);
 	public abstract String toString();
 	public abstract int rogueExpertiseSkills(int level);
 	public abstract void removeOneRogueExpertiseSkills();

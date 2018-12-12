@@ -5,6 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
+
+import character.abilities.Charisma;
+import character.abilities.Constitution;
+import character.abilities.Dexterity;
+import character.abilities.Intelligence;
+import character.abilities.Strength;
+import character.abilities.Wisdom;
 import character.classType.Rogue;
 import character.skills.Acrobatics;
 import character.skills.AnimalHandling;
@@ -45,13 +52,22 @@ public class TestClassTypeRogue {
 	AnimalHandling ah = new AnimalHandling(0);
 	Survival surv = new Survival(0);
 	Medicine med = new Medicine(0);
+
 	Nature nat = new Nature(0);
 	Religion relg = new Religion(0);
+
+	// Abilities
+	Strength str = new Strength();
+	Dexterity dex = new Dexterity();
+	Constitution con = new Constitution();
+	Intelligence intell = new Intelligence();
+	Wisdom wis = new Wisdom();
+	Charisma charima = new Charisma();
 
 	/**
 	 * This test will insure the correct skills are labeled as Rogue skills
 	 * 
-	 * Split into for for easier diagnoses 
+	 * Split into for for easier diagnoses
 	 * 
 	 * 
 	 */
@@ -63,7 +79,6 @@ public class TestClassTypeRogue {
 		assertFalse(rogue.isClassSkill(this.ah));
 	}
 
-
 	@Test
 	void testProficientSkillsInsightIntimPercSurvial() {
 		assertTrue(rogue.isClassSkill(this.insight));
@@ -71,7 +86,6 @@ public class TestClassTypeRogue {
 		assertTrue(rogue.isClassSkill(this.perc));
 		assertFalse(rogue.isClassSkill(this.surv));
 	}
-
 
 	@Test
 	void testNotProficientSkillsArcaDecpInvMedNat() {
@@ -89,10 +103,9 @@ public class TestClassTypeRogue {
 		assertTrue(rogue.isClassSkill(this.sOH));
 		assertTrue(rogue.isClassSkill(this.stealth));
 	}
-	
-	
+
 	/**
-	 * These next test insure that the hitpoints are set accordingly 
+	 * These next test insure that the hitpoints are set accordingly
 	 */
 
 	@Test
@@ -101,29 +114,44 @@ public class TestClassTypeRogue {
 		rogue.setHitPoints(1, 1);
 		assertEquals(rogue.getHitPoints(), 9);
 	}
-	
+
 	@Test
 	void testSetHitPointsWithLevel2RogueWith1Con() {
-		for(int count = 0; count < 10000; count++) {
+		for (int count = 0; count < 10000; count++) {
 			this.rogue.setHitPoints(2, 1);
 			assertTrue(11 <= this.rogue.getHitPoints() && this.rogue.getHitPoints() <= 18);
 		}
 	}
-	
+
 	@Test
 	void testSetHitPointsWithLevel2RogueWith5Con() {
-		for(int count = 0; count < 10000; count++) {
+		for (int count = 0; count < 10000; count++) {
 			this.rogue.setHitPoints(2, 5);
 			assertTrue(19 <= this.rogue.getHitPoints() && this.rogue.getHitPoints() <= 26);
 		}
 	}
-	
+
 	@Test
 	void testSetHitPointsWithLevel5RogueWith1Con() {
-		for(int count = 0; count < 10000; count++) {
+		for (int count = 0; count < 10000; count++) {
 			this.rogue.setHitPoints(5, 1);
 			assertTrue(17 <= this.rogue.getHitPoints() && this.rogue.getHitPoints() <= 45);
 		}
+	}
+
+	@Test
+	void testSavingThrowsTRUE_Prof() {
+		assertTrue(this.rogue.isClassSavingThrow(this.dex));
+		assertTrue(this.rogue.isClassSavingThrow(this.intell));
+	}
+
+	@Test
+	void testSavingThrowsFalseProf() {
+		assertFalse(this.rogue.isClassSavingThrow(this.str));
+		assertFalse(this.rogue.isClassSavingThrow(this.con));
+		assertFalse(this.rogue.isClassSavingThrow(this.charima));
+		assertFalse(this.rogue.isClassSavingThrow(this.wis));
+
 	}
 
 }

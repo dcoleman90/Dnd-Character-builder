@@ -2,6 +2,9 @@ package character.classType;
 
 import java.util.ArrayList;
 
+import character.abilities.Ability;
+import character.abilities.Dexterity;
+import character.abilities.Intelligence;
 import character.skills.Acrobatics;
 import character.skills.Athletics;
 import character.skills.Deception;
@@ -17,6 +20,7 @@ import character.skills.Stealth;
 
 public class Rogue extends ClassType {
 	private ArrayList<Skill> proficentSkills;
+	private ArrayList<Ability> proficentAbility;
 	private int expertiseRanks;
 	
 	public Rogue() {
@@ -34,6 +38,11 @@ public class Rogue extends ClassType {
 		Persuasion persu = new Persuasion(0);
 		SleightOfHand sOH = new SleightOfHand(0);
 		Stealth stealth = new Stealth(0);
+		Intelligence intel = new Intelligence();
+		Dexterity dex = new Dexterity();
+		this.proficentAbility = new ArrayList<Ability>();
+		this.proficentAbility.add(intel);
+		this.proficentAbility.add(dex);
 		this.proficentSkills = new ArrayList<Skill>();
 		this.proficentSkills.add(acro);
 		this.proficentSkills.add(ath);
@@ -95,6 +104,11 @@ public class Rogue extends ClassType {
 	@Override
 	public boolean isProfShields() {
 		return true;
+	}
+	
+	@Override
+	public boolean isClassSavingThrow(Ability savingThrow) {
+		return super.checkProfSavingThrows(this.proficentAbility, savingThrow);
 	}
 	
 }
