@@ -188,6 +188,8 @@ public class Character {
 		for (int count = 0; count < this.savingThrow.getSavingThrows().size(); count++) {
 			if (this.classType.isClassSavingThrow(this.savingThrow.getSavingThrows().get(count))) {
 				this.savingThrow.getSavingThrows().get(count).setProfSavingThrow(true);
+			} else {
+				this.savingThrow.getSavingThrows().get(count).setProfSavingThrow(false);
 			}
 		}
 
@@ -369,6 +371,7 @@ public class Character {
 		this.classType = acceptedClassType;
 		this.setUpSkillScores();
 		this.setBackGroundProficentSkill();
+		this.setUpSavingThrowsProf();
 	}
 
 	/**

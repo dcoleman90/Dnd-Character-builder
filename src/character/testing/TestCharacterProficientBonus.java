@@ -8,6 +8,7 @@ import character.background.Background;
 import character.background.BackgroundOutlander;
 import character.build.Character;
 import character.classType.Fighter;
+import character.classType.Rogue;
 import character.race.Human;
 import character.race.Race;
 import character.skills.Acrobatics;
@@ -207,6 +208,28 @@ class TestCharacterProficientBonus {
 		assertEquals(this.hero.getSkills().getAcrobatic().getSkill(), 2);
 		assertEquals(this.hero.getSkills().getAcrobatic().isProfSkill(), true);
 		assertEquals(this.hero.getSkills().getNature().isProfSkill(), false);
-
+	}
+	
+	
+	@Test
+	void testSavingThrows() {
+		assertEquals(2, this.hero.getConSavingThrow());
+		assertEquals(2, this.hero.getStrSavingThrow());
+		assertEquals(0, this.hero.getDexSavingThrow());
+		assertEquals(0, this.hero.getWisSavingThrow());
+		assertEquals(0, this.hero.getIntellSavingThrow());
+		assertEquals(0, this.hero.getCharismaSavingThrow());
+	}
+	
+	@Test
+	void testSavingThrowsResetAfterHeroChangesClasses() {
+		Rogue rogue = new Rogue();
+		this.hero.setClassType(rogue);
+		assertEquals(0, this.hero.getConSavingThrow());
+		assertEquals(0, this.hero.getStrSavingThrow());
+		assertEquals(2, this.hero.getDexSavingThrow());
+		assertEquals(0, this.hero.getWisSavingThrow());
+		assertEquals(2, this.hero.getIntellSavingThrow());
+		assertEquals(0, this.hero.getCharismaSavingThrow());
 	}
 }
