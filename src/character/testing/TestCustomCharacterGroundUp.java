@@ -78,7 +78,7 @@ class TestCustomCharacterGroundUp {
 		assertEquals(1, frank.getSkills().getAcrobatic().getSkill());
 		assertEquals(1, frank.getSkills().getAnimalHandle().getSkill());
 		assertEquals(1, frank.getSkills().getArcana().getSkill());
-		assertEquals(3, frank.getSkills().getAthletic().getSkill());
+		assertEquals(3, frank.getSkills().getAthletic().getSkill()); // THIS TEST FAILS NEED TO FIND OUT WHY
 		assertEquals(1, frank.getSkills().getDeception().getSkill());
 		assertEquals(1, frank.getSkills().getHistory().getSkill());
 		assertEquals(1, frank.getSkills().getInsight().getSkill());
@@ -129,12 +129,14 @@ class TestCustomCharacterGroundUp {
 	/**
 	 * Test add perc and surv skills to be prof - and gain proficiency
 	 * 
-	 * Performance is NOT allowed and should not gain a bonus
-	 * History IS allowed - and added because BACKGROUND added survial bonus
+	 * Performance is NOT allowed and should not gain a bonus History IS allowed -
+	 * and added because BACKGROUND added survial bonus
 	 * 
-	 * Insight is allowed - but is NOT added because fighter class gets ONLY 2 proficiency 
+	 * Insight is allowed - but is NOT added because fighter class gets ONLY 2
+	 * proficiency
 	 * 
-	 * THIS TEST IS THE FIRST ONE WITH CHARACTER HAVING DIRECT METHODS TO ACCESS THE SKILL BONUS
+	 * THIS TEST IS THE FIRST ONE WITH CHARACTER HAVING DIRECT METHODS TO ACCESS THE
+	 * SKILL BONUS
 	 */
 	@Test
 	void testPercAndSurvSkillsAsProf() {
@@ -150,7 +152,7 @@ class TestCustomCharacterGroundUp {
 		assertEquals(0, frank.getRemainingClassTypeProf());
 		assertEquals(1, frank.getInsightBonus());
 	}
-	
+
 	/**
 	 * Test to insure the background has set the survival and Athletic bonuses
 	 */

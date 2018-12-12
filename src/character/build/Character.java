@@ -125,12 +125,12 @@ public class Character {
 	 */
 
 	private void setAbilityScores() {
-		this.str.addScore(this.race.abilityScoreAlterations(str));
-		this.dex.addScore(this.race.abilityScoreAlterations(dex));
-		this.con.addScore(this.race.abilityScoreAlterations(con));
-		this.intell.addScore(this.race.abilityScoreAlterations(intell));
-		this.wis.addScore(this.race.abilityScoreAlterations(wis));
-		this.charisma.addScore(this.race.abilityScoreAlterations(charisma));
+		this.str.addScore(this.race.abilityScoreAlterations(this.str));
+		this.dex.addScore(this.race.abilityScoreAlterations(this.dex));
+		this.con.addScore(this.race.abilityScoreAlterations(this.con));
+		this.intell.addScore(this.race.abilityScoreAlterations(this.intell));
+		this.wis.addScore(this.race.abilityScoreAlterations(this.wis));
+		this.charisma.addScore(this.race.abilityScoreAlterations(this.charisma));
 	}
 
 	private void setUpSkillScores() {
@@ -323,7 +323,18 @@ public class Character {
 	}
 
 	public void setRace(Race race) {
+		this.removeRaceAbilityScores();
 		this.race = race;
+		this.setup();
+	}
+	
+	private void removeRaceAbilityScores() {
+		this.str.addScore(this.str.getAbilityBonus() - this.race.abilityScoreAlterations(str));
+		this.dex.addScore(this.dex.getAbilityBonus() - this.race.abilityScoreAlterations(dex));
+		this.con.addScore(this.con.getAbilityBonus() - this.race.abilityScoreAlterations(con));
+		this.intell.addScore(this.intell.getAbilityBonus() - this.race.abilityScoreAlterations(intell));
+		this.wis.addScore(this.wis.getAbilityBonus() - this.race.abilityScoreAlterations(wis));
+		this.charisma.addScore(this.charisma.getAbilityBonus() - this.race.abilityScoreAlterations(charisma));
 	}
 
 	public Skills getSkills() {

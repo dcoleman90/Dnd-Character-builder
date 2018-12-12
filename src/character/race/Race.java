@@ -6,7 +6,7 @@ import character.size.Size;
 public abstract class Race {
 	
 	public abstract int abilityScoreAlterations(Ability acceptedAbility);
-
+	
 	public abstract Size getSize();
 
 	public abstract void setSizeText(String sizeText);
