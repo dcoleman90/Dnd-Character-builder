@@ -30,7 +30,7 @@ void testAbilitySecondConstructorWithPositiveValues() {
 	Ability intelligence10 = new Intelligence(10);
 	assertEquals(intelligence10.getScore(), 10);
 	Ability intelligence100 = new Intelligence(100);
-	assertEquals(intelligence100.getScore(), 100);
+	assertEquals(intelligence100.getScore(), 10);
 }
 
 
@@ -41,11 +41,11 @@ void testAbilitySecondConstructorWithPositiveValues() {
 @Test
 void testAbilitySecondConstructorWithNegativeValues() {
 	Ability intelligence9 = new Intelligence(-9);
-	assertEquals(intelligence9.getScore(), -9);
+	assertEquals(intelligence9.getScore(), 10);
 	Ability intelligence90 = new Intelligence(-90);
-	assertEquals(intelligence90.getScore(), -90);
+	assertEquals(intelligence90.getScore(), 10);
 	Ability intelligence900 = new Intelligence(-900);
-	assertEquals(intelligence900.getScore(), -900);
+	assertEquals(intelligence900.getScore(), 10);
 }
 
 /**
@@ -66,7 +66,7 @@ void testAbilityAddScore() {
 void testAbilityAddScoreWithNegativeValues() {
 	assertEquals(this.intelligence.getScore(), 10);
 	this.intelligence.addScore(-25);
-	assertEquals(this.intelligence.getScore(), -15);
+	assertEquals(this.intelligence.getScore(), 1);
 	
 }
 }

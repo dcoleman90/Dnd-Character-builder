@@ -30,7 +30,7 @@ void testAbilitySecondConstructorWithPositiveValues() {
 	Ability charisma12 = new Charisma(12);
 	assertEquals(charisma12.getScore(), 12);
 	Ability charisma122 = new Charisma(122);
-	assertEquals(charisma122.getScore(), 122);
+	assertEquals(charisma122.getScore(), 10);
 }
 
 
@@ -41,11 +41,11 @@ void testAbilitySecondConstructorWithPositiveValues() {
 @Test
 void testAbilitySecondConstructorWithNegativeValues() {
 	Ability charisma6 = new Charisma(-6);
-	assertEquals(charisma6.getScore(), -6);
+	assertEquals(charisma6.getScore(), 10);
 	Ability charisma62 = new Charisma(-62);
-	assertEquals(charisma62.getScore(), -62);
+	assertEquals(charisma62.getScore(), 10);
 	Ability charisma622 = new Charisma(-622);
-	assertEquals(charisma622.getScore(), -622);
+	assertEquals(charisma622.getScore(), 10);
 }
 
 /**
@@ -66,7 +66,7 @@ void testAbilityAddScore() {
 void testAbilityAddScoreWithNegativeValues() {
 	assertEquals(this.charisma.getScore(), 10);
 	this.charisma.addScore(-15);
-	assertEquals(this.charisma.getScore(), -5);
+	assertEquals(this.charisma.getScore(), 1);
 	
 }
 }

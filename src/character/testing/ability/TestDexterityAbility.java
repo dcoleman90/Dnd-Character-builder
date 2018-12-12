@@ -30,7 +30,7 @@ void testAbilitySecondConstructorWithPositiveValues() {
 	Ability dexterity30 = new Dexterity(30);
 	assertEquals(dexterity30.getScore(), 30);
 	Ability dexterity300 = new Dexterity(300);
-	assertEquals(dexterity300.getScore(), 300);
+	assertEquals(dexterity300.getScore(), 10);
 }
 
 
@@ -41,11 +41,11 @@ void testAbilitySecondConstructorWithPositiveValues() {
 @Test
 void testAbilitySecondConstructorWithNegativeValues() {
 	Ability dexterity5 = new Dexterity(-5);
-	assertEquals(dexterity5.getScore(), -5);
+	assertEquals(dexterity5.getScore(), 10);
 	Ability dexterity50 = new Dexterity(-50);
-	assertEquals(dexterity50.getScore(), -50);
+	assertEquals(dexterity50.getScore(), 10);
 	Ability dexterity500 = new Dexterity(-500);
-	assertEquals(dexterity500.getScore(), -500);
+	assertEquals(dexterity500.getScore(), 10);
 }
 
 /**

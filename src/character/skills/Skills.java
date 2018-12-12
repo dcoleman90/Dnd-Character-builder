@@ -48,7 +48,6 @@ public class Skills {
 		this.investigation.addSkill(intell.getAbilityBonus());
 		this.nature.addSkill(intell.getAbilityBonus());
 		this.religion.addSkill(intell.getAbilityBonus());
-		this.athletic.addSkill(str.getAbilityBonus());
 		this.deception.addSkill(charisma.getAbilityBonus());
 		this.intimidation.addSkill(charisma.getAbilityBonus());
 		this.performance.addSkill(charisma.getAbilityBonus());

@@ -30,7 +30,7 @@ void testAbilitySecondConstructorWithPositiveValues() {
 	Ability constitution10 = new Constitution(10);
 	assertEquals(constitution10.getScore(), 10);
 	Ability constitution100 = new Constitution(100);
-	assertEquals(constitution100.getScore(), 100);
+	assertEquals(constitution100.getScore(), 10);
 }
 
 
@@ -41,11 +41,11 @@ void testAbilitySecondConstructorWithPositiveValues() {
 @Test
 void testAbilitySecondConstructorWithNegativeValues() {
 	Ability constitution6 = new Constitution(-6);
-	assertEquals(constitution6.getScore(), -6);
+	assertEquals(constitution6.getScore(), 10);
 	Ability constitution60 = new Constitution(-60);
-	assertEquals(constitution60.getScore(), -60);
-	Ability constitution600 = new Constitution(-600);
-	assertEquals(constitution600.getScore(), -600);
+	assertEquals(constitution60.getScore(), 10);
+	Ability constitution600 = new Constitution(-60);
+	assertEquals(constitution600.getScore(), 10);
 }
 
 /**
@@ -66,7 +66,7 @@ void testAbilityAddScore() {
 void testAbilityAddScoreWithNegativeValues() {
 	assertEquals(this.constitution.getScore(), 10);
 	this.constitution.addScore(-15);
-	assertEquals(this.constitution.getScore(), -5);
+	assertEquals(this.constitution.getScore(), 1);
 	
 }
 }

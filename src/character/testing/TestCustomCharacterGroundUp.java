@@ -32,7 +32,7 @@ class TestCustomCharacterGroundUp {
 	Fighter fighter = new Fighter();
 	Race human = new Human();
 	Background outlander = new BackgroundOutlander();
-	Character frank = new Character("Frank", 12, 12, 12, 12, 12, 12, human, fighter, 1, outlander);
+	Character frank = new Character("this.frank", 12, 12, 12, 12, 12, 12, human, fighter, 1, outlander);
 
 	// Allowed Skills for fighters
 	Athletics ath = new Athletics(0);
@@ -60,12 +60,12 @@ class TestCustomCharacterGroundUp {
 	 */
 	@Test
 	void testBuildACharacterFromGroundUpTestingGetAbilityScores() {
-		assertEquals(13, frank.getCharismaScore());
-		assertEquals(13, frank.getConScore());
-		assertEquals(13, frank.getDexScore());
-		assertEquals(13, frank.getIntellScore());
-		assertEquals(13, frank.getStrScore());
-		assertEquals(13, frank.getWisScore());
+		assertEquals(13, this.frank.getCharismaScore());
+		assertEquals(13, this.frank.getConScore());
+		assertEquals(13, this.frank.getDexScore());
+		assertEquals(13, this.frank.getIntellScore());
+		assertEquals(13, this.frank.getStrScore());
+		assertEquals(13, this.frank.getWisScore());
 	}
 
 	/**
@@ -75,24 +75,27 @@ class TestCustomCharacterGroundUp {
 	 */
 	@Test
 	void testBuildACharacterFromGroundUpTestingGetSkillScores() {
-		assertEquals(1, frank.getSkills().getAcrobatic().getSkill());
-		assertEquals(1, frank.getSkills().getAnimalHandle().getSkill());
-		assertEquals(1, frank.getSkills().getArcana().getSkill());
-		assertEquals(3, frank.getSkills().getAthletic().getSkill()); // THIS TEST FAILS NEED TO FIND OUT WHY
-		assertEquals(1, frank.getSkills().getDeception().getSkill());
-		assertEquals(1, frank.getSkills().getHistory().getSkill());
-		assertEquals(1, frank.getSkills().getInsight().getSkill());
-		assertEquals(1, frank.getSkills().getIntimidation().getSkill());
-		assertEquals(1, frank.getSkills().getInvestigation().getSkill());
-		assertEquals(1, frank.getSkills().getMedicine().getSkill());
-		assertEquals(1, frank.getSkills().getNature().getSkill());
-		assertEquals(1, frank.getSkills().getPerception().getSkill());
-		assertEquals(1, frank.getSkills().getPerformance().getSkill());
-		assertEquals(1, frank.getSkills().getPersuasion().getSkill());
-		assertEquals(1, frank.getSkills().getReligion().getSkill());
-		assertEquals(1, frank.getSkills().getSleightOfHand().getSkill());
-		assertEquals(1, frank.getSkills().getStealth().getSkill());
-		assertEquals(3, frank.getSkills().getSurvival().getSkill());
+		assertEquals(1, this.frank.getSkills().getAcrobatic().getSkill());
+		assertEquals(1, this.frank.getSkills().getAnimalHandle().getSkill());
+		assertEquals(1, this.frank.getSkills().getArcana().getSkill());
+		
+		System.out.println(this.frank.getStr().getAbilityBonus() + " " + this.frank.getStrScore() + " " + outlander.getSkillProf1().getSkill() + " " + outlander.getSkillProf2().getSkill());
+		
+		assertEquals(3, this.frank.getAthleticBonus()); // THIS TEST FAILS NEED TO FIND OUT WHY
+		assertEquals(1, this.frank.getSkills().getDeception().getSkill());
+		assertEquals(1, this.frank.getSkills().getHistory().getSkill());
+		assertEquals(1, this.frank.getSkills().getInsight().getSkill());
+		assertEquals(1, this.frank.getSkills().getIntimidation().getSkill());
+		assertEquals(1, this.frank.getSkills().getInvestigation().getSkill());
+		assertEquals(1, this.frank.getSkills().getMedicine().getSkill());
+		assertEquals(1, this.frank.getSkills().getNature().getSkill());
+		assertEquals(1, this.frank.getSkills().getPerception().getSkill());
+		assertEquals(1, this.frank.getSkills().getPerformance().getSkill());
+		assertEquals(1, this.frank.getSkills().getPersuasion().getSkill());
+		assertEquals(1, this.frank.getSkills().getReligion().getSkill());
+		assertEquals(1, this.frank.getSkills().getSleightOfHand().getSkill());
+		assertEquals(1, this.frank.getSkills().getStealth().getSkill());
+		assertEquals(3, this.frank.getSkills().getSurvival().getSkill());
 	}
 
 	/**
@@ -100,14 +103,14 @@ class TestCustomCharacterGroundUp {
 	 */
 	@Test
 	void testProficientSkillsAllowedFigher() {
-		assertTrue(frank.checkProficentSkill(this.ath));
-		assertTrue(frank.checkProficentSkill(this.hist));
-		assertTrue(frank.checkProficentSkill(this.acro));
-		assertTrue(frank.checkProficentSkill(this.ah));
-		assertTrue(frank.checkProficentSkill(this.insight));
-		assertTrue(frank.checkProficentSkill(this.intim));
-		assertTrue(frank.checkProficentSkill(this.perc));
-		assertTrue(frank.checkProficentSkill(this.surv));
+		assertTrue(this.frank.checkProficentSkill(this.ath));
+		assertTrue(this.frank.checkProficentSkill(this.hist));
+		assertTrue(this.frank.checkProficentSkill(this.acro));
+		assertTrue(this.frank.checkProficentSkill(this.ah));
+		assertTrue(this.frank.checkProficentSkill(this.insight));
+		assertTrue(this.frank.checkProficentSkill(this.intim));
+		assertTrue(this.frank.checkProficentSkill(this.perc));
+		assertTrue(this.frank.checkProficentSkill(this.surv));
 	}
 
 	/**
@@ -115,15 +118,15 @@ class TestCustomCharacterGroundUp {
 	 */
 	@Test
 	void testNotProficientSkillsFigher() {
-		assertFalse(frank.checkProficentSkill(this.arca));
-		assertFalse(frank.checkProficentSkill(this.decp));
-		assertFalse(frank.checkProficentSkill(this.inv));
-		assertFalse(frank.checkProficentSkill(this.med));
-		assertFalse(frank.checkProficentSkill(this.nat));
-		assertFalse(frank.checkProficentSkill(this.perf));
-		assertFalse(frank.checkProficentSkill(this.relg));
-		assertFalse(frank.checkProficentSkill(this.sOH));
-		assertFalse(frank.checkProficentSkill(this.stealth));
+		assertFalse(this.frank.checkProficentSkill(this.arca));
+		assertFalse(this.frank.checkProficentSkill(this.decp));
+		assertFalse(this.frank.checkProficentSkill(this.inv));
+		assertFalse(this.frank.checkProficentSkill(this.med));
+		assertFalse(this.frank.checkProficentSkill(this.nat));
+		assertFalse(this.frank.checkProficentSkill(this.perf));
+		assertFalse(this.frank.checkProficentSkill(this.relg));
+		assertFalse(this.frank.checkProficentSkill(this.sOH));
+		assertFalse(this.frank.checkProficentSkill(this.stealth));
 	}
 
 	/**
@@ -140,25 +143,25 @@ class TestCustomCharacterGroundUp {
 	 */
 	@Test
 	void testPercAndSurvSkillsAsProf() {
-		frank.setProficentClassTypeSkill(this.perc);
-		frank.setProficentClassTypeSkill(this.perf);
-		frank.setProficentClassTypeSkill(this.surv);
-		frank.setProficentClassTypeSkill(this.hist);
-		frank.setProficentClassTypeSkill(this.insight);
-		assertEquals(3, frank.getPerceptionBonus());
-		assertEquals(1, frank.getPerformanceBonus());
-		assertEquals(3, frank.getSurvivalBonus());
-		assertEquals(3, frank.getHistoryBonus());
-		assertEquals(0, frank.getRemainingClassTypeProf());
-		assertEquals(1, frank.getInsightBonus());
+		this.frank.setProficentClassTypeSkill(this.perc);
+		this.frank.setProficentClassTypeSkill(this.perf);
+		this.frank.setProficentClassTypeSkill(this.surv);
+		this.frank.setProficentClassTypeSkill(this.hist);
+		this.frank.setProficentClassTypeSkill(this.insight);
+		assertEquals(3, this.frank.getPerceptionBonus());
+		assertEquals(1, this.frank.getPerformanceBonus());
+		assertEquals(3, this.frank.getSurvivalBonus());
+		assertEquals(3, this.frank.getHistoryBonus());
+		assertEquals(0, this.frank.getRemainingClassTypeProf());
+		assertEquals(1, this.frank.getInsightBonus());
 	}
 
 	/**
 	 * Test to insure the background has set the survival and Athletic bonuses
 	 */
 	void TestBackgroundSetUp() {
-		assertEquals(3, frank.getSurvivalBonus());
-		assertEquals(3, frank.getAthleticBonus());
+		assertEquals(3, this.frank.getSurvivalBonus());
+		assertEquals(3, this.frank.getAthleticBonus());
 	}
 
 }

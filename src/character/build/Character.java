@@ -125,6 +125,7 @@ public class Character {
 	 */
 
 	private void setAbilityScores() {
+	
 		this.str.addScore(this.race.abilityScoreAlterations(this.str));
 		this.dex.addScore(this.race.abilityScoreAlterations(this.dex));
 		this.con.addScore(this.race.abilityScoreAlterations(this.con));
@@ -173,12 +174,14 @@ public class Character {
 	 * @param classSkill
 	 */
 	public void setBackGroundProficentSkill() {
-		this.setBackgroundSkill(this.background.getSkillProf1());
-		this.setBackgroundSkill(this.background.getSkillProf2());
+				this.setBackgroundSkill(this.background.getSkillProf2());
+				this.setBackgroundSkill(this.background.getSkillProf1());
+
 	}
 
 	public void setBackgroundSkill(Skill backgroundSkill) {
 		int profBonus = this.classType.getProficiencyBonus(this.level);
+	
 		if (!this.getSkill(backgroundSkill).isProfSkill()) {
 			this.addProficentBonus(backgroundSkill, profBonus);
 			this.getSkill(backgroundSkill).setProfSkill(true);
@@ -197,7 +200,6 @@ public class Character {
 
 	private void addProficentBonus(Skill classSkill, int bonusAdded) {
 		for (int count = 0; count < this.skills.getCharactersSkills().size(); count++) {
-
 			if (classSkill.getClass().equals(this.skills.getCharactersSkills().get(count).getClass())) {
 				this.skills.getCharactersSkills().get(count).addSkill(bonusAdded);
 			}
@@ -329,12 +331,12 @@ public class Character {
 	}
 	
 	private void removeRaceAbilityScores() {
-		this.str.addScore(this.str.getAbilityBonus() - this.race.abilityScoreAlterations(str));
-		this.dex.addScore(this.dex.getAbilityBonus() - this.race.abilityScoreAlterations(dex));
-		this.con.addScore(this.con.getAbilityBonus() - this.race.abilityScoreAlterations(con));
-		this.intell.addScore(this.intell.getAbilityBonus() - this.race.abilityScoreAlterations(intell));
-		this.wis.addScore(this.wis.getAbilityBonus() - this.race.abilityScoreAlterations(wis));
-		this.charisma.addScore(this.charisma.getAbilityBonus() - this.race.abilityScoreAlterations(charisma));
+		this.str = new Strength();
+		this.dex = new Dexterity();
+		this.con = new Constitution();
+		this.intell = new Intelligence();
+		this.wis = new Wisdom();
+		this.charisma = new Charisma();		
 	}
 
 	public Skills getSkills() {
@@ -356,7 +358,7 @@ public class Character {
 	}
 
 	/**
-	 * GETTERS FOR ABILITY SCORES
+	 * GETTERS FOR ABILITYs, SKILLS, BACKGROUNDS, RACES, and CLASSTYPEs
 	 */
 
 	public int getAcrobaticsBonus() {
@@ -429,6 +431,38 @@ public class Character {
 
 	public int getSurvivalBonus() {
 		return this.skills.getSurvival().getSkill();
+	}
+
+	public Background getBackground() {
+		return background;
+	}
+
+	public void setBackground(Background background) {
+		this.background = background;
+	}
+
+	public Strength getStr() {
+		return str;
+	}
+
+	public Dexterity getDex() {
+		return dex;
+	}
+
+	public Constitution getCon() {
+		return con;
+	}
+
+	public Intelligence getIntell() {
+		return intell;
+	}
+
+	public Wisdom getWis() {
+		return wis;
+	}
+
+	public Charisma getCharisma() {
+		return charisma;
 	}
 
 }

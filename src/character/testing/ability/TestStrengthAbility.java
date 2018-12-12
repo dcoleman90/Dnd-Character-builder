@@ -30,7 +30,7 @@ class TestStrengthAbility {
 		Ability strength20 = new Strength(20);
 		assertEquals(strength20.getScore(), 20);
 		Ability strength200 = new Strength(200);
-		assertEquals(strength200.getScore(), 200);
+		assertEquals(strength200.getScore(), 10);
 	}
 
 	
@@ -41,11 +41,11 @@ class TestStrengthAbility {
 	@Test
 	void testAbilitySecondConstructorWithNegativeValues() {
 		Ability strength7 = new Strength(-7);
-		assertEquals(strength7.getScore(), -7);
+		assertEquals(strength7.getScore(), 10);
 		Ability strength70 = new Strength(-70);
-		assertEquals(strength70.getScore(), -70);
+		assertEquals(strength70.getScore(), 10);
 		Ability strength700 = new Strength(-700);
-		assertEquals(strength700.getScore(), -700);
+		assertEquals(strength700.getScore(), 10);
 	}
 	
 	/**
