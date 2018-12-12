@@ -340,6 +340,8 @@ public class Character {
 
 	public void setClassType(ClassType acceptedClassType) {
 		this.classType = acceptedClassType;
+		this.setUpSkillScores();
+		this.setBackGroundProficentSkill();
 	}
 
 	/**
