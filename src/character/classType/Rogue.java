@@ -76,5 +76,25 @@ public class Rogue extends ClassType {
 	public void removeOneRogueExpertiseSkills() {
 		this.expertiseRanks++;
 	}
+
+	@Override
+	public boolean isProfLightArmor() {
+		return true;
+	}
+
+	@Override
+	public boolean isProfMedArmor() {
+		return false;
+	}
+
+	@Override
+	public boolean isProfHeavyArmor() {
+		return false;
+	}
+
+	@Override
+	public boolean isProfShields() {
+		return true;
+	}
 	
 }

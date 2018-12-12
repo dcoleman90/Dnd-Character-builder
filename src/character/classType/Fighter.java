@@ -79,4 +79,24 @@ public class Fighter extends ClassType {
 	public void removeOneRogueExpertiseSkills() {
 	}
 
+	@Override
+	public boolean isProfLightArmor() {
+		return true;
+	}
+
+	@Override
+	public boolean isProfMedArmor() {
+		return true;
+	}
+
+	@Override
+	public boolean isProfHeavyArmor() {
+		return true;
+	}
+
+	@Override
+	public boolean isProfShields() {
+		return true;
+	}
+
 }

@@ -112,8 +112,10 @@ public abstract class ClassType {
 	}
 	
 	public abstract String toString();
-
 	public abstract int rogueExpertiseSkills(int level);
-	
 	public abstract void removeOneRogueExpertiseSkills();
+	public abstract boolean isProfLightArmor();
+	public abstract boolean isProfMedArmor();
+	public abstract boolean isProfHeavyArmor();
+	public abstract boolean isProfShields();
 }

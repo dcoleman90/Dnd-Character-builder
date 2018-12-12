@@ -10,6 +10,7 @@ package character.abilities;
  */
 public abstract class Ability {
 	private int abilityScore;
+	private boolean isProfSavingThrow;
 		
 	public Ability() {
 		this.abilityScore = 10; 
@@ -106,5 +107,13 @@ public abstract class Ability {
 			return 10;
 		}
 	 return -20;
+	}
+
+	public boolean isProfSavingThrow() {
+		return isProfSavingThrow;
+	}
+
+	public void setProfSavingThrow(boolean isProfSavingThrow) {
+		this.isProfSavingThrow = isProfSavingThrow;
 	}
 }

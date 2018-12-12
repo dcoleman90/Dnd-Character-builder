@@ -4,12 +4,12 @@ import character.skills.Insight;
 import character.skills.Religion;
 
 public class BackgroundAcolyte extends Background{
-	private Insight religion;
-	private Religion	insight;
+	private Religion religion;
+	private Insight insight;
 
 	public BackgroundAcolyte() {
-		this.religion = new Insight(0);
-		this.insight = new Religion(0);
+		this.insight = new Insight(0);
+		this.religion = new Religion(0);
 		super.setSkillProf1(this.religion);
 		super.setSkillProf2(this.insight);
 		super.setBackGroundTitle("Acolyte ");

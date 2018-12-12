@@ -28,14 +28,14 @@ public class TestBackgroundAcolyte {
 	}
 	
 	@Test
-	void testSkillProf2() {
+	void testSkillProf1() {
 		Skill religion = new Religion(0);
-		assertEquals(religion.getClass(), acolyte.getSkillProf2().getClass());
+		assertEquals(religion.getClass(), acolyte.getSkillProf1().getClass());
 	}
 	
 	@Test
-	void testSkillProf1() {
+	void testSkillProf2() {
 		Skill insight = new Insight(0);
-		assertEquals(insight.getClass(), acolyte.getSkillProf1().getClass());
+		assertEquals(insight.getClass(), acolyte.getSkillProf2().getClass());
 	}
 }
