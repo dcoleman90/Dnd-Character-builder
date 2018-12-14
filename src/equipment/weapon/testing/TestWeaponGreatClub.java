@@ -35,8 +35,8 @@ public class TestWeaponGreatClub {
 	void testGreatgreatClubeTwoHandedHeavyLightRangeSpecialThrown() {
 		assertEquals(this.greatClub.isThrown(), false);
 		assertEquals(this.greatClub.isTwoHanded(), true);
-		assertEquals(this.greatClub.isHeavy(), true);
-		assertEquals(this.greatClub.isLight(), false);
+		assertEquals(this.greatClub.isHeavyWeapon(), true);
+		assertEquals(this.greatClub.isLightWeapon(), false);
 		assertEquals(this.greatClub.isRange(), false);
 		assertEquals(this.greatClub.isSpecial(), false);
 	}

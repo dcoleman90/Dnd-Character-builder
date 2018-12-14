@@ -3,7 +3,13 @@ package equipment.weapon;
 import character.abilities.Ability;
 import dnd.damage.Damage;
 
-public abstract class Weapon extends Equipment {
+public abstract class Weapon implements Equipment {
+	public abstract boolean isHeavyWeapon();
+
+	public abstract boolean isTwoHanded();
+
+	public abstract boolean isLightWeapon();
+
 	public abstract int getDamage();
 
 	public abstract int getDamageBonus();
@@ -27,7 +33,7 @@ public abstract class Weapon extends Equipment {
 	public abstract boolean isThrown();
 
 	public abstract boolean isVersatile();
-	
+
 	public abstract boolean isSimple();
 
 	public abstract void setDamageBonus(Ability damageBonus);

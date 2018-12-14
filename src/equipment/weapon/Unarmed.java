@@ -36,7 +36,7 @@ public class Unarmed extends MeleeWeapon{
 	}
 
 	@Override
-	public boolean isLight() {
+	public boolean isLightWeapon() {
 		return true;
 	}
 	
@@ -72,7 +72,7 @@ public class Unarmed extends MeleeWeapon{
 	}
 
 	@Override
-	public boolean isHeavy() {
+	public boolean isHeavyWeapon() {
 		return false;
 	}
 
@@ -110,7 +110,5 @@ public class Unarmed extends MeleeWeapon{
 	public String name() {
 		return "Unarmed ";
 	}
-	
-	
 
 }

@@ -1,19 +1,19 @@
 package equipment.weapon;
 
-public abstract class Equipment {
+public interface Equipment {
 
-	public abstract boolean isHeavy();
+	public  double getWeight();
 
-	public abstract boolean isTwoHanded();
-
-	public abstract double getWeight();
-
-	public abstract boolean isSpecial();
+	public  boolean isSpecial();
 	
-	public abstract boolean isLight();
+	public boolean isHeavyWeapon();
+
+	public boolean isTwoHanded();
+
+	public  boolean isLightWeapon();
 	
-	public abstract String cost();
+	public  String cost();
 	
-	public abstract String name();
+	public  String name();
 
 }

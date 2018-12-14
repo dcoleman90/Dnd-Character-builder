@@ -33,8 +33,8 @@ class TestWeaponGreatAxe {
 	void testGreatAxeTwoHandedHeavyLightRangeSpecialThrown() {
 		assertEquals(this.ax.isThrown(), false);
 		assertEquals(this.ax.isTwoHanded(), true);
-		assertEquals(this.ax.isHeavy(), true);
-		assertEquals(this.ax.isLight(), false);
+		assertEquals(this.ax.isHeavyWeapon(), true);
+		assertEquals(this.ax.isLightWeapon(), false);
 		assertEquals(this.ax.isRange(), false);
 		assertEquals(this.ax.isSpecial(), false);
 	}

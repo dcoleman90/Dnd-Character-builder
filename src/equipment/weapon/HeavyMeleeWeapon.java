@@ -6,7 +6,7 @@ import character.abilities.Strength;
 public abstract class HeavyMeleeWeapon extends MeleeWeapon {
 	private int bonusDamage;
 	Ability str = new Strength();
-	
+
 	public HeavyMeleeWeapon() {
 		this.bonusDamage = 0;
 	}
@@ -17,12 +17,12 @@ public abstract class HeavyMeleeWeapon extends MeleeWeapon {
 	}
 
 	@Override
-	public boolean isHeavy() {
+	public boolean isHeavyWeapon() {
 		return true;
 	}
 
 	@Override
-	public boolean isLight() {
+	public boolean isLightWeapon() {
 		return false;
 	}
 
@@ -53,21 +53,21 @@ public abstract class HeavyMeleeWeapon extends MeleeWeapon {
 
 	@Override
 	public void setDamageBonus(Ability strDamageBonus) {
-		if(strDamageBonus.getClass().equals(this.str.getClass())) {
-		this.bonusDamage = strDamageBonus.getAbilityBonus();
-		} 
+		if (strDamageBonus.getClass().equals(this.str.getClass())) {
+			this.bonusDamage = strDamageBonus.getAbilityBonus();
+		}
 	}
 
 	@Override
 	public int getDamageBonus() {
 		return this.bonusDamage;
 	}
-	
+
 	@Override
 	public boolean isMartial() {
 		return true;
 	}
-	
+
 	@Override
 	public boolean isSimple() {
 		return false;
