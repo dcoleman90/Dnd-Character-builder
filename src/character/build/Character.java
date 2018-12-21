@@ -12,7 +12,6 @@ import character.abilities.Strength;
 import character.abilities.Wisdom;
 import character.background.Background;
 import character.classType.ClassType;
-import character.classType.Fighter;
 import character.race.Race;
 import character.skills.Skill;
 import character.skills.Skills;

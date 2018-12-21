@@ -61,6 +61,8 @@ class TestSkills {
 	/**
 	 * All the INT based skills are upgraded from an ability score of 1 to 2 due to
 	 * drew having a human trait
+	 * 
+	 * Athletics is 1 instead of -1 because the background adds it as a proficency
 	 */
 
 	@Test
@@ -68,7 +70,7 @@ class TestSkills {
 		assertEquals(4, drew.getArrayListSkill().get(0).getSkill());
 		assertEquals(0, drew.getArrayListSkill().get(1).getSkill());
 		assertEquals(-4, drew.getArrayListSkill().get(2).getSkill());
-		assertEquals(0, drew.getArrayListSkill().get(3).getSkill());
+		assertEquals(1, drew.getArrayListSkill().get(3).getSkill());
 		assertEquals(2, drew.getArrayListSkill().get(4).getSkill());
 
 	}
