@@ -23,8 +23,8 @@ public class Rogue extends ClassType {
 	private ArrayList<Ability> proficentAbility;
 	private int expertiseRanks;
 	
-	public Rogue() {
-		super();
+	public Rogue(int level) {
+		super(level);
 		
 		
 		Acrobatics acro = new Acrobatics(0);

@@ -26,8 +26,8 @@ public class Fighter extends ClassType {
 	 * 
 	 * NEED TO ADD SAVING THROWS
 	 */
-	public Fighter() {
-		super();
+	public Fighter(int level) {
+		super(level);
 		this.setNumberClassSkills(2);
 		Acrobatics acro = new Acrobatics(0);
 		AnimalHandling ah = new AnimalHandling(0);

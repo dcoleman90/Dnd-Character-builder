@@ -21,7 +21,7 @@ class TestFigherSavingThrows {
 	Intelligence intell = new Intelligence();
 	Wisdom wis = new Wisdom();
 	Charisma charima = new Charisma();
-	Fighter fight = new Fighter();
+	Fighter fight = new Fighter(1);
 	
 	@Test
 	void testSavingThrowsTRUE_Prof() {

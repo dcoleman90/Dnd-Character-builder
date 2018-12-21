@@ -32,7 +32,7 @@ import character.skills.Stealth;
 import character.skills.Survival;
 
 public class TestClassTypeRogue {
-	Rogue rogue = new Rogue();
+	Rogue rogue = new Rogue(1);
 
 	// Allowed Skills for Rogues
 	Athletics ath = new Athletics(0);
@@ -110,7 +110,7 @@ public class TestClassTypeRogue {
 
 	@Test
 	void testSetHitPointsWithLevelOneRogueWithOneCon() {
-		Rogue rogue = new Rogue();
+		Rogue rogue = new Rogue(1);
 		rogue.setHitPoints(1, 1);
 		assertEquals(rogue.getHitPoints(), 9);
 	}

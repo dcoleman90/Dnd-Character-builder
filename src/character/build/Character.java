@@ -12,6 +12,7 @@ import character.abilities.Strength;
 import character.abilities.Wisdom;
 import character.background.Background;
 import character.classType.ClassType;
+import character.classType.Fighter;
 import character.race.Race;
 import character.skills.Skill;
 import character.skills.Skills;
@@ -30,7 +31,6 @@ public class Character {
 	private ClassType classType;
 	private Hand rightHand;
 	private Hand leftHand;
-	private int level;
 	private Background background;
 
 	/**
@@ -41,11 +41,7 @@ public class Character {
 	 * 
 	 * @param level
 	 */
-	public Character(int level, ClassType classtype, Background background, Race race) {
-		if (level > 0 && level < 21) {
-			this.level = level;
-		}
-
+	public Character(ClassType classtype, Background background, Race race) {
 		this.classType = classtype;
 		this.background = background;
 		this.race = race;
@@ -64,8 +60,7 @@ public class Character {
 	 * @param acceptedCharisma
 	 */
 	public Character(String name, int acceptedStr, int acceptedDex, int acceptedCon, int acceptedIntell,
-			int acceptedWis, int acceptedCharisma, Race acceptedRace, ClassType acceptedClass, int level,
-			Background background) {
+			int acceptedWis, int acceptedCharisma, Race acceptedRace, ClassType acceptedClass, Background background) {
 		if (name.isEmpty()) {
 			this.setName("New Player");
 		} else {
@@ -80,13 +75,6 @@ public class Character {
 		this.savingThrow = new SavingThrows(this.str, this.dex, this.con, this.intell, this.wis, this.charisma);
 		this.race = acceptedRace;
 		this.classType = acceptedClass;
-
-		if (level < 0 || level > 20) {
-			this.level = 1;
-		} else {
-			this.level = level;
-		}
-
 		this.background = background;
 		this.initializeHands();
 
@@ -163,7 +151,7 @@ public class Character {
 	 */
 	public void setProficentClassTypeSkill(Skill classSkill) {
 		if (this.checkProficentSkill(classSkill)) {
-			int profBonus = this.classType.getProficiencyBonus(this.level);
+			int profBonus = this.classType.getProficiencyBonus();
 			if (!this.getSkill(classSkill).isProfSkill()) {
 				this.addProficentBonus(classSkill, profBonus);
 				this.classType.decreaseNumberOfClassSkillsByOne();
@@ -196,7 +184,7 @@ public class Character {
 	}
 
 	public void setBackgroundSkill(Skill backgroundSkill) {
-		int profBonus = this.classType.getProficiencyBonus(this.level);
+		int profBonus = this.classType.getProficiencyBonus();
 
 		if (!this.getSkill(backgroundSkill).isProfSkill()) {
 			this.addProficentBonus(backgroundSkill, profBonus);
@@ -247,12 +235,10 @@ public class Character {
 	 * proficiency DOUBLED
 	 */
 	public void setRogueExpertise(Skill rogueSkill) {
-		if (this.classType.rogueExpertiseSkills(this.level) > 0) {
-			if (this.getSkill(rogueSkill).isProfSkill()) {
-				this.getSkill(rogueSkill).setSkill(
-						this.getSkill(rogueSkill).getSkill() + this.classType.getProficiencyBonus(this.level));
-				this.classType.removeOneRogueExpertiseSkills();
-			}
+		if (this.getSkill(rogueSkill).isProfSkill()) {
+			this.getSkill(rogueSkill)
+					.setSkill(this.getSkill(rogueSkill).getSkill() + this.classType.getProficiencyBonus());
+			this.classType.removeOneRogueExpertiseSkills();
 		}
 	}
 
@@ -262,8 +248,9 @@ public class Character {
 	 */
 
 	public int getLevel() {
-		return this.level;
+		return this.classType.getLevel();
 	}
+	
 
 	public Hand getRightHand() {
 		return rightHand;
@@ -281,13 +268,18 @@ public class Character {
 		this.leftHand = leftHand;
 	}
 
-	public void setLevel(int acceptedLevel) {
-		this.level = acceptedLevel;
+	public void setClassAndLevel(ClassType newClassType) {
+		this.classType = newClassType;
 		this.setUpSkillScores();
 		this.setBackGroundProficentSkill();
-
 	}
-
+	
+	public void setLevel(int level) {
+		if (level >0 && level < 21) {
+			this.classType.setLevel(level);
+		}
+	}
+	
 	public int getStrScore() {
 		return this.str.getScore();
 	}
@@ -486,30 +478,30 @@ public class Character {
 	public int getStrSavingThrow() {
 		return this.savingThrowHelper(this.str);
 	}
-	
+
 	public int getDexSavingThrow() {
 		return this.savingThrowHelper(this.dex);
 	}
-	
+
 	public int getConSavingThrow() {
 		return this.savingThrowHelper(this.con);
 	}
-	
+
 	public int getIntellSavingThrow() {
 		return this.savingThrowHelper(this.intell);
 	}
-	
+
 	public int getWisSavingThrow() {
 		return this.savingThrowHelper(this.wis);
 	}
-	
+
 	public int getCharismaSavingThrow() {
 		return this.savingThrowHelper(this.charisma);
 	}
 
 	private int savingThrowHelper(Ability searchedAbility) {
 		if (searchedAbility.isProfSavingThrow()) {
-			return searchedAbility.getAbilityBonus() + this.classType.getProficiencyBonus(this.level);
+			return searchedAbility.getAbilityBonus() + this.classType.getProficiencyBonus();
 		}
 		return searchedAbility.getAbilityBonus();
 	}

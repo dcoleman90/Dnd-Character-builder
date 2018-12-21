@@ -23,7 +23,7 @@ import character.skills.Stealth;
 import character.skills.Survival;
 
 class TestClassTypeProficentSkills {
-	Fighter fight = new Fighter();
+	Fighter fight = new Fighter(1);
 
 	// Allowed Skills for fighters
 	Athletics ath = new Athletics(0);

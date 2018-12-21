@@ -29,10 +29,10 @@ import character.skills.Survival;
 import org.junit.jupiter.api.Test;
 
 class TestCustomCharacterGroundUp {
-	Fighter fighter = new Fighter();
+	Fighter fighter = new Fighter(1);
 	Race human = new Human();
 	Background outlander = new BackgroundOutlander();
-	Character frank = new Character("this.frank", 12, 12, 12, 12, 12, 12, human, fighter, 1, outlander);
+	Character frank = new Character("this.frank", 12, 12, 12, 12, 12, 12, human, fighter, outlander);
 
 	// Allowed Skills for fighters
 	Athletics ath = new Athletics(0);

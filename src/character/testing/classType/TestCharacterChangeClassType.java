@@ -52,11 +52,11 @@ class TestCharacterChangeClassType {
 	Nature nat = new Nature(0);
 	Religion relg = new Religion(0);
 
-	Rogue rogue = new Rogue();
-	Fighter fight = new Fighter();
+	Rogue rogue = new Rogue(1);
+	Fighter fight = new Fighter(1);
 	Race human = new Human();
 	Background outlander = new BackgroundOutlander();
-	Character frank = new Character("Frank", 10, 10, 10, 10, 10, 10, human, rogue, 1, outlander);
+	Character frank = new Character("Frank", 10, 10, 10, 10, 10, 10, human, rogue, outlander);
 
 	/**
 	 * The following test will insure that once a character is created the classtype

@@ -32,8 +32,8 @@ import character.skills.Survival;
 class TestCharacterProficientBonus {
 	Race human = new Human();
 	Background outlander = new BackgroundOutlander();
-	Fighter fighter = new Fighter();
-	Character hero = new Character(1, fighter, outlander, human);
+	Fighter fighter = new Fighter(1);
+	Character hero = new Character(fighter, outlander, human);
 	
 	// Allowed Skills for fighters/default character
 	Athletics ath = new Athletics(0);
@@ -223,7 +223,7 @@ class TestCharacterProficientBonus {
 	
 	@Test
 	void testSavingThrowsResetAfterHeroChangesClasses() {
-		Rogue rogue = new Rogue();
+		Rogue rogue = new Rogue(1);
 		this.hero.setClassType(rogue);
 		assertEquals(0, this.hero.getConSavingThrow());
 		assertEquals(0, this.hero.getStrSavingThrow());
