@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 
 class TestSavingThrowProfiecencies {
 
-	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
+//	@Test
+//	void test() {
+//		fail("Not yet implemented");
+//	}
 
 }

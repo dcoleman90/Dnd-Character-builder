@@ -77,11 +77,8 @@ class TestCustomCharacterGroundUp {
 	void testBuildACharacterFromGroundUpTestingGetSkillScores() {
 		assertEquals(1, this.frank.getSkills().getAcrobatic().getSkill());
 		assertEquals(1, this.frank.getSkills().getAnimalHandle().getSkill());
-		assertEquals(1, this.frank.getSkills().getArcana().getSkill());
-		
-		System.out.println(this.frank.getStr().getAbilityBonus() + " " + this.frank.getStrScore() + " " + outlander.getSkillProf1().getSkill() + " " + outlander.getSkillProf2().getSkill());
-		
-		assertEquals(3, this.frank.getAthleticBonus()); // THIS TEST FAILS NEED TO FIND OUT WHY
+		assertEquals(1, this.frank.getSkills().getArcana().getSkill());		
+		assertEquals(3, this.frank.getAthleticBonus()); 
 		assertEquals(1, this.frank.getSkills().getDeception().getSkill());
 		assertEquals(1, this.frank.getSkills().getHistory().getSkill());
 		assertEquals(1, this.frank.getSkills().getInsight().getSkill());
