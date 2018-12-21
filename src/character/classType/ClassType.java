@@ -119,6 +119,10 @@ public abstract class ClassType {
     public void setLevel(int level) {
     	this.level = level;
     }
+    
+    public int getNumberOfRogueExpertiseRanks() {
+    	return 0;
+    }
 
 
     /**
@@ -132,8 +136,6 @@ public abstract class ClassType {
     public abstract boolean isClassSavingThrow(Ability savingThrow);
 
     public abstract String toString();
-
-    public abstract int rogueExpertiseSkills(int level);
 
     public abstract void removeOneRogueExpertiseSkills();
 

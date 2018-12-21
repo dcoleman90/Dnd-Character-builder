@@ -22,11 +22,10 @@ public class Rogue extends ClassType {
 	private ArrayList<Skill> proficentSkills;
 	private ArrayList<Ability> proficentAbility;
 	private int expertiseRanks;
-	
+
 	public Rogue(int level) {
 		super(level);
-		
-		
+		this.expertiseRanks = this.rogueExpertiseSkills(level);
 		Acrobatics acro = new Acrobatics(0);
 		Athletics ath = new Athletics(0);
 		Deception decp = new Deception(0);
@@ -55,10 +54,9 @@ public class Rogue extends ClassType {
 		this.proficentSkills.add(persu);
 		this.proficentSkills.add(sOH);
 		this.proficentSkills.add(stealth);
-		this.expertiseRanks = 0;
 		this.setNumberClassSkills(4);
 	}
-	
+
 	public void setHitPoints(int level, int conBonus) {
 		super.setHitPoints(level, 8, conBonus);
 	}
@@ -73,17 +71,28 @@ public class Rogue extends ClassType {
 		return "Rogue ";
 	}
 
-	@Override
-	public int rogueExpertiseSkills(int level) {
+	private int rogueExpertiseSkills(int level) {
 		if (level >= 6) {
-			return 4 - this.expertiseRanks;
-		} 
-		return 2 - this.expertiseRanks;
+			return 4;
+		} else {
+			return 2;
+		}
 	}
 
 	@Override
 	public void removeOneRogueExpertiseSkills() {
-		this.expertiseRanks++;
+		this.expertiseRanks--;
+	}
+
+	@Override
+	public void setLevel(int level) {
+		super.setLevel(level);
+		this.expertiseRanks = this.rogueExpertiseSkills(level);
+	}
+
+	@Override
+	public int getNumberOfRogueExpertiseRanks() {
+		return this.expertiseRanks;
 	}
 
 	@Override
@@ -105,10 +114,10 @@ public class Rogue extends ClassType {
 	public boolean isProfShields() {
 		return true;
 	}
-	
+
 	@Override
 	public boolean isClassSavingThrow(Ability savingThrow) {
 		return super.checkProfSavingThrows(this.proficentAbility, savingThrow);
 	}
-	
+
 }

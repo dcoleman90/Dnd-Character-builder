@@ -22,7 +22,7 @@ import character.build.Character;
 class TestRaceSetRace {
 	Human human = new Human();
 	WoodElf woodelf = new WoodElf();
-	ClassType rogue = new Rogue();
+	ClassType rogue = new Rogue(1);
 	Background outlander = new BackgroundOutlander();
 	
 	Ability str = new Strength();
@@ -38,7 +38,7 @@ class TestRaceSetRace {
 	 */
 	@Test
 	void testSetRaceHumanToWoodElf() {
-		Character ted = new Character(1, this.rogue, this.outlander, this.human);
+		Character ted = new Character(this.rogue, this.outlander, this.human);
 		
 		assertEquals(11, ted.getStrScore());
 		assertEquals(11, ted.getCharismaScore());
@@ -98,7 +98,7 @@ class TestRaceSetRace {
 	
 	@Test
 	void testSetRaceWoodElfToHuman() {
-		Character ted = new Character(1, this.rogue, this.outlander, this.woodelf);
+		Character ted = new Character(this.rogue, this.outlander, this.woodelf);
 	
 		assertEquals(10, ted.getStrScore());
 		assertEquals(10, ted.getCharismaScore());

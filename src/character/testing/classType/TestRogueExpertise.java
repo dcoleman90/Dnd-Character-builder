@@ -30,12 +30,13 @@ import character.skills.Stealth;
 import character.skills.Survival;
 
 public class TestRogueExpertise {
-	Rogue rogue = new Rogue();
+	Rogue rogue = new Rogue(1);
+	Rogue rogue6 = new Rogue(6);
 	Race human = new Human();
 	Race woodElf = new WoodElf();
 	Background outlander = new BackgroundOutlander();
-	Character frank = new Character("Frank", 10, 10, 10, 10, 10, 10, human, rogue, 1, outlander);
-	Character frank6 = new Character("Frank", 10, 10, 10, 10, 10, 10, human, rogue, 6, outlander);
+	Character frank = new Character("Frank", 10, 10, 10, 10, 10, 10, human, rogue, outlander);
+	Character frank6 = new Character("Frank", 10, 10, 10, 10, 10, 10, human, rogue6, outlander);
 
 	// Allowed Skills for Rogues
 	Athletics ath = new Athletics(0);
@@ -111,6 +112,7 @@ public class TestRogueExpertise {
 		this.frank.setProficentClassTypeSkill(this.inv);
 		this.frank.setProficentClassTypeSkill(this.stealth);
 		
+	
 		this.frank.setRogueExpertise(stealth);
 		
 		assertEquals(0, this.frank.getAnimalHandlingBonus());
@@ -124,7 +126,6 @@ public class TestRogueExpertise {
 	@Test
 	void testExpertiseShouldDoubleProfBonusStealthAthButNotDecpOutOfExpertise() {
 		this.frank.setProficentClassTypeSkill(this.ath);
-		this.frank.setProficentClassTypeSkill(this.ah);
 		this.frank.setProficentClassTypeSkill(this.decp);
 		this.frank.setProficentClassTypeSkill(this.insight);
 		this.frank.setProficentClassTypeSkill(this.inv);
@@ -155,7 +156,7 @@ public class TestRogueExpertise {
 	 * 3rd insight
 	 * 4th investigation
 	 * 
-	 * Stealth is left out thus cannot gain the setRogueExpertise benifit
+	 * Stealth is left out thus cannot gain the setRogueExpertise benefit
 	 */
 	@Test
 	void testExpertiseShouldDoubleProfBonusStealthAthButNotDecpOutOfExpertiseAtLevel6() {
@@ -165,7 +166,8 @@ public class TestRogueExpertise {
 		this.frank6.setProficentClassTypeSkill(this.insight);
 		this.frank6.setProficentClassTypeSkill(this.inv);
 		this.frank6.setProficentClassTypeSkill(this.stealth);
-		
+
+		// Stealth is not a proficient skill and thus does not gain the bonus
 		this.frank6.setRogueExpertise(this.stealth);
 		this.frank6.setRogueExpertise(this.ath);
 		this.frank6.setRogueExpertise(this.decp);
@@ -176,7 +178,7 @@ public class TestRogueExpertise {
 		assertEquals(3, this.frank6.getInvestigationBonus());
 		assertEquals(6, this.frank6.getDeceptionBonus());
 		assertEquals(0, this.frank6.getStealthBonus());
-		assertEquals(1, this.frank6.getClassType().rogueExpertiseSkills(this.frank6.getLevel()));
+		assertEquals(1, this.frank6.getClassType().getNumberOfRogueExpertiseRanks());
 	}
 	
 	
@@ -203,19 +205,18 @@ public class TestRogueExpertise {
 		this.frank6.setProficentClassTypeSkill(this.decp);
 		this.frank6.setProficentClassTypeSkill(this.insight);
 		this.frank6.setProficentClassTypeSkill(this.inv);
-		this.frank6.setProficentClassTypeSkill(this.stealth);
 		
-		this.frank6.setRogueExpertise(this.stealth);
 		this.frank6.setRogueExpertise(this.ath);
 		this.frank6.setRogueExpertise(this.decp);
 		this.frank6.setRogueExpertise(this.insight);
 		
+		//As level was reset to 1 so should the number of RogueExpertise and thus decp should not gain the benifit
 		assertEquals(4, this.frank6.getAthleticBonus());
 		assertEquals(2, this.frank6.getInsightBonus());
 		assertEquals(2, this.frank6.getInvestigationBonus());
 		assertEquals(4, this.frank6.getDeceptionBonus());
 		assertEquals(0, this.frank6.getStealthBonus());
-		assertEquals(0, this.frank6.getClassType().rogueExpertiseSkills(this.frank6.getLevel()));
+		assertEquals(0, this.frank6.getClassType().getNumberOfRogueExpertiseRanks());
 	}
 	
 	

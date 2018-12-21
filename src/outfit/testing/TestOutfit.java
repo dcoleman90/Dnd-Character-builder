@@ -15,11 +15,11 @@ import equipment.weapon.WeaponGreatAxe;
 import outfit.Outfit;
 
 class TestOutfit {
-	Fighter fighter = new Fighter();
+	Fighter fighter = new Fighter(1);
 	Race human = new Human();
 	Unarmed hand = new Unarmed();
 	Background outlander = new BackgroundOutlander();
-	Character frank = new Character("Frank", 12, 12, 12, 12, 12, 12, human, fighter, 1, outlander);
+	Character frank = new Character("Frank", 12, 12, 12, 12, 12, 12, human, fighter, outlander);
 	WeaponGreatAxe axe = new WeaponGreatAxe();
 
 	/**

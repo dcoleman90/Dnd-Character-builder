@@ -112,6 +112,7 @@ public abstract class Ability {
 	public boolean isProfSavingThrow() {
 		return isProfSavingThrow;
 	}
+	
 
 	public void setProfSavingThrow(boolean isProfSavingThrow) {
 		this.isProfSavingThrow = isProfSavingThrow;

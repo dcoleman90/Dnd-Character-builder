@@ -3,6 +3,7 @@ package character.skills;
 public abstract class Skill {
 	private int skill;
 	private boolean isProfSkill;
+	private boolean isExpertSkill;
 	
 	public Skill(int abilityModifer) {
 		this.skill = abilityModifer;
@@ -23,6 +24,14 @@ public abstract class Skill {
 
 	public boolean isProfSkill() {
 		return isProfSkill;
+	}
+	
+	public boolean isExpertSkill() {
+		return isExpertSkill;
+	}
+	
+	public void setExpertSkill(boolean isExpertSkill) {
+		this.isExpertSkill = isExpertSkill;
 	}
 
 	public void setProfSkill(boolean isProfSkill) {

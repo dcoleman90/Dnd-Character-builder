@@ -235,10 +235,11 @@ public class Character {
 	 * proficiency DOUBLED
 	 */
 	public void setRogueExpertise(Skill rogueSkill) {
-		if (this.getSkill(rogueSkill).isProfSkill()) {
+		if (this.getSkill(rogueSkill).isProfSkill() && this.classType.getNumberOfRogueExpertiseRanks() > 0) {
 			this.getSkill(rogueSkill)
-					.setSkill(this.getSkill(rogueSkill).getSkill() + this.classType.getProficiencyBonus());
+					.setSkill(this.classType.getProficiencyBonus()*2);
 			this.classType.removeOneRogueExpertiseSkills();
+			this.getSkill(rogueSkill).setExpertSkill(true);
 		}
 	}
 
@@ -278,6 +279,8 @@ public class Character {
 		if (level >0 && level < 21) {
 			this.classType.setLevel(level);
 		}
+		this.setUpSkillScores();
+		this.setBackGroundProficentSkill();
 	}
 	
 	public int getStrScore() {

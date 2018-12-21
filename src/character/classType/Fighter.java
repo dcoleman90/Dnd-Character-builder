@@ -73,17 +73,6 @@ public class Fighter extends ClassType {
 		return "Fighter";
 	}
 
-	/**
-	 * These methods are currently required to appease the Rogue class
-	 * 
-	 * NEED TO FIND A BETTER WAY WHICH DOES NOT INVOLVE ALL THE CLASSES HAVING ROGUE
-	 * ABILITIES
-	 */
-	@Override
-	public int rogueExpertiseSkills(int level) {
-		return 0;
-	}
-
 	@Override
 	public void removeOneRogueExpertiseSkills() {
 	}

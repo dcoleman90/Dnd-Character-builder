@@ -15,10 +15,10 @@ import character.race.Race;
 class TestSkills {
 	Race human = new Human();
 	Background outlander = new BackgroundOutlander();
-	Fighter fighter = new Fighter();
-	Character hero = new Character(1, fighter, outlander, human);
-	Fighter fight = new Fighter();
-	Character drew = new Character("name", 7, 18, 16, 1, 10, 14, human, fight, 1, outlander);
+	Fighter fighter = new Fighter(1);
+	Character hero = new Character(fighter, outlander, human);
+	Fighter fight = new Fighter(1);
+	Character drew = new Character("name", 7, 18, 16, 1, 10, 14, human, fight, outlander);
 
 	/**
 	 * This test shows the initial way to get the Skill from the characters
