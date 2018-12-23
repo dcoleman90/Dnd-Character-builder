@@ -2,6 +2,8 @@ package outfit;
 
 import equipment.weapon.Equipment;
 import equipment.weapon.Unarmed;
+import equipment.armor.Armor;
+import equipment.armor.PaddedArmor;
 import character.build.Character;
 
 /**
@@ -16,14 +18,19 @@ public class Outfit {
 	private Unarmed emptyHand;
 	private Equipment item1;
 	private Equipment item2;
+	private Armor armor;
+	private PaddedArmor paddedArmor;
 
 	public Outfit(Character playerCharacter) {
 		this.emptyHand = new Unarmed();
+		
 		if (playerCharacter != null) {
 			this.player = playerCharacter;
+			this.paddedArmor = new PaddedArmor(this.player.getDex().getAbilityBonus());
 		}
-		this.fillLeftHand(emptyHand);
-		this.fillRightHand(emptyHand);
+		this.donArmor(this.paddedArmor);
+		this.fillLeftHand(this.emptyHand);
+		this.fillRightHand(this.emptyHand);
 	}
 
 	public void fillRightHand(Equipment item) {
@@ -60,6 +67,12 @@ public class Outfit {
 		this.player.getLeftHand().addItem(this.item1);
 	}
 
+	private void donArmor(Armor armorDon) {
+		if (armorDon != null) {
+			this.armor = armorDon;
+		}
+	}
+	
 	private void dropBothHands() {
 		this.player.getRightHand().removeItem();
 		this.player.getLeftHand().removeItem();
@@ -85,4 +98,7 @@ public class Outfit {
 		return this.player;
 	}
 
+	public Armor getPlayerArmor() {
+		return this.armor;
+	}
 }
