@@ -1,9 +1,11 @@
 package equipment.armor;
 
 public class UnArmored extends Armor{
-
-	public UnArmored(int dexMod) {
-		super(dexMod + 10);
+	private static int unarmoredAC = 10;
+	
+	public UnArmored() {
+		super.setArmorClass(unarmoredAC);
+		super.setMaxDexBonus(false);
 	}
 	
 	@Override

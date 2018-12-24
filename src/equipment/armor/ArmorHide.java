@@ -2,11 +2,9 @@ package equipment.armor;
 
 public class ArmorHide extends MediumArmor {
 	private static int armorBonus = 12;
-	private int dexMod;
 
-	public ArmorHide(int dexModifer) {
-		super(dexModifer, armorBonus);
-		this.dexMod = dexModifer;
+	public ArmorHide() {
+		super.setArmorClass(armorBonus);
 	}
 
 	@Override
@@ -38,8 +36,5 @@ public class ArmorHide extends MediumArmor {
 	public int getStrengthScoreRequirement() {
 		return 0;
 	}
-	
-    public int getDexMod() {
-        return this.dexMod;
-    }
+
 }

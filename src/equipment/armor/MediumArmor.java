@@ -2,8 +2,9 @@ package equipment.armor;
 
 public abstract class MediumArmor extends Armor {
 
-	public MediumArmor(int dexModifer, int armorBonus) {
-		super(dexModiferChecker(dexModifer) + armorBonus);
+	public MediumArmor() {
+		super.setMaxDexBonus(true);
+		super.setMaxDexBonusValue(2);
 	}
 	
 	private static int dexModiferChecker(int dexModifer) {
@@ -29,5 +30,8 @@ public abstract class MediumArmor extends Armor {
 		return true;
 	}
 	
-	
+	@Override
+	public int getMaxDexBonus() {
+		return 2;
+	}
 }

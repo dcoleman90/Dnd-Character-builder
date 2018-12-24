@@ -9,85 +9,80 @@ import equipment.armor.ArmorHide;
 class TestArmorHide {
 	private ArmorHide hide;
 
-	public void setup(int dexMod) {
-		this.hide = new ArmorHide(dexMod);
+	public void setup() {
+		this.hide = new ArmorHide();
 	}
 
 	@Test
 	void testStandardSetupWithADexBonusOf5() {
-		this.setup(5);
-		assertEquals(this.hide.getArmorClass(), 14);
+		this.setup();
+		assertEquals(this.hide.getArmorClass(), 12);
 	}
 
 	@Test
-	void testStandardSetupWithADexBonusOf3() {
-		this.setup(3);
-		assertEquals(this.hide.getArmorClass(), 14);
+	void testMaxDexModifer() {
+		this.setup();
+		assertEquals(2, this.hide.getMaxDexBonus());
 	}
-
+	
 	@Test
-	void testStandardSetupWithADexBonusOf1() {
-		this.setup(1);
-		assertEquals(this.hide.getArmorClass(), 13);
+	void testMaxDexModiferBoolean() {
+		this.setup();
+		assertEquals(true, this.hide.isMaxDexBonus());
 	}
-
+	
 	@Test
-	void testWeightShouldReturn8_0() {
-		this.setup(0);
+	void testWeightShouldReturn12_0() {
+		this.setup();
 		assertEquals(this.hide.getWeight(), 12.0, 0.000001);
 	}
 	
 	@Test
 	void testIsSpecial() {
-		this.setup(0);
+		this.setup();
 		assertEquals(false, this.hide.isSpecial());
 	}
 	
 	@Test
 	void testIsStealthDisadvantage() {
-		this.setup(0);
+		this.setup();
 		assertEquals(false, this.hide.isStealthDisadvantage());
 	}
 	
-	@Test
-	void testGetDexModShouldBeSameAsSetUpInt() {
-		this.setup(1);
-		assertEquals(1, this.hide.getDexMod());
-	}
-	
+		
 	@Test
 	void testStrengthRequirement() {
-		this.setup(1);
+		this.setup();
 		assertEquals(0, this.hide.getStrengthScoreRequirement());
 	}
 	
 	@Test
 	void testArmorName() {
-		this.setup(1);
+		this.setup();
 		assertEquals("Hide Armor ", this.hide.getName());
 	}
 	
 	@Test
 	void testArmorCost() {
-		this.setup(1);
+		this.setup();
 		assertEquals("10 Gold Pieces ", this.hide.getCost());
 	}
 
 	@Test
 	void testIsLightArmor() {
-		this.setup(1);
+		this.setup();
 		assertEquals(false, this.hide.isLightArmor());
 	}
 	
 	@Test
 	void testIsMediumArmor() {
-		this.setup(1);
+		this.setup();
 		assertEquals(true, this.hide.isMediumArmor());
 	}
 	
 	@Test
 	void testIsHeavyArmor() {
-		this.setup(1);
+		this.setup();
 		assertEquals(false, this.hide.isHeavyArmor());
 	}
 	

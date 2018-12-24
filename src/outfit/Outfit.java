@@ -4,6 +4,7 @@ import equipment.weapon.Equipment;
 import equipment.weapon.Unarmed;
 import equipment.armor.Armor;
 import equipment.armor.ArmorPadded;
+import equipment.armor.UnArmored;
 import character.build.Character;
 
 /**
@@ -19,20 +20,42 @@ public class Outfit {
 	private Equipment item1;
 	private Equipment item2;
 	private Armor armor;
-	private ArmorPadded paddedArmor;
+	private UnArmored unArmored;
 
 	public Outfit(Character playerCharacter) {
 		this.emptyHand = new Unarmed();
 		
 		if (playerCharacter != null) {
 			this.player = playerCharacter;
-			this.paddedArmor = new ArmorPadded(this.player.getDex().getAbilityBonus());
+			this.unArmored= new UnArmored(this.player.getDex().getAbilityBonus());
 		}
-		this.donArmor(this.paddedArmor);
+		this.donArmor(this.unArmored);
 		this.fillLeftHand(this.emptyHand);
 		this.fillRightHand(this.emptyHand);
 	}
+	
+	public Outfit(Character playerCharacter, Armor armor, Equipment equipment1, Equipment equipment2) {
+		if (playerCharacter != null) {
+			this.player = playerCharacter;
+		}
+		if (armor != null) {
+			this.armor = armor;
+		}
+		if (equipment1 != null) {
+			this.item1 = equipment1;
+		}
+		if (equipment2 != null) {
+			this.item2 = equipment2;
+		}
+		this.donArmor(this.armor);
+		this.fillLeftHand(this.item1);
+		this.fillRightHand(this.item2);
+	}
 
+	/**
+	 * The following methods are for hands - insuring that two handed weapons are held by both hands and allowing the dropping of weapons
+	 * @param item
+	 */
 	public void fillRightHand(Equipment item) {
 		if (item.isTwoHanded()) {
 			this.fillBothHands(item);
@@ -67,12 +90,6 @@ public class Outfit {
 		this.player.getLeftHand().addItem(this.item1);
 	}
 
-	private void donArmor(Armor armorDon) {
-		if (armorDon != null) {
-			this.armor = armorDon;
-		}
-	}
-	
 	private void dropBothHands() {
 		this.player.getRightHand().removeItem();
 		this.player.getLeftHand().removeItem();
@@ -94,11 +111,27 @@ public class Outfit {
 		}
 	}
 	
+	
+	/**
+	 * These methods allow players to outfit armor
+	 * @param armorDon
+	 */
+	private void donArmor(Armor armorDon) {
+		if (armorDon != null) {
+			this.armor = armorDon;
+		}
+
+		
+		this.player.setArmor(this.armor);
+	}
+	
+		public Armor getPlayerArmor() {
+		return this.armor;
+	}
+		
+		
 	public Character  getCharacter() {
 		return this.player;
 	}
 
-	public Armor getPlayerArmor() {
-		return this.armor;
-	}
 }

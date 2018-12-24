@@ -2,14 +2,12 @@ package equipment.armor;
 
 public class ArmorPadded extends LightArmor {
     private static int armorBonus = 11;
-    private int dexMod;
 
-    public ArmorPadded(int dexModifer) {
-        super(dexModifer, armorBonus);
-        this.dexMod = dexModifer;
+    public ArmorPadded() {
+    	super.setArmorClass(armorBonus);
     }
 
-//THis is a test comment to test commit
+   
     @Override
     public double getWeight() {
         return 8.0;
@@ -33,10 +31,6 @@ public class ArmorPadded extends LightArmor {
     @Override
     public boolean isStealthDisadvantage() {
         return true;
-    }
-
-    public int getDexMod() {
-        return this.dexMod;
     }
 
 	@Override

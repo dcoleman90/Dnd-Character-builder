@@ -15,6 +15,8 @@ import character.classType.ClassType;
 import character.race.Race;
 import character.skills.Skill;
 import character.skills.Skills;
+import equipment.armor.Armor;
+import equipment.armor.UnArmored;
 
 public class Character {
 	private String name;
@@ -30,6 +32,7 @@ public class Character {
 	private ClassType classType;
 	private Hand rightHand;
 	private Hand leftHand;
+	private Armor armor;
 	private Background background;
 
 	/**
@@ -75,8 +78,7 @@ public class Character {
 		this.race = acceptedRace;
 		this.classType = acceptedClass;
 		this.background = background;
-		this.initializeHands();
-
+		this.initializeHandsAndArmor();
 	}
 
 	private void initializeDefault() {
@@ -88,13 +90,14 @@ public class Character {
 		this.wis = new Wisdom();
 		this.charisma = new Charisma();
 		this.savingThrow = new SavingThrows(this.str, this.dex, this.con, this.intell, this.wis, this.charisma);
-		this.initializeHands();
+		this.initializeHandsAndArmor();
 
 	}
 
-	private void initializeHands() {
+	private void initializeHandsAndArmor() {
 		this.rightHand = new Hand();
 		this.leftHand = new Hand();
+		this.armor = new UnArmored(this.dex.getAbilityBonus());
 		this.setup();
 	}
 
@@ -242,6 +245,35 @@ public class Character {
 		}
 	}
 
+	
+	
+	
+	
+	
+	/**
+	 * Getter and Setter for the Character's Armor
+	 */
+	public Armor getArmor() {
+		return this.armor;
+	}
+	
+	public void setArmor(Armor acceptedArmor) {
+		if(acceptedArmor != null) {
+			this.armor = acceptedArmor;
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * Getters and Setters for all the Ability Scores and Race
 	 * 
