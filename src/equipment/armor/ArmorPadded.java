@@ -22,7 +22,7 @@ public class ArmorPadded extends LightArmor {
 
     @Override
     public String getCost() {
-        return "5 Gold pieces ";
+        return "5 Gold Pieces ";
     }
 
     @Override

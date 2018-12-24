@@ -4,74 +4,73 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import equipment.armor.ArmorPadded;
+import equipment.armor.ArmorHide;
 
-
-class TestPaddedArmor {
-	private ArmorPadded padded;
+class TestArmorHide {
+	private ArmorHide hide;
 
 	public void setup(int dexMod) {
-		this.padded = new ArmorPadded(dexMod);
+		this.hide = new ArmorHide(dexMod);
 	}
 
 	@Test
 	void testStandardSetupWithADexBonusOf5() {
 		this.setup(5);
-		assertEquals(this.padded.getArmorClass(), 16);
+		assertEquals(this.hide.getArmorClass(), 14);
 	}
 
 	@Test
 	void testStandardSetupWithADexBonusOf3() {
 		this.setup(3);
-		assertEquals(this.padded.getArmorClass(), 14);
+		assertEquals(this.hide.getArmorClass(), 14);
 	}
 
 	@Test
 	void testStandardSetupWithADexBonusOf1() {
 		this.setup(1);
-		assertEquals(this.padded.getArmorClass(), 12);
+		assertEquals(this.hide.getArmorClass(), 13);
 	}
 
 	@Test
 	void testWeightShouldReturn8_0() {
 		this.setup(0);
-		assertEquals(this.padded.getWeight(), 8.0, 0.000001);
+		assertEquals(this.hide.getWeight(), 12.0, 0.000001);
 	}
 	
 	@Test
 	void testIsSpecial() {
 		this.setup(0);
-		assertEquals(false, this.padded.isSpecial());
+		assertEquals(false, this.hide.isSpecial());
 	}
 	
 	@Test
 	void testIsStealthDisadvantage() {
 		this.setup(0);
-		assertEquals(true, this.padded.isStealthDisadvantage());
+		assertEquals(false, this.hide.isStealthDisadvantage());
 	}
 	
 	@Test
 	void testGetDexModShouldBeSameAsSetUpInt() {
 		this.setup(1);
-		assertEquals(1, this.padded.getDexMod());
+		assertEquals(1, this.hide.getDexMod());
 	}
 	
 	@Test
 	void testStrengthRequirement() {
 		this.setup(1);
-		assertEquals(0, this.padded.getStrengthScoreRequirement());
+		assertEquals(0, this.hide.getStrengthScoreRequirement());
 	}
 	
 	@Test
 	void testArmorName() {
 		this.setup(1);
-		assertEquals("Padded Armor ", this.padded.getName());
+		assertEquals("Hide Armor ", this.hide.getName());
 	}
 	
 	@Test
 	void testArmorCost() {
 		this.setup(1);
-		assertEquals("5 Gold Pieces ", this.padded.getCost());
+		assertEquals("10 Gold Pieces ", this.hide.getCost());
 	}
 
 }
