@@ -45,12 +45,12 @@ public class WeaponGreatclub extends HeavyMeleeWeapon {
 	}
 
 	@Override
-	public String cost() {
+	public String getCost() {
 		return "2 Silver pieces ";
 	}
 
 	@Override
-	public String name() {
+	public String getName() {
 		return "Great Club ";
 	}
 

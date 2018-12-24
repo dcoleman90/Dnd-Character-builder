@@ -12,8 +12,8 @@ public interface Equipment {
 
 	public  boolean isLightWeapon();
 	
-	public  String cost();
+	public  String getCost();
 	
-	public  String name();
+	public  String getName();
 
 }

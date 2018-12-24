@@ -34,12 +34,12 @@ public class WeaponGreatAxe extends HeavyMeleeWeapon {
 	}
 
 	@Override
-	public String cost() {
+	public String getCost() {
 		return "30 Gold pieces ";
 	}
 	
 	@Override
-	public String name() {
+	public String getName() {
 		return "Great Axe ";
 	}
 }

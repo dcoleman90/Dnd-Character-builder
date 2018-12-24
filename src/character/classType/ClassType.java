@@ -2,7 +2,6 @@ package character.classType;
 
 import character.abilities.Ability;
 import character.skills.Skill;
-
 import java.util.ArrayList;
 import java.util.Random;
 

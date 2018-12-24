@@ -32,6 +32,7 @@ public abstract class Armor implements Equipment{
 	public abstract boolean isHeavyArmor();
 	public abstract boolean isMediumArmor();
 	public abstract boolean isStealthDisadvantage();
+	public abstract int getStrengthScoreRequirement();
 
 	
 	public int getArmorClass() {

@@ -102,12 +102,12 @@ public class Unarmed extends MeleeWeapon{
 	}
 
 	@Override
-	public String cost() {
+	public String getCost() {
 		return "No cost";
 	}
 
 	@Override
-	public String name() {
+	public String getName() {
 		return "Unarmed ";
 	}
 
