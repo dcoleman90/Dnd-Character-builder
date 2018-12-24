@@ -4,13 +4,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import equipment.armor.PaddedArmor;
+import equipment.armor.ArmorPadded;
+
 
 class TestPaddedArmor {
-	private PaddedArmor padded;
+	private ArmorPadded padded;
 
 	public void setup(int dexMod) {
-		this.padded = new PaddedArmor(dexMod);
+		this.padded = new ArmorPadded(dexMod);
 	}
 
 	@Test

@@ -3,7 +3,7 @@ package outfit;
 import equipment.weapon.Equipment;
 import equipment.weapon.Unarmed;
 import equipment.armor.Armor;
-import equipment.armor.PaddedArmor;
+import equipment.armor.ArmorPadded;
 import character.build.Character;
 
 /**
@@ -19,14 +19,14 @@ public class Outfit {
 	private Equipment item1;
 	private Equipment item2;
 	private Armor armor;
-	private PaddedArmor paddedArmor;
+	private ArmorPadded paddedArmor;
 
 	public Outfit(Character playerCharacter) {
 		this.emptyHand = new Unarmed();
 		
 		if (playerCharacter != null) {
 			this.player = playerCharacter;
-			this.paddedArmor = new PaddedArmor(this.player.getDex().getAbilityBonus());
+			this.paddedArmor = new ArmorPadded(this.player.getDex().getAbilityBonus());
 		}
 		this.donArmor(this.paddedArmor);
 		this.fillLeftHand(this.emptyHand);

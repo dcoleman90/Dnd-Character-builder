@@ -1,10 +1,10 @@
 package equipment.armor;
 
-public class PaddedArmor extends LightArmor {
+public class ArmorPadded extends LightArmor {
     private static int armorBonus = 11;
     private int dexMod;
 
-    public PaddedArmor(int dexModifer) {
+    public ArmorPadded(int dexModifer) {
         super(dexModifer, armorBonus);
         this.dexMod = dexModifer;
     }
