@@ -5,6 +5,9 @@ import equipment.weapon.Equipment;
 public abstract class Armor implements Equipment{
 	private int armorClass;
 		
+	/**
+	 * The override classes remove the N/A elements of Equipment
+	 */
 	@Override
 	public boolean isHeavyWeapon() {
 		return false;
@@ -20,6 +23,9 @@ public abstract class Armor implements Equipment{
 		return false;
 	}
 	
+	/**
+	 * This is the default constructor
+	 */
 	public Armor() {
 		this.armorClass = 10;
 	}

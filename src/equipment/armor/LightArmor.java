@@ -20,8 +20,4 @@ public abstract class LightArmor extends Armor{
 	public boolean isMediumArmor() {
 		return false;
 	}
-	
-	
-	
-
 }

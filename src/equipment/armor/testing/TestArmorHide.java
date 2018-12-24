@@ -73,4 +73,22 @@ class TestArmorHide {
 		assertEquals("10 Gold Pieces ", this.hide.getCost());
 	}
 
+	@Test
+	void testIsLightArmor() {
+		this.setup(1);
+		assertEquals(false, this.hide.isLightArmor());
+	}
+	
+	@Test
+	void testIsMediumArmor() {
+		this.setup(1);
+		assertEquals(true, this.hide.isMediumArmor());
+	}
+	
+	@Test
+	void testIsHeavyArmor() {
+		this.setup(1);
+		assertEquals(false, this.hide.isHeavyArmor());
+	}
+	
 }

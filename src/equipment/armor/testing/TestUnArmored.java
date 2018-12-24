@@ -4,92 +4,85 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import equipment.armor.ArmorPadded;
+import equipment.armor.UnArmored;
 
-
-class TestPaddedArmor {
-	private ArmorPadded padded;
-
+class TestUnArmored {
+	private UnArmored unsafeAdventuring;
+	
 	public void setup(int dexMod) {
-		this.padded = new ArmorPadded(dexMod);
+		this.unsafeAdventuring = new UnArmored(dexMod);
 	}
 
 	@Test
 	void testStandardSetupWithADexBonusOf5() {
 		this.setup(5);
-		assertEquals(this.padded.getArmorClass(), 16);
+		assertEquals(this.unsafeAdventuring.getArmorClass(), 15);
 	}
 
 	@Test
 	void testStandardSetupWithADexBonusOf3() {
 		this.setup(3);
-		assertEquals(this.padded.getArmorClass(), 14);
+		assertEquals(this.unsafeAdventuring.getArmorClass(), 13);
 	}
 
 	@Test
 	void testStandardSetupWithADexBonusOf1() {
 		this.setup(1);
-		assertEquals(this.padded.getArmorClass(), 12);
+		assertEquals(this.unsafeAdventuring.getArmorClass(), 11);
 	}
 
 	@Test
 	void testWeightShouldReturn8_0() {
 		this.setup(0);
-		assertEquals(this.padded.getWeight(), 8.0, 0.000001);
+		assertEquals(this.unsafeAdventuring.getWeight(), 0.0, 0.000001);
 	}
 	
 	@Test
 	void testIsSpecial() {
 		this.setup(0);
-		assertEquals(false, this.padded.isSpecial());
+		assertEquals(false, this.unsafeAdventuring.isSpecial());
 	}
 	
 	@Test
 	void testIsStealthDisadvantage() {
 		this.setup(0);
-		assertEquals(true, this.padded.isStealthDisadvantage());
-	}
-	
-	@Test
-	void testGetDexModShouldBeSameAsSetUpInt() {
-		this.setup(1);
-		assertEquals(1, this.padded.getDexMod());
+		assertEquals(false, this.unsafeAdventuring.isStealthDisadvantage());
 	}
 	
 	@Test
 	void testStrengthRequirement() {
 		this.setup(1);
-		assertEquals(0, this.padded.getStrengthScoreRequirement());
+		assertEquals(0, this.unsafeAdventuring.getStrengthScoreRequirement());
 	}
 	
 	@Test
 	void testArmorName() {
 		this.setup(1);
-		assertEquals("Padded Armor ", this.padded.getName());
+		assertEquals("Unarmored ", this.unsafeAdventuring.getName());
 	}
 	
 	@Test
 	void testArmorCost() {
 		this.setup(1);
-		assertEquals("5 Gold Pieces ", this.padded.getCost());
+		assertEquals("N/A ", this.unsafeAdventuring.getCost());
 	}
 	
 	@Test
 	void testIsLightArmor() {
 		this.setup(1);
-		assertEquals(true, this.padded.isLightArmor());
+		assertEquals(false, this.unsafeAdventuring.isLightArmor());
 	}
 	
 	@Test
 	void testIsMediumArmor() {
 		this.setup(1);
-		assertEquals(false, this.padded.isMediumArmor());
+		assertEquals(false, this.unsafeAdventuring.isMediumArmor());
 	}
 	
 	@Test
 	void testIsHeavyArmor() {
 		this.setup(1);
-		assertEquals(false, this.padded.isHeavyArmor());
+		assertEquals(false, this.unsafeAdventuring.isHeavyArmor());
 	}
 
 }
